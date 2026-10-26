@@ -7,10 +7,11 @@
 - Почта: ekateribogdana@yandex.ru
 - Behance: https://www.behance.net/ekateribo
 - Город: Москва
+- Резюме (PDF): https://ekatenabogdanova.github.io/Bogdanova_Ekaterina_Product_Designer.pdf
 
 ## Кейсы
-- [Looma — приложение для танцевального сообщества](https://eclectic-banoffee-cc1ede.netlify.app/): концепт-проект, соло, 2 месяца. Проблема, гипотезы и метрики, скоуп MVP, user flow, UX/UI и айдентика, юзабилити-тест с 10 педагогами, итерация по результатам.
-- [Vidmer.dance — сайт лаборатории танца](https://www.behance.net/gallery/226323411/Landing-Vidmer-Dance): коммерческий проект, сайт https://vidmerdance.ru/. Перевела запись на занятия из Instagram и Telegram на сайт. Структура, прототип, дизайн, адаптив, сборка на Tilda (Zero Block), запуск.
+- [Looma — приложение для танцевального сообщества](https://effervescent-biscotti-4cd5fc.netlify.app/): концепт-проект, соло, 2 месяца. Проблема, гипотезы и метрики, скоуп MVP, user flow, UX/UI и айдентика, юзабилити-тест с 10 педагогами, итерация по результатам.
+- [Vidmer.dance — сайт лаборатории танца](https://www.behance.net/gallery/226323411/Landing-Vidmer-Dance): коммерческий проект, сайт https://vidmerdance.ru/. Перевела запись на занятия из Instagram и Telegram на сайт. Структура, прототип, дизайн, адаптив, сборка на Tilda (Zero Block), запуск. После запуска ученицы смотрят расписание на сайте, а не спрашивают в директе.
 - [Frame Up Official — серия афиш](https://www.behance.net/gallery/234397015/Instagram-posters-for-Frame-up-official): визуальная система для серии танцевальных событий.
 
 ## Навыки
