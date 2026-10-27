@@ -12,7 +12,7 @@
 ## Кейсы
 - Looma — приложение для танцевального сообщества, концепт-проект, 2026, соло, 2 месяца. Кейс и прототип в Figma: https://www.figma.com/proto/EnDFu6EhXxf3KT4INIy6IQ/%D0%BA%D0%B5%D0%B9%D1%81-%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F?node-id=735-5446&p=f&scaling=min-zoom&content-scaling=fixed&page-id=735%3A5080. Проблема, гипотезы и метрики, скоуп MVP, user flow, UX/UI и айдентика, юзабилити-тест с 10 педагогами, итерация по результатам.
 - [Vidmer.dance — сайт лаборатории танца](https://www.behance.net/gallery/226323411/Landing-Vidmer-Dance): коммерческий проект, сайт https://vidmerdance.ru/. Собрала направления и расписание на сайте, кнопка записи ведёт в Telegram студии. Структура, прототип, дизайн, адаптив, сборка на Tilda (Zero Block), запуск. После запуска ученицы смотрят расписание на сайте, а не спрашивают в директе.
-- [Frame Up Official — серия афиш](https://www.behance.net/gallery/234397015/Instagram-posters-for-Frame-up-official): серия афиш для танцевального проекта в едином стиле: типографика, палитра, композиция.
+- [Frame Up Official — серия афиш](https://ekatenabogdanova.github.io/frameup.html): коммерческий проект, 2025. Четыре Instagram-карусели для интенсивов Frame Up и High Heels в двух аккаунтах (@frameup_official, @high.heels_convention): один каркас из трёх слайдов, чёрно-белые фото, свой цвет у каждого события. Лучший пост: 517 лайков и 197 отправок. Версия на Behance: https://www.behance.net/gallery/234397015/Instagram-posters-for-Frame-up-official
 
 ## Навыки
 Продуктовый дизайн, UX/UI, дизайн-системы, AI-инструменты в дизайне, промптинг, проектирование интерфейсов, user flow, прототипирование, юзабилити-тестирование, дизайн мобильных приложений, адаптивный веб-дизайн, айдентика.

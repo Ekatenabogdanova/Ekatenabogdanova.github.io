@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Frame Up Deep — серия афиш, кейс Екатерины Богдановой</title>
+<meta name="description" content="Серия Instagram-каруселей для четырёх танцевальных интенсивов Frame Up Official: один каркас, монохромные фото и свой цвет у каждого события. Коммерческий проект, 2025">
+<meta name="author" content="Екатерина Богданова">
+<link rel="canonical" href="https://ekatenabogdanova.github.io/frameup.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Frame Up Deep — серия афиш для Instagram">
+<meta property="og:description" content="Четыре карусели для танцевальных интенсивов: один каркас, монохром и свой цвет у каждого события">
+<meta property="og:image" content="https://ekatenabogdanova.github.io/assets/frameup.jpg">
+<meta name="theme-color" content="#0d0d0e">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend+Zetta:wght@300;400&family=Montserrat:wght@400;500;600&display=swap">
+<style>
+/* Layout: one left edge for everything; eyebrow above heading; light and dark bands alternate; 8px spacing scale */
+:root {
+  --ink: #0d0d0e;
+  --fog: #ebebe8;
+  --mist: #9a9a96;
+  --line: rgba(235, 235, 232, .14);
+  --paper: #e2e2df;
+  --paper-ink: #121213;
+  --paper-sub: #5a5a55;
+  --paper-line: rgba(18, 18, 19, .16);
+
+  --display: "Lexend Zetta", "Helvetica Neue", Arial, sans-serif;
+  --body: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+
+  --t-cap: 600 12px/16px var(--body);
+  --t-small: 400 15px/24px var(--body);
+  --t-body: 400 18px/28px var(--body);
+  --t-sub: 500 22px/32px var(--body);
+  --t-h: 500 clamp(28px, 3.2vw, 44px)/1.18 var(--body);
+  --t-lead: 500 clamp(28px, 3.6vw, 52px)/1.16 var(--body);
+
+  --s1: 8px; --s2: 16px; --s3: 24px; --s4: 32px; --s6: 48px; --s8: 64px; --s12: 96px; --s16: 128px;
+  --section: clamp(96px, 10vw, 160px);
+  --wrap: 1440px;
+  color-scheme: dark;
+}
+* { box-sizing: border-box }
+body { background: var(--ink); color: var(--fog); font: var(--t-body); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility }
+p { margin: 0; text-wrap: pretty }
+h1, h2, h3 { margin: 0; font-weight: inherit; text-wrap: balance }
+img { display: block; max-width: 100%; height: auto }
+section, header, footer { position: relative; overflow-x: clip }
+
+.band { padding-block: var(--section); background: var(--bg); color: var(--fg) }
+.dark { --bg: var(--ink); --fg: var(--fog); --sub: var(--mist); --ln: var(--line) }
+.light { --bg: var(--paper); --fg: var(--paper-ink); --sub: var(--paper-sub); --ln: var(--paper-line) }
+.in { max-width: var(--wrap); margin-inline: auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)) }
+.eyebrow { display: block; margin-bottom: var(--s3); font: var(--t-cap); letter-spacing: .14em; text-transform: uppercase; color: var(--sub) }
+.eyebrow i { font-style: normal; color: var(--acc) }
+.h { font: var(--t-h); letter-spacing: -.01em; max-width: 20ch }
+
+/* ---------- hero ---------- */
+.hero { padding-block: var(--s6) var(--section) }
+.hero-top { display: flex; justify-content: space-between; gap: var(--s2); flex-wrap: wrap; padding-bottom: var(--s3); border-bottom: 1px solid var(--ln) }
+.hero-main { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--s3); align-items: start; margin-top: var(--s12) }
+.hero h1 { grid-column: 1 / span 8; font: 300 clamp(48px, 9.4vw, 148px)/.92 var(--display); letter-spacing: -.03em }
+.hero h1 span { display: block }
+.hero h1 .deep { color: var(--deep, var(--fog)); transition: color .8s ease }
+.hero-intro { margin-top: var(--s6); max-width: 34ch; font: var(--t-sub); color: var(--sub) }
+.deck-wrap { grid-column: 9 / -1; min-width: 0; padding-right: 8% }
+.deck { position: relative; display: block; width: 100%; aspect-ratio: 1012 / 1350; padding: 0; border: 0; background: none; cursor: grab; perspective: 1400px; touch-action: pan-y; user-select: none; -webkit-user-select: none }
+.deck:active { cursor: grabbing }
+.deck:focus-visible { outline: 2px solid var(--fg); outline-offset: 8px }
+.deck .card { position: absolute; inset: 0; overflow: hidden; background-size: 300% 100%; background-position: 0 0; box-shadow: 0 24px 56px rgba(0, 0, 0, .5); transform-style: preserve-3d; transition: transform .8s cubic-bezier(.2, .8, .2, 1), opacity .8s ease, box-shadow .4s ease }
+.deck .card::after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at var(--gx, 50%) var(--gy, 30%), rgba(255, 255, 255, .28), rgba(255, 255, 255, 0) 55%); opacity: 0; transition: opacity .4s ease; pointer-events: none }
+.deck .card[data-pos="0"] { z-index: 4; transform: translate3d(var(--dx, 0px), var(--dy, 0px), 0) rotate(var(--dr, 0deg)) rotateX(var(--tx, 0deg)) rotateY(var(--ty, 0deg)) }
+.deck .card[data-pos="0"].live { transition: transform .12s linear, box-shadow .4s ease }
+.deck .card[data-pos="0"].grab { transition: none; box-shadow: 0 40px 80px rgba(0, 0, 0, .6) }
+.deck:hover .card[data-pos="0"]::after, .deck .card.grab::after { opacity: 1 }
+.deck .card[data-pos="1"] { transform: translate(5%, 3%) rotate(3deg) scale(.96); z-index: 3; opacity: .7 }
+.deck .card[data-pos="2"] { transform: translate(10%, 6%) rotate(6deg) scale(.92); z-index: 2; opacity: .4 }
+.deck .card[data-pos="3"] { transform: translate(10%, 6%) rotate(6deg) scale(.92); z-index: 1; opacity: 0 }
+.deck:hover .card[data-pos="1"] { transform: translate(16%, 2%) rotate(7deg) scale(.97); opacity: .9 }
+.deck:hover .card[data-pos="2"] { transform: translate(30%, 5%) rotate(13deg) scale(.94); opacity: .75 }
+.deck:hover .card[data-pos="3"] { transform: translate(42%, 9%) rotate(19deg) scale(.91); opacity: .55 }
+.deck .card[data-pos="out"] { transform: translate(-125%, 6%) rotate(-18deg); z-index: 5; opacity: 0 }
+.deck .card[data-pos="out-r"] { transform: translate(125%, 6%) rotate(18deg); z-index: 5; opacity: 0 }
+.deck-hint { margin-top: var(--s3); font: var(--t-small); font-size: 13px; color: var(--sub) }
+.hero-meta { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s4) var(--s3); margin: var(--s12) 0 0; padding-top: var(--s3); border-top: 1px solid var(--ln) }
+.hero-meta dt { font: var(--t-cap); letter-spacing: .14em; text-transform: uppercase; color: var(--sub) }
+.hero-meta dd { margin: var(--s1) 0 0; font: var(--t-small); font-size: 17px; line-height: 26px }
+
+/* ---------- about ---------- */
+.lead { font: var(--t-lead); letter-spacing: -.015em; max-width: 26ch }
+.task { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s4) var(--s6); margin-top: var(--s12); padding-top: var(--s3); border-top: 1px solid var(--ln) }
+.task p { color: var(--sub); max-width: 44ch }
+.task b { display: block; margin-bottom: var(--s1); font: var(--t-sub); color: var(--fg) }
+
+/* ---------- how ---------- */
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s6) var(--s3); margin-top: var(--s8) }
+.step { margin: 0; min-width: 0 }
+.step .im { aspect-ratio: 4 / 5; background-repeat: no-repeat; background-color: #1b1b1c }
+.step figcaption { margin-top: var(--s3) }
+.step .no { font: var(--t-cap); letter-spacing: .14em; text-transform: uppercase; color: var(--sub) }
+.step b { display: block; margin-top: var(--s1); font: var(--t-sub) }
+.step p { margin-top: var(--s1); font: var(--t-small); color: var(--sub); max-width: 36ch }
+.im1 { background-image: url(assets/frameup/heels-pro.jpg); background-position: 21.67% 0; background-size: 671.7% auto }
+.im2 { background-image: url(assets/frameup/frame-beg.jpg); background-position: 44.2% 18.8%; background-size: 532.6% auto }
+.im3 { background-image: url(assets/frameup/frame-pro.jpg); background-position: 1.88% 100%; background-size: 336.9% auto }
+
+/* ---------- intensive ---------- */
+.int h2 { font: 300 clamp(28px, 3.6vw, 52px)/1.05 var(--display); letter-spacing: -.02em }
+.int h2 i { font-style: normal; color: var(--acc) }
+.int-meta { display: flex; flex-wrap: wrap; gap: var(--s1) var(--s3); margin-top: var(--s3); font: var(--t-small); color: var(--sub) }
+.int-meta b { color: var(--fg); font-weight: 600 }
+.int .note { margin-top: var(--s2); max-width: 52ch; color: var(--sub) }
+.viewer { position: relative; margin-top: calc(var(--s8) + 48px) }
+.strip { display: flex; gap: 4px; cursor: grab; touch-action: pan-y; user-select: none; -webkit-user-select: none }
+.strip:active { cursor: grabbing }
+.strip:focus-visible { outline: 2px solid var(--fg); outline-offset: 56px }
+.strip .s { flex: 1 1 0; min-width: 0; aspect-ratio: 1012 / 1350; background-size: 300% 100%; opacity: .32; filter: grayscale(.7); transition: opacity .6s ease, filter .6s ease }
+.strip .s:nth-child(1) { background-position: 0 0 }
+.strip .s:nth-child(2) { background-position: 50% 0 }
+.strip .s:nth-child(3) { background-position: 100% 0 }
+.strip .s.on { opacity: 1; filter: none }
+.window { position: absolute; top: -48px; bottom: -48px; left: calc(var(--i, 0) * (100% + 4px) / 3); width: calc((100% - 8px) / 3); border: 1px solid var(--fg); border-radius: 16px; pointer-events: none; transition: left .7s cubic-bezier(.2, .8, .2, 1) }
+.ig-head { position: absolute; top: 0; left: 0; right: 0; height: 48px; display: flex; align-items: center; gap: 10px; padding-inline: 16px; font: 600 13px/1 var(--body) }
+.ig-head .av { width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(--acc); background: var(--fg); box-shadow: inset 0 0 0 2px var(--bg) }
+.ig-head .ct { margin-left: auto; font-weight: 500; color: var(--sub); font-variant-numeric: tabular-nums }
+.ig-dots { position: absolute; bottom: 0; left: 0; right: 0; height: 48px; display: flex; align-items: center; justify-content: center; gap: 6px }
+.ig-dots i { width: 6px; height: 6px; border-radius: 50%; background: var(--sub); opacity: .5; transition: background .3s, opacity .3s }
+.ig-dots i.on { background: var(--acc); opacity: 1 }
+.vctrl { display: flex; align-items: center; justify-content: space-between; gap: var(--s3); margin-top: calc(var(--s6) + 48px) }
+.vctrl .cap-s { font: var(--t-small); color: var(--sub) }
+.vctrl .cap-s b { color: var(--fg); font-weight: 600 }
+.vbtns { display: flex; gap: var(--s1) }
+.vbtns button { width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--ln); background: none; color: var(--fg); font: 400 20px/1 var(--body); cursor: pointer; transition: border-color .2s }
+.vbtns button:hover { border-color: var(--fg) }
+.vbtns button:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px }
+.vbtns button:disabled { opacity: .3; cursor: default }
+
+/* ---------- type ---------- */
+.type-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s3); margin-top: var(--s8) }
+.spec { padding-top: var(--s3); border-top: 1px solid var(--ln) }
+.spec .aa { font-size: clamp(72px, 9vw, 128px); line-height: 1; margin-bottom: var(--s3) }
+.spec .z { font-family: var(--display); font-weight: 300; letter-spacing: -.03em }
+.spec .g { font-family: var(--body); font-weight: 600; letter-spacing: -.02em }
+.spec b { display: block; font: var(--t-sub) }
+.spec p { margin-top: var(--s1); font: var(--t-small); color: var(--sub); max-width: 40ch }
+.spec small { display: block; margin-top: var(--s1); font: var(--t-small); font-size: 13px; color: var(--sub) }
+.sw { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s1); margin-top: var(--s8) }
+.sw div { aspect-ratio: 4 / 3; padding: var(--s2); display: flex; flex-direction: column; justify-content: space-between; font: var(--t-small); font-size: 13px }
+.sw code { font: 500 13px/1 var(--body); letter-spacing: .06em }
+.sw .a { background: #ececec; color: #111; box-shadow: inset 0 0 0 1px var(--ln) } .sw .b { background: #b8b8b8; color: #111 }
+.sw .c { background: #252525; color: #ebebe8 } .sw .d { background: #191919; color: #ebebe8 }
+
+/* ---------- feed + end ---------- */
+.phones { display: flex; justify-content: center; align-items: flex-start; gap: clamp(32px, 6vw, 96px); margin-top: var(--s12); perspective: 2000px }
+.phone { --w: clamp(312px, 24vw, 340px); position: relative; flex: 0 0 auto; width: var(--w); aspect-ratio: 9 / 19.5; padding: 10px; border-radius: 52px; background: linear-gradient(145deg, #9a9a94, #4a4a47 30%, #2a2a28 60%, #8a8a84); box-shadow: 0 60px 120px rgba(0, 0, 0, .6), 0 20px 40px rgba(0, 0, 0, .4), inset 0 0 0 1px rgba(255, 255, 255, .25); transition: transform 1s cubic-bezier(.2, .8, .2, 1) }
+.phones:hover .pcol .phone { transform: none }
+.screen { position: relative; height: 100%; border-radius: 42px; overflow: hidden; background: #000; color: #f5f5f5; font: 400 13px/1.35 -apple-system, "Helvetica Neue", var(--body); display: flex; flex-direction: column }
+.island { position: absolute; top: 10px; left: 50%; width: 96px; height: 28px; margin-left: -48px; border-radius: 20px; background: #000; z-index: 3 }
+.sbar { display: flex; justify-content: space-between; align-items: center; height: 48px; padding: 6px 28px 0; font-weight: 600; font-size: 14px }
+.sbar svg { width: 44px; height: 12px }
+.topbar { display: flex; align-items: center; gap: 12px; height: 40px; padding-inline: 14px; font-weight: 700; font-size: 15px }
+.topbar svg { width: 20px; height: 20px }
+.ph { display: flex; align-items: center; gap: 10px; padding: 8px 12px }
+.av { flex: 0 0 auto; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: #111; box-shadow: 0 0 0 2px #000, 0 0 0 3.5px var(--ring, #f5f5f5); font: 400 8px/1 var(--display); letter-spacing: .02em; color: #f5f5f5 }
+.ph .nm { font-weight: 600 }
+.ph .sub { font-size: 11px; color: #a8a8a8 }
+.ph .more { margin-left: auto; letter-spacing: 1px; font-weight: 700 }
+.media { position: relative }
+.media .track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; cursor: grab }
+.media .track::-webkit-scrollbar { display: none }
+.media .sl { flex: 0 0 100%; aspect-ratio: 1012 / 1350; scroll-snap-align: start; background-size: 300% 100% }
+.media .sl:nth-child(1) { background-position: 0 0 } .media .sl:nth-child(2) { background-position: 50% 0 } .media .sl:nth-child(3) { background-position: 100% 0 }
+.media .badge { position: absolute; top: 10px; right: 10px; padding: 3px 8px; border-radius: 12px; background: rgba(0, 0, 0, .65); font-size: 11px; font-weight: 600 }
+.acts { display: flex; align-items: center; gap: 14px; padding: 2px 12px 6px }
+.acts svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linejoin: round; stroke-linecap: round }
+.acts .save { margin-left: auto }
+.pdots { display: flex; justify-content: center; gap: 4px; padding-top: 10px }
+.pdots i { width: 6px; height: 6px; border-radius: 50%; background: #555 }
+.pdots i.on { background: #3897f0 }
+.capt { padding: 2px 12px; font-size: 12.5px }
+.capt b { font-weight: 600 }
+.capt span { color: #a8a8a8 }
+.tabbar { margin-top: auto; display: flex; justify-content: space-around; padding: 12px 8px 26px; border-top: 1px solid #222 }
+.tabbar svg { width: 22px; height: 22px; fill: none; stroke: #f5f5f5; stroke-width: 1.8; stroke-linejoin: round; stroke-linecap: round }
+.av { background-size: 118%; background-position: center; color: transparent; box-shadow: 0 0 0 2px #000, 0 0 0 3.5px #e1306c }
+.av.fu { background-image: url(assets/frameup/av-frameup.jpg) } .av.hh { background-image: url(assets/frameup/av-heels.jpg) }
+.ph .music { display: block; font-size: 11px; color: #d0d0d0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px }
+.acts .n { margin-left: -9px; font-size: 13px; font-weight: 600 }
+.acts .heart { fill: #ff3040; stroke: #ff3040 }
+.capt .when { display: block; margin-top: 4px; font-size: 11px; color: #8a8a8a }
+.pcol { display: flex; flex-direction: column; align-items: center }
+.pcol:nth-child(2) .phone { transform: rotateY(-14deg) rotateZ(3deg) translateY(56px) }
+.pcol:nth-child(1) .phone { transform: rotateY(14deg) rotateZ(-3deg) }
+.pcol .acct { margin-top: var(--s8); font: var(--t-small); color: var(--sub) }
+.pcol:nth-child(2) .acct { margin-top: calc(var(--s8) + 56px) }
+.stats { margin-top: var(--s12); border-top: 1px solid var(--ln) }
+.stats .row { display: grid; grid-template-columns: 4fr 3fr 2fr 2fr 2fr; gap: var(--s3); align-items: baseline; padding-block: var(--s2); border-bottom: 1px solid var(--ln); font: var(--t-small); font-variant-numeric: tabular-nums }
+.stats .row.head { color: var(--sub); font: var(--t-cap); letter-spacing: .14em; text-transform: uppercase }
+.stats .row b { font-weight: 500 }
+.stats .row i { font-style: normal; display: inline-block; width: 8px; height: 8px; margin-right: 10px; border-radius: 50%; background: var(--c) }
+.stats .num { text-align: right }
+.stats-note { margin-top: var(--s2); font: var(--t-small); font-size: 13px; color: var(--sub) }
+.switch { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--s1); margin-top: var(--s3) }
+.switch button { display: inline-flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 99px; border: 1px solid var(--ln); background: none; color: var(--sub); font: var(--t-small); cursor: pointer; transition: color .2s, border-color .2s }
+.switch button::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--c) }
+.switch button[aria-pressed="true"] { color: var(--fg); border-color: var(--fg) }
+.switch button:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px }
+@media (max-width: 760px) {
+  .phones { flex-direction: column; align-items: center; gap: var(--s12) }
+  .pcol:nth-child(n) .phone { transform: none }
+  .pcol:nth-child(2) .acct { margin-top: var(--s8) }
+  .stats .row { grid-template-columns: 1fr auto auto; row-gap: 4px }
+  .stats .row > :nth-child(2), .stats .row > :nth-child(3) { display: none }
+}
+.end { padding-block: var(--s12) var(--s8); border-top: 1px solid var(--ln) }
+.end dl { margin: var(--s8) 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s4) var(--s3) }
+.end dt { font: var(--t-cap); letter-spacing: .14em; text-transform: uppercase; color: var(--sub) }
+.end dd { margin: var(--s1) 0 0; font: var(--t-small); font-size: 17px }
+.end a { color: var(--fg); text-decoration-thickness: 1px; text-underline-offset: 4px }
+.end a:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px }
+
+@media (max-width: 900px) {
+  .hero h1, .deck-wrap { grid-column: 1 / -1 }
+  .deck-wrap { width: min(360px, 78%); margin-top: var(--s12); padding-right: 0 }
+  .hero-meta { grid-template-columns: repeat(2, minmax(0, 1fr)) }
+  .task, .steps, .type-row, .end dl { grid-template-columns: 1fr }
+  .step .im { aspect-ratio: 16 / 10 }
+}
+@media (max-width: 600px) {
+  .viewer { margin-top: var(--s6) }
+  .strip { overflow-x: auto; scroll-snap-type: x mandatory; gap: var(--s1); cursor: auto; scrollbar-width: none }
+  .strip::-webkit-scrollbar { display: none }
+  .strip .s { flex: 0 0 100%; scroll-snap-align: center; opacity: 1; filter: none }
+  .window { display: none }
+  .vctrl { margin-top: var(--s3) }
+  .sw { grid-template-columns: repeat(2, minmax(0, 1fr)) }
+}
+@media (prefers-reduced-motion: reduce) { .deck .card, .window, .strip .s, .hero h1 .deep { transition: none } }
+</style>
+<style>
+:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px) }
+body { margin: 0 }
+[hidden] { display: none !important }
+.hero-top a { color: inherit; text-decoration: none }
+.hero-top a:hover { color: var(--fg) }
+.hero-top a:focus-visible { outline: 2px solid var(--fg); outline-offset: 4px }
+</style>
+</head>
+<body>
+<header class="hero dark" style="background:var(--bg)">
+  <div class="in">
+    <div class="hero-top">
+      <a class="eyebrow" style="margin:0" href="index.html#works">← Екатерина Богданова · все работы</a>
+      <span class="eyebrow" style="margin:0">Кейс · 2025</span>
+    </div>
+    <div class="hero-main">
+      <div style="grid-column:1 / span 8">
+        <h1 aria-label="Frame Up Deep"><span>FRAME UP</span><span class="deep">DEEP</span></h1>
+        <p class="hero-intro">Серия Instagram-каруселей для четырёх танцевальных интенсивов</p>
+      </div>
+      <div class="deck-wrap">
+        <button class="deck" type="button" aria-label="Показать следующую обложку">
+          <span class="card" data-pos="0" data-acc="#4a40e0" style="background-image:url(assets/frameup/heels-pro.jpg)"></span>
+          <span class="card" data-pos="1" data-acc="#c21a1a" style="background-image:url(assets/frameup/frame-beg.jpg)"></span>
+          <span class="card" data-pos="2" data-acc="#c6d408" style="background-image:url(assets/frameup/heels-beg.jpg)"></span>
+          <span class="card" data-pos="3" data-acc="#d4af37" style="background-image:url(assets/frameup/frame-pro.jpg)"></span>
+        </button>
+        <p class="deck-hint">Смахните афишу или нажмите на неё</p>
+      </div>
+    </div>
+    <dl class="hero-meta">
+      <div><dt>Клиент</dt><dd>Frame Up Official</dd></div>
+      <div><dt>Аккаунты</dt><dd>@frameup_official, @high.heels_convention</dd></div>
+      <div><dt>Формат</dt><dd>4 карусели по 3 слайда, 1012 × 1350</dd></div>
+      <div><dt>Публикации</dt><dd>Август — сентябрь 2025</dd></div>
+    </dl>
+  </div>
+</header>
+
+<section class="band light">
+  <div class="in">
+    <span class="eyebrow">О проекте</span>
+    <p class="lead">Frame Up Official — танцевальный проект Анастасии Юрасовой. Его стиль — тонкая пластика, сложный floorwork, акробатика и чёткий ритм</p>
+    <div class="task">
+      <p><b>Много информации на маленьком экране</b>На интенсиве пять-шесть педагогов, у каждого своё время и список тем. Всё это читают с телефона, и карусель должна остаться афишей, а не таблицей</p>
+      <p><b>Одна серия на четыре события</b>Направления и уровни разные, но с первого слайда должно быть понятно, что это Frame Up</p>
+    </div>
+  </div>
+</section>
+
+<section class="band dark">
+  <div class="in">
+    <span class="eyebrow">Как устроена серия</span>
+    <h2 class="h">Один каркас, который выдерживает и пять педагогов, и шесть</h2>
+    <div class="steps">
+      <figure class="step"><div class="im im1" role="img" aria-label="Вертикальное название на обложке"></div><figcaption><span class="no">Слайд 1</span><b>Обложка с осью</b><p>Название стоит вертикально и держит композицию. Рядом уровень и даты, в ленте этого достаточно</p></figcaption></figure>
+      <figure class="step"><div class="im im2" role="img" aria-label="Карточки педагогов на втором слайде"></div><figcaption><span class="no">Слайды 2–3</span><b>По одному дню</b><p>Фото педагога, время и темы. Каждый день на своём слайде, поэтому расписание читается без поиска</p></figcaption></figure>
+      <figure class="step"><div class="im im3" role="img" aria-label="Золотой акцент на обложке"></div><figcaption><span class="no">Цвет</span><b>Монохром и один акцент</b><p>Фото всегда чёрно-белые, а цвет есть только у слова DEEP, дат и уровня. По нему интенсивы и различаются</p></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="band light int" id="heels-pro" data-days="11 октября|12 октября" style="--acc:#160c9c">
+  <div class="in">
+    <span class="eyebrow"><i>01</i> / 04</span>
+    <h2>HIGH HEELS <i>DEEP</i></h2>
+    <div class="int-meta"><b>Pro</b><span>11–12 октября</span><span>ZAL Gallery</span></div>
+    <p class="note">Светлый выпуск открывает сезон: фон в движении и пять педагогов на два дня</p>
+    <div class="strip" role="img" aria-label="Карусель High Heels Deep Pro, три слайда"><div class="s" style="background-image:url(assets/frameup/heels-pro.jpg)"></div><div class="s" style="background-image:url(assets/frameup/heels-pro.jpg)"></div><div class="s" style="background-image:url(assets/frameup/heels-pro.jpg)"></div></div>
+  </div>
+</section>
+
+<section class="band dark int" id="frame-beg" data-days="18 октября|19 октября" style="--acc:#c21a1a">
+  <div class="in">
+    <span class="eyebrow"><i>02</i> / 04</span>
+    <h2>FRAME UP <i>DEEP</i></h2>
+    <div class="int-meta"><b>Beginners</b><span>18–19 октября</span><span>ZAL Gallery</span></div>
+    <p class="note">Полное погружение в стиль для начинающих: шесть педагогов, у каждого свой блок тем под фото</p>
+    <div class="strip" role="img" aria-label="Карусель Frame Up Deep Beginners, три слайда"><div class="s" style="background-image:url(assets/frameup/frame-beg.jpg)"></div><div class="s" style="background-image:url(assets/frameup/frame-beg.jpg)"></div><div class="s" style="background-image:url(assets/frameup/frame-beg.jpg)"></div></div>
+  </div>
+</section>
+
+<section class="band light int" id="heels-beg" data-days="8 ноября|9 ноября" style="--acc:#7d8600">
+  <div class="in">
+    <span class="eyebrow"><i>03</i> / 04</span>
+    <h2>HIGH HEELS <i>DEEP</i></h2>
+    <div class="int-meta"><b>Beginners</b><span>8–9 ноября</span><span>Grand Zal</span></div>
+    <p class="note">Серия уходит в темноту: повёрнутые плашки и лаймовые уголки добавляют движения, а сетка остаётся той же</p>
+    <div class="strip" role="img" aria-label="Карусель High Heels Deep Beginners, три слайда"><div class="s" style="background-image:url(assets/frameup/heels-beg.jpg)"></div><div class="s" style="background-image:url(assets/frameup/heels-beg.jpg)"></div><div class="s" style="background-image:url(assets/frameup/heels-beg.jpg)"></div></div>
+  </div>
+</section>
+
+<section class="band dark int" id="frame-pro" data-days="15 ноября|16 ноября" style="--acc:#d4af37">
+  <div class="in">
+    <span class="eyebrow"><i>04</i> / 04</span>
+    <h2>FRAME UP <i>DEEP</i></h2>
+    <div class="int-meta"><b>Pro</b><span>15–16 ноября</span><span>ZAL Gallery</span></div>
+    <p class="note">Финал сезона: строгая сетка, по три педагога в день и самый плотный набор тем</p>
+    <div class="strip" role="img" aria-label="Карусель Frame Up Deep Pro, три слайда"><div class="s" style="background-image:url(assets/frameup/frame-pro.jpg)"></div><div class="s" style="background-image:url(assets/frameup/frame-pro.jpg)"></div><div class="s" style="background-image:url(assets/frameup/frame-pro.jpg)"></div></div>
+  </div>
+</section>
+
+<section class="band light">
+  <div class="in">
+    <span class="eyebrow">Шрифты и база</span>
+    <h2 class="h">Широкий гротеск для названий, плотный для расписания</h2>
+    <div class="type-row">
+      <div class="spec"><div class="aa z" aria-hidden="true">Aa</div><b>Lexend Zetta</b><p>Названия интенсивов, уровни и даты. Широкие буквы дают воздух и ритм</p></div>
+      <div class="spec"><div class="aa g" aria-hidden="true">Аа</div><b>Gotham Pro Black / Narrow</b><p>Имена, время и темы занятий. Плотный набор держит много информации</p><small>Образец набран Montserrat, он близок к Gotham Pro</small></div>
+    </div>
+    <div class="sw">
+      <div class="a"><code>#ECECEC</code><span>Светлый фон</span></div>
+      <div class="b"><code>#B8B8B8</code><span>Фото и линии</span></div>
+      <div class="c"><code>#252525</code><span>Тёмный фон</span></div>
+      <div class="d"><code>#191919</code><span>Текст</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="band dark feed">
+  <div class="in">
+    <span class="eyebrow">В ленте</span>
+    <h2 class="h">Серия вышла в двух аккаунтах и всё равно читается как одна</h2>
+    <div class="phones">
+      <div class="pcol" data-acct="frameup_official" data-av="fu">
+        <div class="phone" role="group" aria-label="Пост frameup_official в Instagram"></div>
+        <p class="acct">@frameup_official</p>
+        <div class="switch" role="group" aria-label="Какой пост frameup_official показать">
+          <button type="button" data-post="frameBeg" aria-pressed="true" style="--c:#c21a1a">Beginners</button>
+          <button type="button" data-post="framePro" aria-pressed="false" style="--c:#d4af37">Pro</button>
+        </div>
+      </div>
+      <div class="pcol" data-acct="high.heels_convention" data-av="hh">
+        <div class="phone" role="group" aria-label="Пост high.heels_convention в Instagram"></div>
+        <p class="acct">@high.heels_convention</p>
+        <div class="switch" role="group" aria-label="Какой пост high.heels_convention показать">
+          <button type="button" data-post="heelsPro" aria-pressed="true" style="--c:#4a40e0">Pro</button>
+          <button type="button" data-post="heelsBeg" aria-pressed="false" style="--c:#c6d408">Beginners</button>
+        </div>
+      </div>
+    </div>
+    <div class="stats" role="table" aria-label="Реакция на посты серии">
+      <div class="row head" role="row"><span role="columnheader">Пост</span><span role="columnheader">Аккаунт</span><span role="columnheader">Опубликован</span><span class="num" role="columnheader">Лайки</span><span class="num" role="columnheader">Отправки</span></div>
+      <div class="row" role="row"><b role="cell"><i style="--c:#4a40e0"></i>High Heels Pro</b><span role="cell">high.heels_convention</span><span role="cell">20 августа</span><span class="num" role="cell">517</span><span class="num" role="cell">197</span></div>
+      <div class="row" role="row"><b role="cell"><i style="--c:#c21a1a"></i>Frame Up Beginners</b><span role="cell">frameup_official</span><span role="cell">20 августа</span><span class="num" role="cell">279</span><span class="num" role="cell">64</span></div>
+      <div class="row" role="row"><b role="cell"><i style="--c:#d4af37"></i>Frame Up Pro</b><span role="cell">frameup_official</span><span role="cell">17 сентября</span><span class="num" role="cell">269</span><span class="num" role="cell">48</span></div>
+      <div class="row" role="row"><b role="cell"><i style="--c:#c6d408"></i>High Heels Beginners</b><span role="cell">high.heels_convention</span><span role="cell">26 сентября</span><span class="num" role="cell">189</span><span class="num" role="cell">48</span></div>
+    </div>
+    <p class="stats-note">Цифры из Instagram на 27 октября 2026 года</p>
+  </div>
+</section>
+
+<footer class="dark end" style="background:var(--bg)">
+  <div class="in">
+    <h2 class="h">Спасибо за просмотр</h2>
+    <dl>
+      <div><dt>Почта</dt><dd>ekateribogdana@yandex.ru</dd></div>
+      <div><dt>Telegram</dt><dd><a href="https://t.me/ekateribog_dana">@ekateribog_dana</a></dd></div>
+      <div><dt>Другие работы</dt><dd><a href="https://ekatenabogdanova.github.io/">ekatenabogdanova.github.io</a></dd></div>
+    </dl>
+  </div>
+</footer>
+
+<script>
+(() => {
+  // glue short Russian words to the next one so lines never end on «в», «и», «на»
+  const re = /(^|[\s(«])(в|и|с|к|а|о|у|я|на|по|не|за|до|от|из|для|но|же|что|как|без|при|все|это)\s+/gi;
+  const walk = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, { acceptNode: n => n.parentElement.closest('script,style') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT });
+  const nodes = []; while (walk.nextNode()) nodes.push(walk.currentNode);
+  for (const n of nodes) n.nodeValue = n.nodeValue.replace(re, '$1$2 ').replace(/\s—\s/g, ' — ');
+
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const mobile = matchMedia('(max-width: 600px)');
+
+  // hero deck: covers shuffle one by one, DEEP takes the colour of the cover on top
+  const deck = document.querySelector('.deck');
+  const cards = [...deck.querySelectorAll('.card')];
+  const h1 = document.querySelector('.hero h1');
+  let order = cards.slice(), paused = false, touched = false;
+  const paint = () => h1.style.setProperty('--deep', order[0].dataset.acc);
+  const clearVars = c => ['--dx', '--dy', '--dr', '--tx', '--ty'].forEach(v => c.style.removeProperty(v));
+  function next(dir = -1) {
+    const front = order.shift(); order.push(front);
+    front.classList.remove('grab', 'live');
+    front.dataset.pos = dir > 0 ? 'out-r' : 'out';
+    order.forEach((c, i) => { if (c !== front) c.dataset.pos = i; });
+    setTimeout(() => { clearVars(front); front.dataset.pos = 3; }, 520);
+    paint();
+  }
+  // tilt + glare follow the pointer; drag to throw the top card
+  let drag = null, moved = false;
+  deck.addEventListener('pointermove', e => {
+    const top = order[0], r = deck.getBoundingClientRect();
+    const px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+    top.style.setProperty('--gx', (px * 100).toFixed(1) + '%');
+    top.style.setProperty('--gy', (py * 100).toFixed(1) + '%');
+    if (drag) {
+      const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+      if (Math.abs(dx) > 6) moved = true;
+      top.style.setProperty('--dx', dx + 'px'); top.style.setProperty('--dy', dy * .4 + 'px'); top.style.setProperty('--dr', dx * .05 + 'deg');
+      return;
+    }
+    if (reduce || e.pointerType !== 'mouse') return;
+    top.classList.add('live');
+    top.style.setProperty('--ty', ((px - .5) * 16).toFixed(2) + 'deg');
+    top.style.setProperty('--tx', ((.5 - py) * 16).toFixed(2) + 'deg');
+  });
+  deck.addEventListener('pointerdown', e => { touched = true; drag = { x: e.clientX, y: e.clientY }; moved = false; order[0].classList.add('grab'); deck.setPointerCapture(e.pointerId); });
+  function release(e) {
+    if (!drag) return;
+    const dx = e.clientX - drag.x; drag = null;
+    const top = order[0]; top.classList.remove('grab');
+    if (Math.abs(dx) > 90) next(dx > 0 ? 1 : -1);
+    else if (moved) clearVars(top);
+  }
+  deck.addEventListener('pointerup', release);
+  deck.addEventListener('pointercancel', release);
+  deck.addEventListener('click', e => { if (moved) { moved = false; return; } touched = true; next(); });
+  deck.addEventListener('keydown', e => { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); touched = true; next(e.key === 'ArrowRight' ? 1 : -1); } });
+  deck.addEventListener('pointerenter', () => paused = true);
+  deck.addEventListener('pointerleave', () => { paused = false; const top = order[0]; top.classList.remove('live'); if (!drag) clearVars(top); });
+  deck.addEventListener('focus', () => paused = true);
+  deck.addEventListener('blur', () => paused = false);
+  if (!reduce) setInterval(() => { if (!paused && !touched && !document.hidden) next(); }, 3400);
+  paint();
+
+  // carousel viewer: an Instagram window slides over the panorama
+  for (const sec of document.querySelectorAll('.int')) {
+    const strip = sec.querySelector('.strip');
+    const slides = [...strip.querySelectorAll('.s')];
+    const days = (sec.dataset.days || '').split('|');
+    const names = ['обложка', days[0] || 'день 1', days[1] || 'день 2'];
+    const viewer = document.createElement('div'); viewer.className = 'viewer';
+    strip.before(viewer); viewer.append(strip);
+    const win = document.createElement('div'); win.className = 'window'; win.setAttribute('aria-hidden', 'true');
+    win.innerHTML = '<div class="ig-head"><span class="av"></span>frameup_official<span class="ct">1/3</span></div><div class="ig-dots"><i></i><i></i><i></i></div>';
+    viewer.append(win);
+    const ctrl = document.createElement('div'); ctrl.className = 'vctrl';
+    ctrl.innerHTML = '<span class="cap-s" aria-live="polite"></span><span class="vbtns"><button type="button" aria-label="Предыдущий слайд">←</button><button type="button" aria-label="Следующий слайд">→</button></span>';
+    viewer.after(ctrl);
+    const [prev, nxt] = ctrl.querySelectorAll('button');
+    const capS = ctrl.querySelector('.cap-s');
+    const dots = [...win.querySelectorAll('.ig-dots i')];
+    strip.tabIndex = 0; strip.setAttribute('aria-roledescription', 'карусель');
+    let i = 0, x0 = null, dragged = false;
+    function set(n, scroll) {
+      i = Math.max(0, Math.min(2, n));
+      viewer.style.setProperty('--i', i);
+      slides.forEach((s, k) => s.classList.toggle('on', k === i));
+      dots.forEach((d, k) => d.classList.toggle('on', k === i));
+      win.querySelector('.ct').textContent = `${i + 1}/3`;
+      capS.innerHTML = `<b>Слайд ${i + 1}</b> · ${names[i]}`;
+      prev.disabled = i === 0; nxt.disabled = i === 2;
+      if (scroll && mobile.matches) strip.scrollTo({ left: slides[i].offsetLeft - slides[0].offsetLeft, behavior: reduce ? 'auto' : 'smooth' });
+    }
+    prev.addEventListener('click', () => set(i - 1, true));
+    nxt.addEventListener('click', () => set(i + 1, true));
+    slides.forEach((s, k) => s.addEventListener('click', () => { if (!mobile.matches && !dragged) set(k); }));
+    strip.addEventListener('keydown', e => { if (e.key === 'ArrowLeft') { set(i - 1, true); e.preventDefault(); } if (e.key === 'ArrowRight') { set(i + 1, true); e.preventDefault(); } });
+    strip.addEventListener('pointerdown', e => { if (mobile.matches) return; x0 = e.clientX; dragged = false; });
+    addEventListener('pointerup', e => { if (x0 === null) return; const dx = e.clientX - x0; x0 = null; if (Math.abs(dx) > 40) { dragged = true; set(i + (dx < 0 ? 1 : -1)); setTimeout(() => dragged = false, 0); } });
+    strip.addEventListener('scroll', () => { if (!mobile.matches) return; const step = slides[1].offsetLeft - slides[0].offsetLeft; const n = Math.round(strip.scrollLeft / step); if (n !== i) set(n); }, { passive: true });
+    set(0);
+  }
+
+  // phone mockups: real posts of the two accounts, live carousel inside
+  const POSTS = {
+    frameBeg: { img: 'assets/frameup/frame-beg.jpg', music: 'The Digital Cowboy · Born to Raise Hell', likes: 279, comments: 4, reposts: 0, shares: 64, cap: 'FRAME UP DEEP BEGINNERS 18-19 октября…', date: '20 августа 2025 г.' },
+    framePro: { img: 'assets/frameup/frame-pro.jpg', music: 'mona.pozitif · Оригинальное аудио', likes: 269, comments: 0, reposts: 3, shares: 48, cap: 'FRAME UP DEEP PRO 15-16 ноября…', date: '17 сентября 2025 г.' },
+    heelsPro: { img: 'assets/frameup/heels-pro.jpg', music: 'OtisMadeIt · Pink Panther', likes: 517, comments: 4, reposts: 1, shares: 197, cap: 'HIGH HEELS PRO 11-12 октября…', date: '20 августа 2025 г.' },
+    heelsBeg: { img: 'assets/frameup/heels-beg.jpg', music: 'Galatée · Oui', likes: 189, comments: 3, reposts: 1, shares: 48, cap: '8-9 НОЯБРЯ | MOSCOW, GRAND ZAL. 5 уникальных хореографов = 5 ключей к…', date: '26 сентября 2025 г.' },
+  };
+  const SBAR = '<svg viewBox="0 0 44 12"><rect x="0" y="7" width="3" height="5" rx="1" fill="#f5f5f5"/><rect x="5" y="5" width="3" height="7" rx="1" fill="#f5f5f5"/><rect x="10" y="3" width="3" height="9" rx="1" fill="#f5f5f5"/><rect x="15" y="1" width="3" height="11" rx="1" fill="#f5f5f5"/><rect x="24" y="1" width="18" height="10" rx="3" fill="none" stroke="#f5f5f5"/><rect x="26" y="3" width="12" height="6" rx="1.5" fill="#f5f5f5"/></svg>';
+  const ICON = {
+    heart: '<svg class="heart" viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-9.6-9.2A5.2 5.2 0 0 1 12 6.1a5.2 5.2 0 0 1 9.6 5.2c-2.1 4.6-9.6 9.2-9.6 9.2z"/></svg>',
+    comment: '<svg viewBox="0 0 24 24"><path d="M20.5 11.5a8.5 8.5 0 0 1-12.4 7.6L3.5 20.5l1.3-4.4a8.5 8.5 0 1 1 15.7-4.6z"/></svg>',
+    repost: '<svg viewBox="0 0 24 24"><path d="M4 11V9a3 3 0 0 1 3-3h12m-3-3 3 3-3 3M20 13v2a3 3 0 0 1-3 3H5m3 3-3-3 3-3"/></svg>',
+    send: '<svg viewBox="0 0 24 24"><path d="M21.5 3.5 10 13M21.5 3.5 15 20.5l-5-7.5-7.5-4.5z"/></svg>',
+    save: '<svg class="save" viewBox="0 0 24 24"><path d="M6 3.5h12v17l-6-4.5-6 4.5z"/></svg>',
+  };
+  const TABS = '<svg viewBox="0 0 24 24"><path d="M3.5 10.5 12 3.5l8.5 7v10h-6v-6h-5v6h-6z"/></svg><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20.5 20.5-4.5-4.5"/></svg><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><path d="M12 8v8M8 12h8"/></svg><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><path d="M3.5 8.5h17M10 14v-3l3.5 1.5z"/></svg><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/></svg>';
+  for (const col of document.querySelectorAll('.pcol')) {
+    const acct = col.dataset.acct;
+    const phone = col.querySelector('.phone');
+    phone.innerHTML = `<div class="screen">
+      <span class="island" aria-hidden="true"></span>
+      <div class="sbar" aria-hidden="true"><span>22:08</span>${SBAR}</div>
+      <div class="topbar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#f5f5f5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>Публикации</div>
+      <div class="ph"><span class="av ${col.dataset.av}" aria-hidden="true"></span><span><span class="nm">${acct}</span><span class="music"></span></span><span class="more" aria-hidden="true">···</span></div>
+      <div class="media"><div class="track" tabindex="0" aria-label="Слайды карусели, листайте"><div class="sl"></div><div class="sl"></div><div class="sl"></div></div><span class="badge" aria-hidden="true">1/3</span></div>
+      <div class="pdots" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
+      <div class="acts" aria-hidden="true">${ICON.heart}<span class="n likes"></span>${ICON.comment}<span class="n comments"></span>${ICON.repost}<span class="n reposts"></span>${ICON.send}<span class="n shares"></span>${ICON.save}</div>
+      <p class="capt"><b>${acct}</b> <span class="cap-t"></span><span class="when"></span></p>
+      <div class="tabbar" aria-hidden="true">${TABS}</div>
+    </div>`;
+    const track = phone.querySelector('.track');
+    const sls = [...track.querySelectorAll('.sl')];
+    const pd = [...phone.querySelectorAll('.pdots i')];
+    const badge = phone.querySelector('.badge');
+    const q = s => phone.querySelector(s);
+    const btns = [...col.querySelectorAll('.switch button')];
+    const syncDots = () => { const n = Math.round(track.scrollLeft / track.clientWidth) || 0; pd.forEach((d, k) => d.classList.toggle('on', k === n)); badge.textContent = `${n + 1}/3`; };
+    track.addEventListener('scroll', syncDots, { passive: true });
+    function show(b) {
+      const p = POSTS[b.dataset.post];
+      btns.forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+      sls.forEach(s => s.style.backgroundImage = `url(${p.img})`);
+      q('.music').textContent = '♫ ' + p.music;
+      q('.likes').textContent = p.likes;
+      q('.comments').textContent = p.comments || '';
+      q('.reposts').textContent = p.reposts || '';
+      q('.shares').textContent = p.shares;
+      q('.cap-t').textContent = p.cap;
+      q('.when').textContent = p.date;
+      track.scrollTo({ left: 0, behavior: 'auto' }); syncDots();
+    }
+    btns.forEach(b => b.addEventListener('click', () => show(b)));
+    show(btns[0]);
+    let tx = null, sl0 = 0;
+    track.addEventListener('pointerdown', e => { if (e.pointerType !== 'mouse') return; tx = e.clientX; sl0 = track.scrollLeft; track.style.scrollSnapType = 'none'; });
+    addEventListener('pointermove', e => { if (tx !== null) track.scrollLeft = sl0 - (e.clientX - tx); });
+    addEventListener('pointerup', () => { if (tx === null) return; tx = null; const n = Math.round(track.scrollLeft / track.clientWidth); track.style.scrollSnapType = ''; track.scrollTo({ left: n * track.clientWidth, behavior: reduce ? 'auto' : 'smooth' }); });
+    track.addEventListener('keydown', e => { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); const n = Math.round(track.scrollLeft / track.clientWidth) + (e.key === 'ArrowRight' ? 1 : -1); track.scrollTo({ left: Math.max(0, Math.min(2, n)) * track.clientWidth, behavior: 'smooth' }); } });
+  }
+})();
+</script>
+</body>
+</html>
