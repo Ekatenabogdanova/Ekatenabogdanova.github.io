@@ -187,6 +187,32 @@ body{font-variant-numeric:lining-nums}
 .home-mark:hover .ar,.home-mark:focus-visible .ar{width:1.2em;margin-right:0;opacity:1}
 .home-mark:hover i{transform:scale(1.25)}
 </style>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Onest:wght@400&family=PT+Mono&display=swap" rel="stylesheet">
+<style>
+/* case-next: the same closing band on every project page, styled like the contacts on the main page */
+.case-next{background:#2A1610;color:#F3E6D3;padding:64px clamp(16px,3.4vw,48px) 32px;font:400 16px/1.5 "Onest",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.case-next a{color:inherit;text-decoration:none}
+.case-next .cn-cap{font:400 12px/1.6 "PT Mono",ui-monospace,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase}
+.case-next .cn-top{display:flex;justify-content:space-between;gap:16px;padding-bottom:16px;border-bottom:1px solid rgba(243,230,211,.2);color:#C89B72}
+.case-next .cn-go{display:grid;grid-template-columns:1fr minmax(0,360px);gap:32px;align-items:end;padding:40px 0 56px}
+.case-next .cn-t{font:400 clamp(48px,8vw,112px)/1 "Playfair Display",Georgia,serif;letter-spacing:-.02em;display:block}
+.case-next .cn-t .ar{display:inline-block;font-size:.5em;vertical-align:.4em;margin-left:.2em;color:#C89B72;transition:transform .3s}
+.case-next .cn-d{display:block;margin-top:16px;max-width:440px;color:#C2AE9A}
+.case-next .cn-img{display:block;aspect-ratio:4/3;overflow:hidden;border-radius:8px;background:#1C0E0A}
+.case-next .cn-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}
+.case-next .cn-go:hover .ar{transform:translateX(8px)}
+.case-next .cn-go:hover img{transform:scale(1.04)}
+.case-next .cn-row{display:flex;flex-wrap:wrap;gap:12px}
+.case-next .cn-pill{display:inline-flex;align-items:center;min-height:40px;padding:8px 20px;border:1px solid #C89B72;border-radius:999px;font:400 12px/1.6 "PT Mono",ui-monospace,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase}
+.case-next .cn-pill:hover{background:#C89B72;color:#2A1610}
+.case-next .cn-pill i{width:8px;height:8px;border-radius:50%;background:#7E2625;margin-right:12px;flex:none}
+.case-next .cn-pill:hover i{background:#2A1610}
+.case-next .cn-foot{display:flex;justify-content:space-between;gap:16px;margin-top:56px;color:#C2AE9A}
+.case-next :focus-visible{outline:2px solid #C89B72;outline-offset:3px}
+@media (max-width:700px){.case-next .cn-top span+span{display:none}.case-next .cn-go{grid-template-columns:1fr;gap:24px;padding:32px 0 40px}.case-next .cn-img{order:-1}}
+@media (prefers-reduced-motion:reduce){.case-next *{transition:none!important}}
+</style>
 </head>
 <body>
 
@@ -389,6 +415,17 @@ body{font-variant-numeric:lining-nums}
 </section>
 </main>
 
-<footer><div class="wrap mono"><a href="./">← Екатерина Богданова</a><span>Looma · 2026</span></div></footer>
+<!-- case-next -->
+<section class="case-next" aria-labelledby="cn-h">
+  <div class="cn-top cn-cap"><span>Следующий проект</span><span>Екатерина Богданова · портфолио</span></div>
+  <a class="cn-go" href="vidmer/"><span><span class="cn-t" id="cn-h">Vidmer.dance<span class="ar" aria-hidden="true">→</span></span><span class="cn-d">Концепт редизайна сайта лаборатории танца</span></span><span class="cn-img"><img src="assets/vidmer-concept.jpg" alt="" loading="lazy"></span></a>
+  <div class="cn-row">
+    <a class="cn-pill" href="./#looma"><i aria-hidden="true"></i>Все проекты</a>
+    <a class="cn-pill" href="resume.html">Резюме</a>
+    <a class="cn-pill" href="https://t.me/ekateribog_dana" target="_blank" rel="noopener">Написать в телеграм ↗</a>
+  </div>
+  <div class="cn-foot cn-cap"><span>Екатерина Богданова, 2026</span><a href="#">Наверх ↑</a></div>
+</section>
+<!-- /case-next -->
 </body>
 </html>
