@@ -258,28 +258,33 @@ body { margin: 0 }
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Onest:wght@400&family=PT+Mono&display=swap" rel="stylesheet">
 <style>
-/* case-next: the same closing band on every project page, styled like the contacts on the main page */
-.case-next{background:#2A1610;color:#F3E6D3;padding:64px clamp(16px,3.4vw,48px) 32px;font:400 16px/1.5 "Onest",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+/* case-next: closing band on every project page; takes the colours of the page it sits on */
+.case-next{--cn-bg:#2A1610;--cn-fg:#F3E6D3;--cn-sub:#C2AE9A;--cn-acc:#C89B72;--cn-line:rgba(243,230,211,.2);--cn-title:400 clamp(48px,8vw,120px)/1 "Playfair Display",Georgia,serif;
+  background:var(--cn-bg);color:var(--cn-fg);padding:72px clamp(16px,3.4vw,48px) 32px;font:400 16px/1.5 "Onest",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 .case-next a{color:inherit;text-decoration:none}
 .case-next .cn-cap{font:400 12px/1.6 "PT Mono",ui-monospace,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase}
-.case-next .cn-top{display:flex;justify-content:space-between;gap:16px;padding-bottom:16px;border-bottom:1px solid rgba(243,230,211,.2);color:#C89B72}
-.case-next .cn-go{display:grid;grid-template-columns:1fr minmax(0,360px);gap:32px;align-items:end;padding:40px 0 56px}
-.case-next .cn-t{font:400 clamp(48px,8vw,112px)/1 "Playfair Display",Georgia,serif;letter-spacing:-.02em;display:block}
-.case-next .cn-t .ar{display:inline-block;font-size:.5em;vertical-align:.4em;margin-left:.2em;color:#C89B72;transition:transform .3s}
-.case-next .cn-d{display:block;margin-top:16px;max-width:440px;color:#C2AE9A}
-.case-next .cn-img{display:block;aspect-ratio:4/3;overflow:hidden;border-radius:8px;background:#1C0E0A}
-.case-next .cn-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}
-.case-next .cn-go:hover .ar{transform:translateX(8px)}
-.case-next .cn-go:hover img{transform:scale(1.04)}
-.case-next .cn-row{display:flex;flex-wrap:wrap;gap:12px}
-.case-next .cn-pill{display:inline-flex;align-items:center;min-height:40px;padding:8px 20px;border:1px solid #C89B72;border-radius:999px;font:400 12px/1.6 "PT Mono",ui-monospace,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase}
-.case-next .cn-pill:hover{background:#C89B72;color:#2A1610}
-.case-next .cn-pill i{width:8px;height:8px;border-radius:50%;background:#7E2625;margin-right:12px;flex:none}
-.case-next .cn-pill:hover i{background:#2A1610}
-.case-next .cn-foot{display:flex;justify-content:space-between;gap:16px;margin-top:56px;color:#C2AE9A}
-.case-next :focus-visible{outline:2px solid #C89B72;outline-offset:3px}
-@media (max-width:700px){.case-next .cn-top span+span{display:none}.case-next .cn-go{grid-template-columns:1fr;gap:24px;padding:32px 0 40px}.case-next .cn-img{order:-1}}
+.case-next .cn-top{display:flex;justify-content:space-between;gap:16px;padding-bottom:16px;border-bottom:1px solid var(--cn-line);color:var(--cn-sub)}
+.case-next .cn-go{position:relative;display:grid;margin-top:32px;min-height:clamp(320px,40vw,560px);border-radius:24px;overflow:hidden;isolation:isolate;background:#000}
+.case-next .cn-go>*{grid-area:1/1}
+.case-next .cn-img{display:block;position:relative;z-index:0}
+.case-next .cn-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.62);transition:transform 1.2s cubic-bezier(.2,.8,.2,1),filter .6s}
+.case-next .cn-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 30%,rgba(0,0,0,.78))}
+.case-next .cn-go>span:first-child{position:relative;z-index:1;align-self:end;padding:clamp(24px,4vw,56px);color:#fff}
+.case-next .cn-t{font:var(--cn-title);letter-spacing:-.02em;display:block}
+.case-next .cn-t .ar{display:inline-block;font-size:.5em;vertical-align:.35em;margin-left:.25em;color:var(--cn-acc);transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.case-next .cn-d{display:block;margin-top:12px;max-width:520px;color:rgba(255,255,255,.78);font-size:18px}
+.case-next .cn-go:hover .ar,.case-next .cn-go:focus-visible .ar{transform:translateX(12px)}
+.case-next .cn-go:hover img,.case-next .cn-go:focus-visible img{transform:scale(1.05);filter:brightness(.8)}
+.case-next .cn-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.case-next .cn-pill{display:inline-flex;align-items:center;min-height:44px;padding:8px 20px;border:1px solid var(--cn-acc);border-radius:999px;font:400 12px/1.6 "PT Mono",ui-monospace,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase;transition:background .2s,color .2s}
+.case-next .cn-pill:hover{background:var(--cn-acc);color:var(--cn-bg)}
+.case-next .cn-pill i{width:8px;height:8px;border-radius:50%;background:var(--cn-acc);margin-right:12px;flex:none}
+.case-next .cn-pill:hover i{background:var(--cn-bg)}
+.case-next .cn-foot{display:flex;justify-content:space-between;gap:16px;margin-top:56px;color:var(--cn-sub)}
+.case-next :focus-visible{outline:2px solid var(--cn-acc);outline-offset:4px}
+@media (max-width:700px){.case-next .cn-top span+span{display:none}.case-next .cn-go{min-height:300px}.case-next .cn-d{font-size:16px}}
 @media (prefers-reduced-motion:reduce){.case-next *{transition:none!important}}
+.case-next{--cn-bg:#0d0d0e;--cn-fg:#ebebe8;--cn-sub:#9a9a96;--cn-acc:#ebebe8;--cn-line:rgba(235,235,232,.14);--cn-title:300 clamp(44px,7vw,112px)/1 "Lexend Zetta","Helvetica Neue",Arial,sans-serif}
 </style>
 </head>
 <body>
