@@ -298,13 +298,79 @@ body{font-family:var(--sans);font-size:16px;line-height:1.65}
 .ar{font-family:var(--sans)!important;font-size:16px!important;line-height:1!important}
 @media (max-width:720px){.l-top{grid-template-columns:1fr!important;gap:20px!important;margin-top:28px!important}.l-meta{grid-template-columns:1fr;gap:4px!important;padding-bottom:0!important}.l-grid{margin-top:32px!important}.stats b{font-size:48px!important}}
 body{font-variant-numeric:lining-nums}
+
+/* ---------- печать имени ---------- */
+.name.typing .ch{opacity:0}
+.name .ch.on{opacity:1}
+.name .caret{position:relative;display:inline-block!important;width:0}
+.name .caret::after{content:"";position:absolute;left:.04em;bottom:-.06em;width:.05em;height:.9em;background:currentColor;animation:blink .9s steps(1) infinite}
+.name .caret.gone{opacity:0;transition:opacity .6s}
+@keyframes blink{50%{opacity:0}}
+
+/* ---------- заметки у фото: заголовок + пояснение ---------- */
+.note .n1{font-family:var(--serif);font-size:clamp(28px,2.6vw,36px);line-height:1.1;letter-spacing:-.03em;color:var(--bow);max-width:300px}
+.note .n1 em{font-style:italic}
+.note .n2{font-family:var(--sans);font-size:15px!important;line-height:1.5;color:var(--olive);margin-top:8px!important;max-width:240px}
+.note.l .n2{margin-left:auto}
+@media (max-width:720px){.note .n1{font-size:22px;line-height:1.15}.note .n2{font-size:14px!important;margin-top:4px!important}}
+
+/* ---------- без стрелок: заметки по центру фото ---------- */
+.note{padding-top:0!important;align-self:center}
+@media (max-width:720px){.note{padding-top:24px!important;align-self:start}}
+
+/* ---------- s7: один экран, одна иерархия ---------- */
+.hero{padding-bottom:56px!important}
+.name{margin-top:8px!important}
+.sub{text-align:center;margin-top:28px;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px 24px}
+.open{display:inline-flex;align-items:center;gap:8px;padding:4px 12px;border:1px solid rgba(42,22,16,.25);border-radius:999px}
+.open i{width:8px;height:8px;border-radius:50%;background:#3E8E5A;box-shadow:0 0 0 3px rgba(62,142,90,.18)}
+.stage{grid-template-columns:1fr max(240px,min(380px,27vw,calc((100svh - 400px)*.8))) 1fr!important;grid-template-areas:"l ph r"!important;grid-template-rows:auto!important;align-items:center!important;margin-top:32px!important;column-gap:clamp(24px,4vw,64px)!important}
+.side{max-width:340px}
+.side.l{grid-area:l;justify-self:end;text-align:left}
+.side.r{grid-area:r;justify-self:start}
+.side .intro{font-size:15px!important;max-width:none!important;margin:0 0 24px!important}
+.side .n1{font-family:var(--serif);font-size:clamp(48px,4.4vw,64px);line-height:1;letter-spacing:-.04em;color:var(--bow)}
+.side .n1 em{font-style:italic}
+.side .n2{font-size:15px;line-height:1.5;color:var(--olive);margin-top:8px;max-width:220px}
+.more{display:inline-block;margin-top:20px;font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px}
+.more:hover{color:var(--bow)}
+@media (max-width:720px){
+  .stage{grid-template-columns:1fr!important;grid-template-areas:"ph" "l" "r"!important;row-gap:32px}
+  .ph{width:72%!important}
+  .side{max-width:none;justify-self:stretch!important}
+  .side .n1{font-size:48px}
+  .sub{gap:8px 16px}
+}
+
+/* ---------- s7: блок Looma ---------- */
+.looma .kick span:last-child{text-align:right}
+.l-top{grid-template-columns:5fr 7fr!important;align-items:end!important}
+.l-lead{font-family:var(--serif);font-size:clamp(28px,2.8vw,40px);line-height:1.15;letter-spacing:-.02em;color:var(--paper);max-width:20ch;padding-bottom:.5em}
+.l-grid{align-items:end!important}
+.l-proof .st-cap{margin:0 0 0!important;padding-bottom:12px;color:var(--olive-l)}
+.l-proof .stats{grid-template-columns:repeat(2,1fr)}
+.l-proof .stats span{font-family:var(--sans);font-size:15px;line-height:1.5;text-transform:none;letter-spacing:0;color:var(--mute,#C2AE9A);max-width:220px}
+.looma .l-proof .stats span{color:rgba(243,230,211,.75)}
+@media (max-width:720px){.l-top{grid-template-columns:1fr!important}.l-lead{font-size:26px;padding-bottom:0}.looma .kick span:last-child{text-align:left}.l-proof .stats span{font-size:13px}}
+
+/* ---------- экраны Looma: ровные подписи, карусель на телефоне ---------- */
+.screens img{aspect-ratio:626/1536;object-fit:cover;object-position:top}
+.screens figcaption{margin-top:20px}
+@media (max-width:720px){
+  .screens{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+    gap:16px!important;padding:24px 16px 20px!important;margin-left:calc(var(--pad)*-1);margin-right:calc(var(--pad)*-1);border-radius:0!important;justify-content:flex-start!important}
+  .screens::-webkit-scrollbar{display:none}
+  .screens figure{flex:0 0 68%;scroll-snap-align:center}
+  .screens img{border-radius:20px!important}
+  .screens figcaption{font-size:12px!important;letter-spacing:.1em!important;margin-top:16px!important}
+}
 </style>
 </head>
 <body>
 <a class="skip cap" href="#looma">К работам</a>
 
 <header class="bar wrap cap">
-  <a class="who" href="#top"><i aria-hidden="true"></i>Е. Богданова<span>&nbsp;/ продуктовый дизайнер</span></a>
+  <a class="who" href="#top"><i aria-hidden="true"></i>Е. Богданова</a>
   <nav aria-label="Разделы">
     <a class="t" href="#looma">Looma</a>
     <a class="t" href="#works">Работы</a>
@@ -318,26 +384,21 @@ body{font-variant-numeric:lining-nums}
 <!-- ===== HERO ===== -->
 <section class="hero wrap" aria-label="Кто я">
   <h1 class="name disp"><span class="l1">екатерина</span> <span class="l2">богданова</span></h1>
+  <p class="sub cap">Продуктовый дизайнер · Москва <span class="open"><i aria-hidden="true"></i>Открыта к&nbsp;предложениям</span></p>
   <div class="stage-wrap">
     <div class="stage">
-      <div class="note l cap">
-        <p>Продуктовый дизайнер</p>
-        <svg class="a1" viewBox="0 0 120 56" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8c22-6 48-4 66 8s30 26 44 34"/><path d="M98 48l16 3-7-15"/></svg>
-        <p class="n2">Москва · ищу работу в&nbsp;штате</p>
+      <div class="side l">
+        <p class="intro">Больше двух лет делаю сайты и&nbsp;афиши для танцевальных студий. В&nbsp;2026-м сделала своё приложение для танцоров и&nbsp;проверила его на&nbsp;педагогах. В&nbsp;работе помогают Figma Agent, Claude и&nbsp;ChatGPT.</p>
+        <a class="pill solid" href="https://t.me/ekateribog_dana" target="_blank" rel="noopener">Написать в телеграм <span class="ar" aria-hidden="true">↗</span></a>
       </div>
       <figure class="ph">
-        <img src="assets/katya.jpg" width="784" height="980" alt="Екатерина Богданова в кафе вечером">
+        <img src="assets/katya-v2.jpg" width="784" height="980" alt="Екатерина Богданова в кафе вечером">
       </figure>
-      <div class="note r cap">
-        <p>10 педагогов на тесте Looma</p>
-        <svg class="a1" viewBox="0 0 120 56" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M116 10c-20-8-46-4-62 10S24 44 8 50"/><path d="M22 52L6 51l9-13"/></svg>
-        <p class="n2">Офис, гибрид или удалёнка</p>
+      <div class="side r">
+        <p class="n1">10 <em>из</em> 10</p>
+        <p class="n2">педагогов с&nbsp;первого раза разобрались в&nbsp;кабинете Looma без&nbsp;подсказок</p>
+        <a class="more" href="https://www.figma.com/proto/EnDFu6EhXxf3KT4INIy6IQ/%D0%BA%D0%B5%D0%B9%D1%81-%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F?node-id=735-5446&amp;p=f&amp;scaling=min-zoom&amp;content-scaling=fixed&amp;page-id=735%3A5080" target="_blank" rel="noopener">Кейс Looma в Figma <span aria-hidden="true">↗</span></a>
       </div>
-      <div class="cta pills">
-        <a class="pill solid" href="https://t.me/ekateribog_dana" target="_blank" rel="noopener">Написать в телеграм <span class="ar" aria-hidden="true">↗</span></a>
-        <a class="pill line" href="resume.html">Резюме</a>
-      </div>
-      <p class="intro">С 2024 года делаю сайты и визуал для танцевальных студий и событий. В 2025 году окончила курс по продуктовому дизайну, а в 2026-м сделала своё приложение — от гипотез до теста с 10 педагогами.</p>
     </div>
   </div>
 </section>
@@ -345,32 +406,25 @@ body{font-variant-numeric:lining-nums}
 
 <!-- ===== LOOMA ===== -->
 <section class="looma on-dark sec wrap" id="looma" aria-labelledby="looma-h">
-  <div class="kick cap"><span>Продуктовый кейс · 01</span><span>2026</span></div>
+  <div class="kick cap"><span>Продуктовый кейс · 01</span><span>Мобильное приложение · концепт · делала одна · 2&nbsp;месяца · 2026</span></div>
   <div class="l-top">
     <h2 class="disp" id="looma-h">Looma</h2>
-    <ul class="l-meta cap" aria-label="О проекте">
-      <li>Мобильное приложение</li>
-      <li>Концепт · 2026</li>
-      <li>Делала одна</li>
-      <li>2 месяца</li>
-    </ul>
+    <p class="l-lead">Приложение, где танцоры находят занятия, события и&nbsp;друг друга</p>
   </div>
   <div class="l-grid">
     <div class="l-text">
-      <p>Приложение, где танцоры находят занятия, события и друг друга. Идею взяла из своей жизни: занятия ищешь по чатам, а люди с мастер-классов потом теряются.</p>
-      <p>Ключевое решение — <span class="hl">показать ценность до регистрации</span>: онбординг сначала собирает интересы и показывает подборку, а форма появляется последней. Цена решения — часть людей уйдёт, не оставив контакт.</p>
+      <p>Идея из моей жизни: занятия ищешь по&nbsp;чатам, а&nbsp;с&nbsp;людьми с&nbsp;мастер-классов потом теряешь связь.</p>
+      <p>Одно из&nbsp;ключевых решений — <span class="hl">сначала подборка, потом регистрация</span>. Главная метрика Looma — записи на&nbsp;занятия, а&nbsp;новичков легче всего потерять на&nbsp;форме регистрации. Поэтому человек сначала выбирает интересы и&nbsp;видит занятия, а&nbsp;форму заполняет в&nbsp;конце. Минус в&nbsp;том, что кто-то уйдёт, так и&nbsp;не&nbsp;оставив контакт. Проверить решение хочу A/B-тестом.</p>
       <div class="pills">
-        <a class="pill solid" href="looma.html">Читать кейс <span class="ar" aria-hidden="true">↗</span></a>
-        <a class="pill line" href="https://www.figma.com/proto/EnDFu6EhXxf3KT4INIy6IQ/%D0%BA%D0%B5%D0%B9%D1%81-%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F?node-id=735-5446&amp;p=f&amp;scaling=min-zoom&amp;content-scaling=fixed&amp;page-id=735%3A5080" target="_blank" rel="noopener">Прототип в Figma <span class="ar" aria-hidden="true">↗</span></a>
+        <a class="pill solid" href="https://www.figma.com/proto/EnDFu6EhXxf3KT4INIy6IQ/%D0%BA%D0%B5%D0%B9%D1%81-%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F?node-id=735-5446&amp;p=f&amp;scaling=min-zoom&amp;content-scaling=fixed&amp;page-id=735%3A5080" target="_blank" rel="noopener">Открыть кейс в Figma <span class="ar" aria-hidden="true">↗</span></a>
       </div>
     </div>
-    <div>
-      <ul class="stats" aria-label="Результат юзабилити-теста">
-        <li><b>10</b><span class="cap">педагогов на тесте</span></li>
-        <li><b>4</b><span class="cap">сценария кабинета</span></li>
-        <li><b>10<small> из </small>10</b><span class="cap">справились без подсказок</span></li>
-      </ul>
+    <div class="l-proof">
       <p class="st-cap cap">Юзабилити-тест кабинета педагога</p>
+      <ul class="stats" aria-label="Результат юзабилити-теста">
+        <li><b>10<small> из </small>10</b><span>педагогов справились без&nbsp;подсказок</span></li>
+        <li><b>4</b><span>сценария кабинета проверили на&nbsp;тесте</span></li>
+      </ul>
     </div>
   </div>
   <div class="screens">
@@ -402,14 +456,14 @@ body{font-variant-numeric:lining-nums}
       <a class="pic" href="https://www.behance.net/gallery/226323411/Landing-Vidmer-Dance" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="assets/vidmer.jpg" width="1866" height="901" alt="" loading="lazy"></a>
       <h3>Vidmer.dance</h3>
       <div class="meta cap">Сайт лаборатории танца · Tilda · коммерческий проект</div>
-      <p>Раньше всё про занятия жило в переписке в директе и телеграме. Я сделала сайт, где направления и расписание собраны в одном месте, а кнопка записи ведёт в телеграм студии. <strong>После запуска ученицы смотрят расписание на сайте, а не спрашивают в директе.</strong></p>
+      <p>Раньше про занятия спрашивали в директе и телеграме. Я сделала сайт с направлениями и расписанием, а кнопка записи ведёт в телеграм студии. <strong>Теперь ученицы смотрят расписание на сайте, а не пишут в директ.</strong></p>
       <div class="pills"><a class="pill line" href="https://www.behance.net/gallery/226323411/Landing-Vidmer-Dance" target="_blank" rel="noopener">Кейс на Behance <span class="ar" aria-hidden="true">↗</span></a></div>
     </article>
     <article class="work">
       <a class="pic" href="https://www.behance.net/gallery/234397015/Instagram-posters-for-Frame-up-official" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="assets/frameup.jpg" width="1866" height="957" alt="" loading="lazy"></a>
       <h3>Frame Up Official</h3>
       <div class="meta cap">Афиши для Instagram · коммерческий проект</div>
-      <p>Серия афиш для танцевального проекта. Каждую делала отдельно, но в одном стиле: типографика, палитра и композиция держат серию вместе.</p>
+      <p>Серия афиш для танцевального проекта. Каждую делала отдельно, но в одном стиле, чтобы в ленте они смотрелись вместе.</p>
       <div class="pills"><a class="pill line" href="https://www.behance.net/gallery/234397015/Instagram-posters-for-Frame-up-official" target="_blank" rel="noopener">Кейс на Behance <span class="ar" aria-hidden="true">↗</span></a></div>
     </article>
   </div>
@@ -420,12 +474,12 @@ body{font-variant-numeric:lining-nums}
   <div class="kick cap"><span>Инструменты</span><span>Figma Agent · Claude · ChatGPT</span></div>
   <div class="a-head">
     <h2 class="disp" id="ai-h">Как я работаю <em style="white-space:nowrap">с ИИ</em></h2>
-    <p>Нейросети забирают у меня рутину и черновики. Что оставить в продукте, решаю сама и проверяю на людях.</p>
+    <p>С нейросетями быстрее делаю черновики и однотипные правки. Что войдёт в продукт, решаю сама.</p>
   </div>
   <ol class="tools">
     <li><span class="tool cap">Figma Agent</span><h3>Дизайн-система Looma</h3><p>С агентом завела типографику, цвета и компоненты, а потом собирала экраны уже из них. Однотипные правки по макетам тоже отдаю ему.</p></li>
-    <li><span class="tool cap">Claude</span><h3>Презентация кейса и этот сайт</h3><p>Описывала, что мне нужно, и доводила результат правками, пока он не стал таким, как я задумала.</p></li>
-    <li><span class="tool cap">ChatGPT</span><h3>Тексты и картинки</h3><p>Получаю черновики текстов и изображения, а потом дорабатываю их сама.</p></li>
+    <li><span class="tool cap">Claude</span><h3>Презентация кейса и этот сайт</h3><p>Писала, что нужно, и правила результат, пока не получилось то, что я хотела.</p></li>
+    <li><span class="tool cap">ChatGPT</span><h3>Тексты и картинки</h3><p>Делаю черновики текстов и картинки, потом дорабатываю сама.</p></li>
   </ol>
 </section>
 
@@ -440,9 +494,9 @@ body{font-variant-numeric:lining-nums}
     <div>
       <h2 class="disp" id="about-h">Обо <em>мне</em><span>.</span></h2>
       <div class="cols">
-        <p>По образованию я экономист, поэтому мне привычно думать не только о том, как выглядит экран, но и зачем он бизнесу. С 2024 года работаю на фрилансе: делаю сайты, афиши и презентации, сама общаюсь с заказчиками и довожу проекты до запуска.</p>
-        <p>В 2025 году окончила курс UX/UI в Bang Bang Education и поняла, что мне интереснее думать над продуктом целиком, а не только над картинкой.</p>
-        <p>Сама танцую, поэтому почти все мои проекты так или иначе про танцы. <strong>Хочу в продуктовую команду, где решения проверяют на пользователях.</strong></p>
+        <p>По образованию я экономист, поэтому привыкла спрашивать, зачем экран нужен бизнесу. С 2024 года на фрилансе делаю сайты, афиши и презентации. С заказчиками общаюсь сама.</p>
+        <p>В 2025 году окончила курс UX/UI в Bang Bang Education. Там поняла, что мне интереснее продумывать продукт целиком, чем рисовать отдельные экраны.</p>
+        <p>Сама танцую, поэтому почти все мои проекты про танцы. <strong>Хочу в продуктовую команду, где решения проверяют на пользователях.</strong></p>
       </div>
       <dl class="facts">
         <div><dt class="cap">Опыт</dt><dd>Больше 2,5 лет, фриланс с февраля 2024</dd></div>
@@ -473,5 +527,27 @@ body{font-variant-numeric:lining-nums}
 </section>
 </main>
 <footer class="wrap cap"><span>Екатерина Богданова, 2026</span><a href="#top">Наверх ↑</a></footer>
+<script>
+(function(){
+  var h=document.querySelector('.name');
+  if(!h||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  h.setAttribute('aria-label',h.textContent.replace(/\s+/g,' ').trim());
+  var chars=[];
+  h.querySelectorAll('.l1,.l2').forEach(function(w){
+    var t=w.textContent;w.textContent='';w.setAttribute('aria-hidden','true');
+    for(var i=0;i<t.length;i++){var c=document.createElement('span');c.className='ch';c.textContent=t[i];w.appendChild(c);chars.push(c)}
+  });
+  var caret=document.createElement('span');caret.className='caret';caret.setAttribute('aria-hidden','true');
+  h.classList.add('typing');
+  var i=0;
+  function step(){
+    if(i<chars.length){
+      chars[i].classList.add('on');chars[i].after(caret);
+      var pause=(i===8)?260:70+Math.random()*60;i++;setTimeout(step,pause);
+    }else{setTimeout(function(){caret.classList.add('gone')},1800)}
+  }
+  chars[0].before(caret);setTimeout(step,500);
+})();
+</script>
 </body>
 </html>
