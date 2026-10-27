@@ -168,6 +168,9 @@ footer a{text-decoration:none}
   td:first-child{width:auto}
 }
 @media (max-width:520px){
+  .test{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .test .card{padding:16px}
+  .test b{font-size:36px}
   .tldr{grid-template-columns:1fr}
   .bar .pill{padding:8px 14px;font-size:12px}
 }
@@ -189,7 +192,7 @@ body{font-variant-numeric:lining-nums}
 
 <header class="bar">
   <div class="wrap mono">
-    <a class="home-mark" href="./" aria-label="На главную, Екатерина Богданова"><span class="ar" aria-hidden="true">←</span><i aria-hidden="true"></i>Е. Богданова</a>
+    <a class="home-mark" href="./" aria-label="На главную"><span class="ar" aria-hidden="true">←</span><i aria-hidden="true"></i>Екатерина Богданова</a>
     <nav aria-label="Разделы кейса">
       <a href="#hyp">Гипотезы</a>
       <a href="#decisions">Решения</a>
