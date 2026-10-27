@@ -376,6 +376,60 @@ body{font-variant-numeric:lining-nums}
   .screens img{border-radius:20px!important}
   .screens figcaption{font-size:12px!important;letter-spacing:.1em!important;margin-top:16px!important}
 }
+
+/* ---------- Looma: живая витрина-ссылка ---------- */
+.lstage{display:block;position:relative;margin-top:72px;border-radius:24px;color:inherit;text-decoration:none;perspective:1600px;isolation:isolate}
+.lstage:focus-visible{outline:3px solid var(--olive-l);outline-offset:6px}
+.lstage .screens{position:relative;margin-top:0;overflow:hidden;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transform-style:preserve-3d;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.lstage .screens::before{content:"";position:absolute;inset:-20%;z-index:-1;pointer-events:none;
+  background:radial-gradient(ellipse 45% 40% at var(--gx,50%) var(--gy,45%),rgba(224,103,95,.32),transparent 70%);animation:breathe 6s ease-in-out infinite}
+@keyframes breathe{50%{opacity:.55;transform:scale(1.06)}}
+.lstage figure{position:relative;z-index:2;transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.lstage figure:nth-child(2){transform:rotateY(16deg) rotateZ(-2deg) translateY(28px) scale(.93)}
+.lstage figure:nth-child(3){transform:translateY(-12px) scale(1.04);z-index:3}
+.lstage figure:nth-child(4){transform:rotateY(-16deg) rotateZ(2deg) translateY(28px) scale(.93)}
+.lstage:hover figure:nth-child(2),.lstage:focus-visible figure:nth-child(2){transform:translateX(-8%) rotateY(6deg) rotateZ(-4deg) translateY(8px) scale(.97)}
+.lstage:hover figure:nth-child(3),.lstage:focus-visible figure:nth-child(3){transform:translateY(-28px) scale(1.08)}
+.lstage:hover figure:nth-child(4),.lstage:focus-visible figure:nth-child(4){transform:translateX(8%) rotateY(-6deg) rotateZ(4deg) translateY(8px) scale(.97)}
+.lstage img{transition:box-shadow .6s ease}
+.lstage:hover img{box-shadow:0 40px 80px -24px rgba(0,0,0,.9),0 0 64px rgba(224,103,95,.22),0 0 0 1px rgba(243,230,211,.1)!important}
+.thread{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;overflow:visible}
+.thread path{fill:none;stroke:var(--rose);stroke-width:2;vector-effect:non-scaling-stroke;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 2.4s cubic-bezier(.6,0,.2,1)}
+.thread.drawn path{stroke-dashoffset:0}
+.thread circle{fill:var(--paper);filter:drop-shadow(0 0 6px var(--rose)) drop-shadow(0 0 14px var(--rose));opacity:0;transition:opacity .6s 2s}
+.thread.drawn circle{opacity:1}
+.orb{position:absolute;z-index:5;left:var(--mx,50%);top:var(--my,50%);width:136px;height:136px;margin:-68px 0 0 -68px;border-radius:50%;
+  background:var(--paper);color:var(--ink);display:grid;place-items:center;pointer-events:none;
+  transform:scale(0);transition:transform .45s cubic-bezier(.2,1.4,.4,1);box-shadow:0 16px 40px rgba(0,0,0,.45)}
+.orb svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 14s linear infinite}
+.orb text{font-family:var(--mono);font-size:15.5px;letter-spacing:.18em;text-transform:uppercase;fill:currentColor}
+.orb .ar{font-size:34px}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (hover:hover) and (pointer:fine){
+  .lstage{cursor:none}
+  .lstage:hover .orb,.lstage:focus-visible .orb{transform:scale(1)}
+}
+@media (hover:none),(pointer:coarse){
+  .orb{left:auto;top:auto;right:16px;bottom:16px;margin:0;width:104px;height:104px;transform:none}
+  .orb .ar{font-size:28px}
+}
+.looma .pill.solid{position:relative;overflow:hidden;isolation:isolate}
+.looma .pill.solid::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent 30%,rgba(200,155,114,.55) 50%,transparent 70%);transform:translateX(-110%);transition:transform .7s ease}
+.looma .pill.solid:hover::after{transform:translateX(110%)}
+.looma .pill.solid .ar{display:inline-block;transition:transform .3s ease}
+.looma .pill.solid:hover .ar{transform:translate(3px,-3px)}
+@media (max-width:720px){
+  .lstage{margin-top:48px;border-radius:0}
+  .lstage .screens{transform:none!important}
+  .lstage figure:nth-child(n){transform:none!important}
+  .thread{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .lstage .screens,.lstage figure,.thread path,.orb{transition:none}
+  .lstage .screens::before,.orb svg{animation:none}
+  .thread path{stroke-dashoffset:0}
+  .thread circle{display:none}
+}
 </style>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 </head>
@@ -440,7 +494,9 @@ body{font-variant-numeric:lining-nums}
       </ul>
     </div>
   </div>
+  <a class="lstage" href="https://www.figma.com/proto/EnDFu6EhXxf3KT4INIy6IQ/%D0%BA%D0%B5%D0%B9%D1%81-%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F?node-id=735-5446&amp;p=f&amp;scaling=min-zoom&amp;content-scaling=fixed&amp;page-id=735%3A5080" target="_blank" rel="noopener" aria-label="Открыть прототип Looma в Figma">
   <div class="screens">
+    <svg class="thread" viewBox="0 0 1000 400" preserveAspectRatio="none" aria-hidden="true"><path id="lthread" pathLength="1" d="M-20,250 C120,140 210,330 330,215 S520,95 640,220 S860,330 1020,170"/><circle r="5"><animateMotion dur="7s" repeatCount="indefinite" rotate="auto"><mpath href="#lthread"/></animateMotion></circle></svg>
     <figure>
       <img src="assets/looma-home.webp" width="583" height="1366" alt="Looma: лента «Для вас»" loading="lazy">
       <figcaption class="cap">Лента «Для вас»</figcaption>
@@ -454,6 +510,8 @@ body{font-variant-numeric:lining-nums}
       <figcaption class="cap">Люди</figcaption>
     </figure>
   </div>
+  <span class="orb" aria-hidden="true"><svg viewBox="0 0 200 200"><defs><path id="oring" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/></defs><text><textPath href="#oring">открыть прототип · looma · открыть прототип · looma ·</textPath></text></svg><span class="ar">↗</span></span>
+  </a>
 </section>
 
 
@@ -560,6 +618,34 @@ body{font-variant-numeric:lining-nums}
     }else{setTimeout(function(){caret.classList.add('gone')},1800)}
   }
   chars[0].before(caret);setTimeout(step,500);
+})();
+</script>
+<script>
+(function(){
+  var stage=document.querySelector('.lstage'); if(!stage) return;
+  var screens=stage.querySelector('.screens'), thread=stage.querySelector('.thread');
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es,o){es.forEach(function(e){if(e.isIntersecting){thread.classList.add('drawn');o.disconnect();}})},{threshold:.35}).observe(stage);
+  } else thread.classList.add('drawn');
+  if(fine){
+    stage.addEventListener('pointermove',function(e){
+      var r=stage.getBoundingClientRect(), px=(e.clientX-r.left)/r.width, py=(e.clientY-r.top)/r.height;
+      stage.style.setProperty('--mx',(e.clientX-r.left)+'px'); stage.style.setProperty('--my',(e.clientY-r.top)+'px');
+      screens.style.setProperty('--gx',(px*100).toFixed(1)+'%'); screens.style.setProperty('--gy',(py*100).toFixed(1)+'%');
+      if(!reduce){ screens.style.setProperty('--ry',((px-.5)*6).toFixed(2)+'deg'); screens.style.setProperty('--rx',((.5-py)*4).toFixed(2)+'deg'); }
+    });
+    stage.addEventListener('pointerleave',function(){ screens.style.removeProperty('--rx'); screens.style.removeProperty('--ry'); });
+  }
+  // numbers count up when the proof block scrolls in
+  var stats=document.querySelectorAll('.looma .stats b');
+  if(!reduce && stats.length && 'IntersectionObserver' in window){
+    var nodes=[]; stats.forEach(function(b){ b.childNodes.forEach(function(n){ if(n.nodeType===3 && /\d/.test(n.nodeValue)) nodes.push({n:n,to:parseInt(n.nodeValue,10)}); }); });
+    new IntersectionObserver(function(es,o){es.forEach(function(e){ if(!e.isIntersecting) return; o.disconnect();
+      var t0=performance.now(); (function tick(t){ var k=Math.min(1,(t-t0)/1200), ease=1-Math.pow(1-k,3);
+        nodes.forEach(function(x){ x.n.nodeValue=String(Math.round(x.to*ease)); }); if(k<1) requestAnimationFrame(tick); })(t0); });},{threshold:.6}).observe(stats[0].closest('.stats'));
+  }
 })();
 </script>
 </body>
