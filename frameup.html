@@ -14,6 +14,7 @@
 <meta name="theme-color" content="#0d0d0e">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend+Zetta:wght@300;400&family=Montserrat:wght@400;500;600&display=swap">
 <style>
 /* Layout: one left edge for everything; eyebrow above heading; light and dark bands alternate; 8px spacing scale */
@@ -238,6 +239,13 @@ section, header, footer { position: relative; overflow-x: clip }
   .sw { grid-template-columns: repeat(2, minmax(0, 1fr)) }
 }
 @media (prefers-reduced-motion: reduce) { .deck .card, .window, .strip .s, .hero h1 .deep { transition: none } }
+
+/* home mark: the same «● Е. Богданова» as on the main page, on every project page */
+.home-mark{display:inline-flex;align-items:center;gap:12px;font:400 12px/1.6 "PT Mono",ui-monospace,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:inherit;padding:8px 0;white-space:nowrap}
+.home-mark i{width:8px;height:8px;border-radius:50%;background:#7E2625;display:block;flex:none;transition:transform .3s}
+.home-mark .ar{display:inline-block;width:0;margin-right:-12px;opacity:0;overflow:hidden;transition:width .3s,margin .3s,opacity .3s}
+.home-mark:hover .ar,.home-mark:focus-visible .ar{width:1.2em;margin-right:0;opacity:1}
+.home-mark:hover i{transform:scale(1.25)}
 </style>
 <style>
 :root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px) }
@@ -252,7 +260,7 @@ body { margin: 0 }
 <header class="hero dark" style="background:var(--bg)">
   <div class="in">
     <div class="hero-top">
-      <a class="eyebrow" style="margin:0" href="index.html#works">← Екатерина Богданова · все работы</a>
+      <a class="home-mark" href="./" aria-label="На главную, Екатерина Богданова"><span class="ar" aria-hidden="true">←</span><i aria-hidden="true"></i>Е. Богданова</a>
       <span class="eyebrow" style="margin:0">Кейс · 2025</span>
     </div>
     <div class="hero-main">

@@ -9,6 +9,7 @@
 <link rel="preload" as="image" href="video/hero-poster.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -39,6 +40,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .concept{position:absolute;top:0;left:0;right:0;z-index:21;height:36px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 var(--side);font-size:13px;background:var(--white);color:var(--ink)}
 .concept a{text-decoration:underline;text-underline-offset:3px}
 .concept a:hover{color:var(--accent)}
+.concept .home-mark{text-decoration:none;padding:0}
 @media (max-width:720px){.concept .long{display:none}}
 header{position:fixed;top:36px;left:0;right:0;z-index:20;display:flex;align-items:center;gap:32px;height:72px;padding:0 var(--side);transition:background .5s,color .5s,transform .5s var(--ease)}
 header.solid{background:rgba(11,10,10,.72);backdrop-filter:blur(16px) saturate(1.4)}
@@ -280,10 +282,17 @@ dialog .x{position:absolute;right:0;top:-48px;color:var(--white);font-size:14px;
   .wipe{clip-path:none}
   .state p.big .w{opacity:1}
 }
+
+/* home mark: the same «● Е. Богданова» as on the main page, on every project page */
+.home-mark{display:inline-flex;align-items:center;gap:12px;font:400 12px/1.6 "PT Mono",ui-monospace,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:inherit;padding:8px 0;white-space:nowrap}
+.home-mark i{width:8px;height:8px;border-radius:50%;background:#7E2625;display:block;flex:none;transition:transform .3s}
+.home-mark .ar{display:inline-block;width:0;margin-right:-12px;opacity:0;overflow:hidden;transition:width .3s,margin .3s,opacity .3s}
+.home-mark:hover .ar,.home-mark:focus-visible .ar{width:1.2em;margin-right:0;opacity:1}
+.home-mark:hover i{transform:scale(1.25)}
 </style>
 </head>
 <body>
-<div class="concept"><a href="../">← Портфолио Екатерины Богдановой</a><span>Концепт редизайна. <span class="long">Официальный сайт студии — </span><a href="https://vidmerdance.ru/">vidmerdance.ru ↗</a></span></div>
+<div class="concept"><a class="home-mark" href="../" aria-label="На главную, Екатерина Богданова"><span class="ar" aria-hidden="true">←</span><i aria-hidden="true"></i>Е. Богданова</a><span>Концепт редизайна. <span class="long">Официальный сайт студии — </span><a href="https://vidmerdance.ru/">vidmerdance.ru ↗</a></span></div>
 
 <header id="hdr">
   <a href="#" class="logo"><img src="img/logo-w.png" alt="Vidmer Dance" width="89" height="28"></a>
