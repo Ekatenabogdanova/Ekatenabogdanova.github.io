@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Looma — продуктовый кейс Екатерины Богдановой</title>
+<meta name="description" content="Looma — мобильное приложение для танцевального сообщества. Концепт-проект, соло, 2 месяца: проблема, гипотезы и метрики, скоуп MVP, ключевые решения, юзабилити-тест с 10 педагогами.">
+<meta name="author" content="Екатерина Богданова">
+<link rel="canonical" href="https://ekatenabogdanova.github.io/looma.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Looma — продуктовый кейс">
+<meta property="og:description" content="Одно приложение вместо чатов, афиш и соцсетей студий. Концепт, соло, 2 месяца, тест с 10 педагогами">
+<meta property="og:image" content="https://ekatenabogdanova.github.io/assets/looma.jpg">
+<meta name="theme-color" content="#1C0E0A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=PT+Mono&family=Onest:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"CreativeWork","name":"Looma — приложение для танцевального сообщества","dateCreated":"2026","creator":{"@type":"Person","name":"Екатерина Богданова","url":"https://ekatenabogdanova.github.io/"},"description":"Концепт-проект, соло, 2 месяца. Проблема, гипотезы и метрики, скоуп MVP, ключевые решения, айдентика, юзабилити-тест с 10 педагогами.","url":"https://ekatenabogdanova.github.io/looma.html"}
+</script>
+<style>
+:root{
+  --bg:#1C0E0A;       /* горький шоколад: фон кейса */
+  --bg-2:#2A1610;     /* тёмный шоколад: карточки */
+  --cream:#F3E6D3;    /* текст, 15:1 */
+  --mute:#C2AE9A;     /* вторичный текст, 8.6:1 */
+  --caramel:#C89B72;  /* акцент */
+  --rose:#E0675F;     /* красный Looma на тёмном, 5.6:1 */
+  --line:rgba(243,230,211,.16);
+  --pad:clamp(16px,4vw,56px);
+  --serif:"Playfair Display",Georgia,serif;
+  --sans:"Onest",system-ui,sans-serif;
+  --mono:"PT Mono",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--cream);font:18px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{max-width:100%;display:block}
+:focus-visible{outline:2px solid var(--caramel);outline-offset:3px}
+.wrap{max-width:1200px;margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+.mono{font-family:var(--mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase;line-height:1.5}
+.mute{color:var(--mute)}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1;letter-spacing:-.04em}
+h2{font-size:clamp(40px,5.4vw,72px)}
+h2 em,h1 em{font-style:italic}
+h3{font-size:clamp(26px,2.4vw,32px);line-height:1.1}
+p{max-width:62ch}
+
+/* bar */
+.bar{position:sticky;top:0;z-index:10;background:rgba(28,14,10,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;height:60px}
+.bar a{text-decoration:none}
+.bar .back::before{content:"← "}
+.bar nav{display:flex;gap:24px;align-items:center}
+.bar nav a:not(.pill){color:var(--mute)}
+.bar nav a:not(.pill):hover{color:var(--cream)}
+.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--caramel);border-radius:999px;padding:10px 18px;text-decoration:none;font-family:var(--mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase;transition:background .2s,color .2s}
+.pill:hover{background:var(--caramel);color:var(--bg)}
+.pill.solid{background:var(--cream);border-color:var(--cream);color:var(--bg)}
+.pill.solid:hover{background:var(--caramel);border-color:var(--caramel)}
+
+/* hero */
+.hero{padding-top:clamp(40px,6vw,88px)}
+.hero h1{font-size:clamp(104px,22vw,320px);line-height:.9;color:var(--caramel);letter-spacing:-.06em;margin:16px 0 0 -.04em}
+.hero .lead{font-family:var(--serif);font-size:clamp(28px,3.4vw,48px);line-height:1.1;max-width:22ch;margin-top:24px}
+.hero-cta{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin-top:32px}
+.meta{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);margin-top:48px}
+.meta div{padding:16px 16px 0 0}
+.meta div+div{padding-left:16px;border-left:1px solid var(--line)}
+.meta dt{color:var(--mute);margin-bottom:6px}
+.meta dd{font-size:16px;line-height:1.45}
+.cover{margin-top:56px;border-radius:24px;overflow:hidden;aspect-ratio:1387/1134;max-height:720px;width:100%}
+.cover img{width:100%;height:100%;object-fit:cover}
+
+/* sections */
+.sec{padding-top:clamp(72px,9vw,128px)}
+.kick{display:flex;justify-content:space-between;gap:16px;border-top:1px solid var(--line);padding-top:12px;margin-bottom:24px;color:var(--mute)}
+.sec>p,.sec .intro{margin-top:20px;color:var(--mute);font-size:19px}
+
+.tldr{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:40px}
+.card{background:var(--bg-2);border-radius:20px;padding:24px}
+.card .mono{color:var(--caramel);display:block;margin-bottom:12px}
+.card p{font-size:16px;line-height:1.5}
+
+.roles{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:40px}
+.roles h3{margin-bottom:16px}
+.roles dl div+div{margin-top:12px}
+.roles dt{color:var(--caramel)}
+.roles dd{font-size:16px}
+
+.metric{display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:end;margin-top:40px;padding:32px;border-radius:24px;border:1px solid var(--caramel)}
+.metric .mono{display:block;margin-bottom:8px}
+.metric b{display:block;font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(40px,5vw,72px);line-height:1;color:var(--caramel);letter-spacing:-.04em}
+.metric p{font-size:16px;color:var(--mute)}
+.hyp{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+.hyp h3{margin-bottom:12px}
+.hyp .m{margin-top:16px;padding-top:12px;border-top:1px solid var(--line);font-size:15px}
+.hyp .m .mono{display:inline;margin:0 8px 0 0}
+
+.scope{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:40px}
+.scope ul{list-style:none;margin-top:8px}
+.scope li{padding:14px 0;border-top:1px solid var(--line);font-size:16px}
+.scope li b{display:block;font-weight:700}
+.scope li span{color:var(--mute)}
+.scope .off b{color:var(--mute)}
+
+.flow{list-style:none;counter-reset:f;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:40px}
+.flow li{counter-increment:f;background:var(--bg-2);border-radius:20px;padding:20px 24px;font-size:16px}
+.flow li::before{content:counter(f,decimal-leading-zero);display:block;font-family:var(--serif);font-size:32px;color:var(--caramel);line-height:1;margin-bottom:8px}
+.flow b{display:block}
+.flow span{color:var(--mute)}
+
+.strip{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:40px var(--pad) 8px;margin:0 calc(-1*var(--pad));scrollbar-width:thin;scrollbar-color:var(--bg-2) transparent}
+.strip figure{flex:0 0 clamp(180px,22vw,260px);scroll-snap-align:start}
+.strip img{width:100%;height:auto;border-radius:20px;box-shadow:0 0 0 1px var(--line)}
+.strip figcaption{margin-top:10px;color:var(--mute)}
+
+.dec{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:40px}
+.dec .card{padding:28px}
+.dec h3{margin-bottom:12px}
+.dec .cost{margin-top:16px;padding-top:12px;border-top:1px solid var(--line);color:var(--mute)}
+.dec .cost .mono{color:var(--rose);display:inline;margin-right:8px}
+
+.biz{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:40px}
+.biz b{display:block;font-family:var(--serif);font-weight:400;font-size:28px;line-height:1.1;margin-bottom:8px}
+.biz .ex{margin-top:12px;color:var(--caramel);font-family:var(--mono);font-size:14px}
+.note{margin-top:16px;color:var(--mute);font-size:15px}
+
+.brand{display:grid;grid-template-columns:3fr 2fr;gap:12px;margin-top:40px}
+.brand figure{background:#000;border-radius:20px;overflow:hidden}
+.brand img{width:100%;height:100%;object-fit:cover}
+.brand figcaption{padding:16px 20px;color:var(--mute);font-size:15px;background:var(--bg-2)}
+
+.test{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:40px}
+.test b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(48px,6vw,88px);line-height:.9;color:var(--caramel)}
+.test span{display:block;margin-top:8px}
+table{width:100%;border-collapse:collapse;margin-top:24px;font-size:16px}
+th{text-align:left;font-weight:400;padding:12px 16px 12px 0;color:var(--mute)}
+td{padding:14px 16px 14px 0;border-top:1px solid var(--line);vertical-align:top}
+td:first-child{width:40%}
+.fix{margin-top:24px;padding:24px;border-radius:20px;background:var(--bg-2);font-size:16px}
+.fix .mono{color:var(--caramel);display:block;margin-bottom:8px}
+
+.out{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:40px}
+.out ul{list-style:none;margin-top:8px}
+.out li{padding:14px 0;border-top:1px solid var(--line);font-size:16px}
+
+.end{margin-top:clamp(72px,9vw,128px);padding:clamp(40px,6vw,80px) 0;border-top:1px solid var(--line);text-align:center}
+.end h2{color:var(--caramel)}
+.end p{margin:16px auto 0;color:var(--mute)}
+.end .pills{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:32px}
+footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--mute)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{text-decoration:none}
+
+@media (max-width:900px){
+  body{font-size:17px}
+  .bar nav a:not(.pill){display:none}
+  .meta,.tldr{grid-template-columns:1fr 1fr}
+  .meta div:nth-child(3){padding-left:0;border-left:0}
+  .roles,.hyp,.scope,.flow,.dec,.biz,.brand,.out{grid-template-columns:1fr}
+  .metric{grid-template-columns:1fr;gap:12px;padding:24px}
+  .test{grid-template-columns:1fr 1fr 1fr;gap:8px}
+  .test span{font-size:13px}
+  td:first-child{width:auto}
+}
+@media (max-width:520px){
+  .tldr{grid-template-columns:1fr}
+  .bar .pill{padding:8px 14px;font-size:12px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+.hero h1{font-size:clamp(96px,16vw,240px)!important}
+body{font-variant-numeric:lining-nums}
+.ar{font-family:var(--sans)}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap mono">
+    <a class="back" href="./">Екатерина Богданова</a>
+    <nav aria-label="Разделы кейса">
+      <a href="#hyp">Гипотезы</a>
+      <a href="#decisions">Решения</a>
+      <a href="#test">Тест</a>
+      <a class="pill" href="https://www.figma.com/proto/EnDFu6EhXxf3KT4INIy6IQ/%D0%BA%D0%B5%D0%B9%D1%81-%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F?node-id=735-5446&amp;p=f&amp;scaling=min-zoom&amp;content-scaling=fixed&amp;page-id=735%3A5080" target="_blank" rel="noopener">Прототип ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="wrap hero" aria-labelledby="h1">
+  <span class="mono mute">Продуктовый кейс · с нуля до MVP · 2026</span>
+  <h1 id="h1">Looma</h1>
+  <p class="lead">Одно приложение вместо чатов, афиш и соцсетей студий</p>
+  <div class="hero-cta">
+    <a class="pill solid" href="https://www.figma.com/proto/EnDFu6EhXxf3KT4INIy6IQ/%D0%BA%D0%B5%D0%B9%D1%81-%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F?node-id=735-5446&amp;p=f&amp;scaling=min-zoom&amp;content-scaling=fixed&amp;page-id=735%3A5080" target="_blank" rel="noopener">Открыть прототип в Figma ↗</a>
+    <span class="mono mute">Онбординг, запись, связь и кабинет педагога — всё кликабельно</span>
+  </div>
+  <dl class="meta">
+    <div><dt class="mono">Тип</dt><dd>Концепт-проект, мобильное приложение</dd></div>
+    <div><dt class="mono">Роль</dt><dd>Соло: исследование, продукт, UX/UI, айдентика, тест</dd></div>
+    <div><dt class="mono">Срок</dt><dd>2 месяца</dd></div>
+    <div><dt class="mono">Главная метрика</dt><dd>Записи на занятия и события в неделю</dd></div>
+  </dl>
+  <div class="cover"><img src="assets/case/cover.webp" width="1387" height="1134" alt="Обложка Looma: красная нить, натянутая между двумя руками"></div>
+</section>
+
+<section class="wrap sec" aria-labelledby="tldr-h">
+  <div class="kick mono"><span>00</span><span>Кейс за 30 секунд</span></div>
+  <h2 id="tldr-h">Коротко</h2>
+  <div class="tldr">
+    <div class="card"><span class="mono">Проблема</span><p>Занятия, события и люди разбросаны по чатам и соцсетям — танцорам сложно найти своё, а знакомства теряются</p></div>
+    <div class="card"><span class="mono">Моя роль</span><p>Продуктовый дизайнер на всём цикле: проблема и гипотезы, метафора и айдентика, UX/UI, тестирование</p></div>
+    <div class="card"><span class="mono">Решение</span><p>Персональная лента занятий, событий и людей и «Ваша нить» — история общих встреч с теми, с кем вы на связи</p></div>
+    <div class="card"><span class="mono">Результат</span><p>10 педагогов прошли ключевые сценарии кабинета без подсказок. Узкое место одно, и оно исправлено</p></div>
+  </div>
+</section>
+
+<section class="wrap sec" aria-labelledby="ctx-h">
+  <div class="kick mono"><span>01</span><span>Контекст и аудитория</span></div>
+  <h2 id="ctx-h">Откуда <em>идея</em></h2>
+  <p class="intro">Концепт-проект, который вырос из моего опыта в танцах. Занятия ищешь в чатах, о событиях узнаёшь из соцсетей студий, а знакомства с мастер-классов теряются. Я много раз обсуждала это с другими танцорами в раздевалках и на занятиях — и раз за разом слышала одно и то же.</p>
+  <div class="roles">
+    <div class="card"><span class="mono">Учиться танцевать</span><h3>Танцоры</h3><dl>
+      <div><dt class="mono">Что хотят</dt><dd>Находить занятия и события под свой стиль и уровень, знакомиться и расти внутри сообщества</dd></div>
+      <div><dt class="mono">Боль</dt><dd>Информация разбросана, а о педагоге почти ничего не понятно до первого занятия</dd></div>
+    </dl></div>
+    <div class="card"><span class="mono">Преподавать</span><h3>Педагоги</h3><dl>
+      <div><dt class="mono">Что хотят</dt><dd>Набирать учеников, публиковать занятия и рассказывать о себе</dd></div>
+      <div><dt class="mono">Боль</dt><dd>Расписание и анонсы приходится вести сразу в нескольких местах</dd></div>
+    </dl></div>
+  </div>
+</section>
+
+<section class="wrap sec" id="hyp" aria-labelledby="hyp-h">
+  <div class="kick mono"><span>02</span><span>Гипотезы и метрики</span></div>
+  <h2 id="hyp-h">Что должно <em>сработать</em></h2>
+  <p class="intro">И как я бы поняла, что сработало</p>
+  <div class="metric">
+    <div><span class="mono mute">Главная метрика</span><b>Записи в неделю</b></div>
+    <p>Главная ценность Looma — человек находит занятие и приходит на него. Связи и нить растут из этих встреч.</p>
+  </div>
+  <div class="hyp">
+    <div class="card"><h3>Ценность до регистрации</h3><p>Если сначала показать, что даёт Looma, и собрать интересы, а форму регистрации дать последней, больше новичков дойдут до первой записи.</p><p class="m"><span class="mono">Метрика</span>Доля дошедших от старта онбординга до первой записи</p></div>
+    <div class="card"><h3>Всё в одном месте</h3><p>Если собрать занятия, события и людей в одной ленте, танцорам не придётся искать по чатам и соцсетям.</p><p class="m"><span class="mono">Метрика</span>Время от открытия приложения до записи</p></div>
+    <div class="card"><h3>Связь удерживает</h3><p>Если после общей встречи предложить связь и показать «Вашу нить», люди будут возвращаться в приложение.</p><p class="m"><span class="mono">Метрика</span>Доля принятых запросов на связь и возврат через 30 дней</p></div>
+  </div>
+</section>
+
+<section class="wrap sec" aria-labelledby="scope-h">
+  <div class="kick mono"><span>03</span><span>Приоритизация</span></div>
+  <h2 id="scope-h">Скоуп <em>MVP</em></h2>
+  <p class="intro">Сфокусировалась на главном пути: найти занятие, прийти и познакомиться. Остальное — в следующие версии.</p>
+  <div class="scope">
+    <div class="card"><span class="mono">Вошло в MVP</span><ul>
+      <li><b>Онбординг с выбором роли</b><span>Без него не собрать персональную подборку</span></li>
+      <li><b>Лента «Для тебя»</b><span>Главная точка входа: занятия, события и люди</span></li>
+      <li><b>Запись на занятие</b><span>Ключевое действие и главная метрика</span></li>
+      <li><b>Связи и «Ваша нить»</b><span>Отличает Looma от расписаний и афиш</span></li>
+      <li><b>Кабинет педагога</b><span>Без педагогов нет занятий в ленте</span></li>
+    </ul></div>
+    <div class="card off"><span class="mono">Отложила</span><ul>
+      <li><b>Чат между пользователями</b><span>Сначала проверить, нужны ли связи вообще</span></li>
+      <li><b>Оплата внутри приложения</b><span>Сложно и дорого; на старте — переход к студии</span></li>
+      <li><b>Отзывы и рейтинги педагогов</b><span>Нужна база занятий, чтобы было что оценивать</span></li>
+      <li><b>Уведомления о пересечениях</b><span>Добавлю, когда связи начнут расти</span></li>
+    </ul></div>
+  </div>
+</section>
+
+<section class="wrap sec" aria-labelledby="flow-h">
+  <div class="kick mono"><span>04</span><span>User flow</span></div>
+  <h2 id="flow-h">Сначала смотрит, <em>потом регистрируется</em></h2>
+  <p class="intro">Каждый сценарий ведёт к одному ключевому действию: записаться, купить билет или установить связь. До визуального дизайна собрала структуру 19 экранов в вайрфреймах, чтобы проверить логику переходов.</p>
+  <ol class="flow">
+    <li><b>Онбординг</b><span>Роль → интро → вайб → направления → регистрация</span></li>
+    <li><b>Люди и связи</b><span>Люди → профиль → запрос на связь → «Ваша нить»</span></li>
+    <li><b>Занятия</b><span>Расписание → детали занятия → запись → подтверждение</span></li>
+    <li><b>События</b><span>Лента событий → детали → купить билет</span></li>
+    <li><b>Кабинет педагога</b><span>Мои занятия → новое занятие → публикация</span></li>
+    <li><b>Профиль ученика</b><span>Настройки, мои связи, мои стили</span></li>
+  </ol>
+  <div class="strip" role="list" aria-label="Экраны Looma">
+    <figure role="listitem"><img src="assets/case/ob1.webp" width="631" height="1366" alt="Онбординг: стартовый экран Looma" loading="lazy"><figcaption class="mono">Старт</figcaption></figure>
+    <figure role="listitem"><img src="assets/case/ob3.webp" width="631" height="1366" alt="Онбординг: нить рекомендаций под вас" loading="lazy"><figcaption class="mono">Ценность до регистрации</figcaption></figure>
+    <figure role="listitem"><img src="assets/case/ob4.webp" width="631" height="1366" alt="Онбординг: выбор вайба" loading="lazy"><figcaption class="mono">Выбор вайба</figcaption></figure>
+    <figure role="listitem"><img src="assets/case/home.webp" width="583" height="1366" alt="Лента «Для тебя»: люди, занятия, события" loading="lazy"><figcaption class="mono">Лента «Для тебя»</figcaption></figure>
+    <figure role="listitem"><img src="assets/case/st1.webp" width="622" height="1526" alt="Stories педагога" loading="lazy"><figcaption class="mono">Stories педагога</figcaption></figure>
+    <figure role="listitem"><img src="assets/case/request.webp" width="640" height="1533" alt="Запрос на связь отправлен" loading="lazy"><figcaption class="mono">Запрос на связь</figcaption></figure>
+    <figure role="listitem"><img src="assets/case/connected.webp" width="626" height="1536" alt="Связь установлена и «Ваша нить»" loading="lazy"><figcaption class="mono">«Ваша нить»</figcaption></figure>
+  </div>
+</section>
+
+<section class="wrap sec" id="decisions" aria-labelledby="dec-h">
+  <div class="kick mono"><span>05</span><span>Почему так</span></div>
+  <h2 id="dec-h">Ключевые <em>решения</em></h2>
+  <p class="intro">Четыре решения, на которых держится продукт. У каждого есть цена.</p>
+  <div class="dec">
+    <div class="card"><h3>Ценность до регистрации</h3><p>Онбординг сначала показывает, что даёт Looma, и собирает направления и вайб. Регистрация появляется последней — когда уже понятно, зачем она нужна.</p><p class="cost"><span class="mono">Цена</span>Контакт пользователя узнаём позже, часть людей уйдёт без регистрации</p></div>
+    <div class="card"><h3>Две роли в одном аккаунте</h3><p>Танцор и педагог — часто один и тот же человек. Роль выбирается на старте, её можно сменить или совмещать обе в одном аккаунте.</p><p class="cost"><span class="mono">Цена</span>Интерфейс сложнее — нужно переключение ролей и два набора разделов</p></div>
+    <div class="card"><h3>Stories вместо анкеты</h3><p>Педагог рассказывает о себе в коротких видео. Характер и энергию танцора видно ещё до первого занятия.</p><p class="cost"><span class="mono">Цена</span>Педагогу нужно снять видео, порог входа для него выше</p></div>
+    <div class="card"><h3>Связь — только по согласию</h3><p>Связь появляется, когда её подтверждают оба. После этого открывается «Ваша нить» — история общих занятий и событий.</p><p class="cost"><span class="mono">Цена</span>Сеть растёт медленнее, зато без спама и навязчивых контактов</p></div>
+  </div>
+</section>
+
+<section class="wrap sec" aria-labelledby="biz-h">
+  <div class="kick mono"><span>06</span><span>Бизнес-модель</span></div>
+  <h2 id="biz-h">Зачем педагогу <em>Looma</em></h2>
+  <p class="intro">Looma приводит педагогу новых учеников и берёт на себя организацию занятий. Для танцоров Looma бесплатна. Зарабатываем на педагогах — тогда, когда приводим им учеников.</p>
+  <div class="biz">
+    <div class="card"><span class="mono">Основная модель</span><b>Комиссия с записей</b><p>Процент с каждой оплаченной записи или билета, пришедших через Looma</p><p class="ex">Например, 5–10%</p></div>
+    <div class="card"><span class="mono">Подписка</span><b>Looma Pro</b><p>Продвижение в ленте «Для тебя», статистика просмотров и записей, больше групп</p><p class="ex">Например, 990–1 490 ₽ в месяц</p></div>
+    <div class="card"><span class="mono">Дополнительно</span><b>Продвижение событий</b><p>Платное размещение фестивалей и батлов наверху ленты</p><p class="ex">Разовые размещения</p></div>
+  </div>
+  <p class="note">Записи в неделю × средний чек = оборот через Looma; оборот × комиссия + Pro = выручка. Цены и проценты — пример для расчёта</p>
+</section>
+
+<section class="wrap sec" aria-labelledby="brand-h">
+  <div class="kick mono"><span>07</span><span>Метафора и айдентика</span></div>
+  <h2 id="brand-h">Красная <em>нить</em></h2>
+  <p class="intro">Метафора связи между людьми. Каждое новое пересечение — ещё одна точка в общей истории. Из точек складывается линия: связь объединяет людей, а нить хранит историю их встреч.</p>
+  <div class="brand">
+    <figure><img src="assets/case/thread.webp" width="2172" height="724" alt="Красная нить на чёрном фоне" loading="lazy"><figcaption>Глубокий чёрный фон, кинематографичный свет и сдержанные красные акценты. Нить проходит через каждый кадр</figcaption></figure>
+    <figure><img src="assets/case/logo.webp" width="1536" height="1024" alt="Логотип Looma: нить проходит сквозь буквы" loading="lazy"><figcaption>Нить проходит сквозь буквы и связывает их в одно слово</figcaption></figure>
+  </div>
+</section>
+
+<section class="wrap sec" id="test" aria-labelledby="test-h">
+  <div class="kick mono"><span>08</span><span>Тестирование</span></div>
+  <h2 id="test-h">Юзабилити-<em>тест</em></h2>
+  <p class="intro">Гипотеза: педагог без подсказок справится с ключевыми задачами кабинета — создаст, опубликует, найдёт и отменит занятие. Качественное тестирование кабинета педагога.</p>
+  <div class="test">
+    <div class="card"><b>10</b><span class="mono mute">педагогов</span></div>
+    <div class="card"><b>4</b><span class="mono mute">сценария</span></div>
+    <div class="card"><b>10/10</b><span class="mono mute">справились</span></div>
+  </div>
+  <table>
+    <thead><tr><th class="mono">Сценарий</th><th class="mono">Результат</th></tr></thead>
+    <tbody>
+      <tr><td>Создать занятие</td><td>Справились</td></tr>
+      <tr><td>Опубликовать занятие</td><td>Справились, но действие публикации замечали не сразу</td></tr>
+      <tr><td>Найти созданное занятие</td><td>Справились</td></tr>
+      <tr><td>Отменить занятие</td><td>Справились</td></tr>
+    </tbody>
+  </table>
+  <div class="fix"><span class="mono">Вывод и итерация</span>Гипотеза подтвердилась. Публикация была ссылкой в шапке формы — я перенесла её вниз и сделала основным действием экрана.</div>
+</section>
+
+<section class="wrap sec" aria-labelledby="out-h">
+  <div class="kick mono"><span>09</span><span>Итоги</span></div>
+  <h2 id="out-h">Выводы</h2>
+  <div class="out">
+    <div class="card"><span class="mono">Что получилось</span><ul>
+      <li>Метафора нити собрала продукт, айдентику и интерфейс вокруг одной идеи</li>
+      <li>Тест показал, что сценарии педагога понятны</li>
+      <li>Нашла и исправила единственное узкое место в кабинете</li>
+    </ul></div>
+    <div class="card"><span class="mono">Что дальше</span><ul>
+      <li>A/B-тест: подборка до регистрации против регистрации сразу. Метрика — доля дошедших до первой записи</li>
+      <li>Протестировать путь танцора: поиск занятия, запись и установление связи</li>
+      <li>Следить за долей принятых запросов на связь — так проверяется гипотеза «Связь удерживает»</li>
+    </ul></div>
+  </div>
+</section>
+
+<section class="wrap end" aria-labelledby="end-h">
+  <h2 id="end-h">Попробуйте <em>Looma</em></h2>
+  <p>Онбординг, запись на занятие, связь с человеком и кабинет педагога — всё кликабельно</p>
+  <div class="pills">
+    <a class="pill solid" href="https://www.figma.com/proto/EnDFu6EhXxf3KT4INIy6IQ/%D0%BA%D0%B5%D0%B9%D1%81-%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F?node-id=735-5446&amp;p=f&amp;scaling=min-zoom&amp;content-scaling=fixed&amp;page-id=735%3A5080" target="_blank" rel="noopener">Открыть прототип в Figma ↗</a>
+    <a class="pill" href="https://t.me/ekateribog_dana" target="_blank" rel="noopener">Написать в телеграм ↗</a>
+    <a class="pill" href="resume.html">Резюме</a>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap mono"><a href="./">← Екатерина Богданова</a><span>Looma · 2026</span></div></footer>
+</body>
+</html>
