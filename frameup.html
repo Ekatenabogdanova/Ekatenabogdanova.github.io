@@ -295,6 +295,15 @@ p{text-wrap:pretty}
 /* smear: horizontal motion blur, not round blur */
 .mag-bg{filter:url(#smear-bg) brightness(.92)!important;transform:none}
 .hl.smear{filter:url(#smear-hl)}
+
+/* carousel: no outline window — a post header row above a clean panorama */
+.viewer{margin-top:64px}
+.window{top:-52px!important;bottom:auto!important;left:0!important;width:100%!important;height:48px;border:0!important;border-radius:0!important}
+.window .ig-head{padding-inline:0}
+.window .ig-dots{display:none}
+.strip .s{opacity:.42!important;filter:none!important;border-radius:6px}
+.strip .s.on{opacity:1!important}
+.vctrl{margin-top:24px!important}
 .after-sheet{height:24px}
 /* monochrome page: colour lives only inside the posters */
 :focus-visible{outline-color:#9d9d99}
