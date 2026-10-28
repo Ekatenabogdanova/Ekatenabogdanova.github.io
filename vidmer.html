@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Vidmer.dance — сайт лаборатории танца, кейс Екатерины Богдановой</title>
+<meta name="description" content="Сайт лаборатории современной хореографии Vidmer.dance на Tilda: структура, путь записи, визуал и адаптив. Сделала одна за месяц, май 2024. Плюс концепт редизайна 2026">
+<meta name="author" content="Екатерина Богданова">
+<link rel="canonical" href="https://ekatenabogdanova.github.io/vidmer.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Екатерина Богданова">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:url" content="https://ekatenabogdanova.github.io/vidmer.html">
+<meta property="og:title" content="Vidmer.dance — сайт лаборатории танца">
+<meta property="og:description" content="Расписание переехало из директа на сайт: структура, путь записи и визуал для лаборатории современной хореографии">
+<meta property="og:image" content="https://ekatenabogdanova.github.io/assets/vidmer/cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0b">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Onest:wght@400;500&family=PT+Mono&family=Playfair+Display&display=swap" rel="stylesheet">
+<style>
+/* The case wears the real site's look: black, white, one orange; narrow caps headings like its Bebas */
+:root{
+  --bg:#0b0b0b;--bg-2:#161616;--fg:#fff;--sub:#a3a3a3;--line:rgba(255,255,255,.14);
+  --light:#f2f2f2;--light-ink:#0b0b0b;--light-sub:#5c5c5c;--light-line:rgba(11,11,11,.14);
+  --acc:#FF6600;
+  --concept:#ece7df;--concept-ink:#141211;--concept-sub:#6d665f;--concept-acc:#d0573a;
+  --display:"Oswald","Arial Narrow",sans-serif;--sans:"Onest",system-ui,sans-serif;--mono:"PT Mono",ui-monospace,Menlo,monospace;
+  --side:clamp(16px,3.4vw,48px)
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--fg);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+:focus-visible{outline:2px solid var(--acc);outline-offset:4px}
+.wrap{max-width:1344px;margin:0 auto;padding:0 var(--side)}
+.cap{font:400 12px/1.6 var(--mono);letter-spacing:.12em;text-transform:uppercase}
+.band{padding:120px 0}
+.band.light{background:var(--light);color:var(--light-ink)}
+.band.concept{background:var(--concept);color:var(--concept-ink)}
+.kick{display:flex;justify-content:space-between;gap:16px;padding-bottom:16px;border-bottom:1px solid var(--line);color:var(--sub)}
+.light .kick{border-color:var(--light-line);color:var(--light-sub)}
+.concept .kick{border-color:rgba(20,18,17,.14);color:var(--concept-sub)}
+.kick b{font-weight:400;color:var(--acc)}
+.concept .kick b{color:var(--concept-acc)}
+h1,h2,h3{font-family:var(--display);font-weight:600;text-transform:uppercase;letter-spacing:-.005em}
+h2{font-size:clamp(40px,5.6vw,80px);line-height:1;margin-top:40px;max-width:16ch}
+h2 em{font-style:normal;color:var(--acc)}
+.lead{font-size:clamp(18px,1.6vw,22px);line-height:1.5;max-width:720px;margin-top:24px}
+.sub{color:var(--sub)}
+.light .sub{color:var(--light-sub)}
+.concept .sub{color:var(--concept-sub)}
+
+/* hero */
+.hero{padding:24px 0 0}
+.hero-top{display:flex;justify-content:space-between;align-items:center;gap:16px;color:var(--sub)}
+.hero-top .home-mark{color:var(--fg)}
+.hero h1{font-size:clamp(64px,13.4vw,208px);line-height:.88;margin-top:clamp(56px,8vw,112px);letter-spacing:-.01em}
+.hero h1 span{color:var(--acc)}
+.hero .lead{margin-top:32px;font-size:clamp(20px,2vw,28px);line-height:1.35;max-width:820px}
+.meta{display:grid;grid-template-columns:repeat(5,1fr);gap:24px;margin-top:64px;padding-top:24px;border-top:1px solid var(--line)}
+.meta dt{color:var(--sub)}
+.meta dd{margin-top:8px;font-size:15px;line-height:1.5}
+.meta a{text-decoration:none;border-bottom:1px solid var(--acc)}
+.meta a:hover{color:var(--acc)}
+
+/* browser frame for screenshots of the real site */
+.shot{border-radius:12px;overflow:hidden;background:#000;box-shadow:0 0 0 1px var(--line),0 40px 80px -40px rgba(0,0,0,.8)}
+.shot::before{content:"";display:block;height:28px;background:#1d1d1d url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='8'%3E%3Ccircle cx='4' cy='4' r='4' fill='%23444'/%3E%3Ccircle cx='20' cy='4' r='4' fill='%23444'/%3E%3Ccircle cx='36' cy='4' r='4' fill='%23444'/%3E%3C/svg%3E") 12px 50% no-repeat}
+.light .shot{box-shadow:0 0 0 1px var(--light-line),0 32px 64px -40px rgba(0,0,0,.45)}
+.concept .shot{box-shadow:0 0 0 1px rgba(20,18,17,.12),0 32px 64px -40px rgba(20,18,17,.4)}
+.concept .shot::before{background-color:#d9d2c8}
+.hero .shot{margin-top:72px}
+figcaption{margin-top:12px;color:var(--sub)}
+.light figcaption{color:var(--light-sub)}
+.concept figcaption{color:var(--concept-sub)}
+
+/* task */
+.task{display:grid;grid-template-columns:5fr 7fr;gap:48px;align-items:start;margin-top:40px}
+.task h2{margin-top:0}
+.task p+p{margin-top:16px}
+.quotes{display:grid;gap:12px;margin-top:32px}
+.quotes span{justify-self:start;background:#fff;border-radius:20px 20px 20px 4px;padding:12px 20px;font-size:16px;box-shadow:0 1px 0 var(--light-line)}
+.quotes span:nth-child(2){margin-left:40px}
+.quotes span:nth-child(3){margin-left:16px}
+
+/* structure */
+.flow{display:grid;grid-template-columns:repeat(6,1fr);margin-top:56px;border-top:1px solid var(--line)}
+.flow li{list-style:none;padding:20px 16px 0 0;border-right:1px solid var(--line);padding-left:16px}
+.flow li:first-child{padding-left:0}
+.flow li:last-child{border-right:0}
+.flow b{display:block;font:500 13px/1 var(--mono);color:var(--acc)}
+.flow strong{display:block;margin-top:16px;font:600 24px/1.1 var(--display);text-transform:uppercase}
+.flow span{display:block;margin-top:8px;font-size:15px;line-height:1.5;color:var(--sub)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:64px}
+
+/* path */
+.path{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
+.step{background:#fff;border-radius:4px;padding:32px;position:relative}
+.step b{font:600 64px/1 var(--display);color:var(--acc)}
+.step h3{font-size:28px;line-height:1.1;margin-top:24px}
+.step p{margin-top:12px;color:var(--light-sub);font-size:16px}
+.step:not(:last-child)::after{content:"→";position:absolute;right:-14px;top:40px;z-index:1;width:28px;height:28px;border-radius:50%;background:var(--acc);color:#fff;display:grid;place-items:center;font-size:16px}
+.note{margin-top:32px;max-width:760px}
+
+/* look */
+.look{display:grid;grid-template-columns:7fr 5fr;gap:48px;align-items:center;margin-top:56px}
+.swatches{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.sw{aspect-ratio:1;border-radius:4px;padding:16px;display:flex;flex-direction:column;justify-content:flex-end}
+.sw .cap{opacity:.8}
+.type{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.type div{background:var(--bg-2);border-radius:4px;padding:24px 16px}
+.type .aa{font-size:64px;line-height:1}
+.type p{margin-top:12px;color:var(--sub);font-size:14px}
+.look ul{list-style:none;margin-top:32px;display:grid;gap:16px}
+.look li{padding-left:24px;position:relative}
+.look li::before{content:"";position:absolute;left:0;top:.6em;width:10px;height:10px;background:var(--acc)}
+
+/* phones */
+.phones{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,2vw,32px);margin-top:56px}
+.phone{border-radius:28px;padding:8px;background:#1d1d1d;box-shadow:0 0 0 1px var(--line),0 32px 64px -32px rgba(0,0,0,.9)}
+.phone img{border-radius:20px;aspect-ratio:390/760;object-fit:cover;object-position:top;width:100%}
+.light .phone,.concept .phone{background:#111}
+.phones figcaption{text-align:center}
+
+/* result */
+.result{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:56px}
+.result div{background:var(--bg-2);border-radius:4px;padding:40px 32px;border-top:4px solid var(--acc)}
+.result strong{display:block;font:600 clamp(28px,3vw,44px)/1.1 var(--display);text-transform:uppercase}
+.result p{margin-top:16px;color:var(--sub)}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
+.btn{display:inline-flex;align-items:center;gap:12px;min-height:48px;padding:12px 24px;background:var(--acc);color:#fff;text-decoration:none;font:500 15px/1 var(--sans);transition:background .2s,color .2s}
+.btn:hover{background:#fff;color:var(--bg)}
+.btn.line{background:transparent;box-shadow:inset 0 0 0 1px var(--line)}
+.btn.line:hover{background:#fff;color:var(--bg)}
+
+/* concept */
+.concept h2{font:400 clamp(40px,5vw,72px)/1.05 "Tenor Sans",Georgia,serif;text-transform:none;letter-spacing:.01em}
+.concept .note{color:var(--concept-sub)}
+.changes{display:grid;gap:96px;margin-top:72px}
+.change{display:grid;grid-template-columns:4fr 8fr;gap:48px;align-items:center}
+.change:nth-child(even){grid-template-columns:8fr 4fr}
+.change:nth-child(even) .txt{order:2}
+.change b{font:400 13px/1 var(--mono);color:var(--concept-acc)}
+.change h3{font:400 32px/1.15 "Tenor Sans",Georgia,serif;text-transform:none;margin-top:16px}
+.change p{margin-top:16px;color:var(--concept-sub)}
+.change p s{text-decoration-color:var(--concept-acc)}
+.concept .btn{background:var(--concept-ink);color:var(--concept)}
+.concept .btn:hover{background:var(--concept-acc);color:#fff}
+.concept .btn.line{background:transparent;color:var(--concept-ink);box-shadow:inset 0 0 0 1px rgba(20,18,17,.3)}
+.concept .btn.line:hover{background:var(--concept-ink);color:var(--concept)}
+
+/* home mark: the same «● Е. Богданова» as on the main page, on every project page */
+.home-mark{display:inline-flex;align-items:center;gap:12px;font:400 12px/1.6 "PT Mono",ui-monospace,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:inherit;padding:8px 0;white-space:nowrap}
+.home-mark i{width:8px;height:8px;border-radius:50%;background:#7E2625;display:block;flex:none;transition:transform .3s}
+.home-mark .ar{display:inline-block;width:0;margin-right:-12px;opacity:0;overflow:hidden;transition:width .3s,margin .3s,opacity .3s}
+.home-mark:hover .ar,.home-mark:focus-visible .ar{width:1.2em;margin-right:0;opacity:1}
+.home-mark:hover i{transform:scale(1.25)}
+
+@media (max-width:1000px){
+  .meta{grid-template-columns:repeat(3,1fr)}
+  .flow{grid-template-columns:repeat(3,1fr)}
+  .flow li:nth-child(3){border-right:0}
+  .flow li:nth-child(4){padding-left:0}
+  .task,.look{grid-template-columns:1fr}
+  .change,.change:nth-child(even){grid-template-columns:1fr;gap:24px}
+  .change:nth-child(even) .txt{order:0}
+}
+@media (max-width:700px){
+  body{font-size:16px}
+  .band{padding:80px 0}
+  .meta{grid-template-columns:1fr 1fr}
+  .meta div:last-child{grid-column:1/-1}
+  .flow{grid-template-columns:1fr 1fr}
+  .flow li{border-right:0;padding-left:0;padding-bottom:20px;border-bottom:1px solid var(--line)}
+  .grid2,.path,.result{grid-template-columns:1fr}
+  .step:not(:last-child)::after{right:auto;left:32px;top:auto;bottom:-14px;content:"↓"}
+  .phones{grid-template-columns:1fr 1fr;gap:16px}
+  .phone{border-radius:20px;padding:6px}
+  .phone img{border-radius:14px}
+  .changes{gap:64px}
+  .quotes span:nth-child(n){margin-left:0}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet">
+<style>
+/* case-next: closing band on every project page; takes the colours of the page it sits on */
+.case-next{--cn-bg:#2A1610;--cn-fg:#F3E6D3;--cn-sub:#C2AE9A;--cn-acc:#C89B72;--cn-line:rgba(243,230,211,.2);--cn-title:400 clamp(48px,8vw,120px)/1 "Playfair Display",Georgia,serif;
+  background:var(--cn-bg);color:var(--cn-fg);padding:72px clamp(16px,3.4vw,48px) 32px;font:400 16px/1.5 "Onest",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.case-next a{color:inherit;text-decoration:none}
+.case-next .cn-cap{font:400 12px/1.6 "PT Mono",ui-monospace,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase}
+.case-next .cn-top{display:flex;justify-content:space-between;gap:16px;padding-bottom:16px;border-bottom:1px solid var(--cn-line);color:var(--cn-sub)}
+.case-next .cn-go{position:relative;display:grid;margin-top:32px;min-height:clamp(320px,40vw,560px);border-radius:24px;overflow:hidden;isolation:isolate;background:#000}
+.case-next .cn-go>*{grid-area:1/1}
+.case-next .cn-img{display:block;position:relative;z-index:0}
+.case-next .cn-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.62);transition:transform 1.2s cubic-bezier(.2,.8,.2,1),filter .6s}
+.case-next .cn-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 30%,rgba(0,0,0,.78))}
+.case-next .cn-go>span:first-child{position:relative;z-index:1;align-self:end;padding:clamp(24px,4vw,56px);color:#fff}
+.case-next .cn-t{font:var(--cn-title);letter-spacing:-.02em;display:block}
+.case-next .cn-t .ar{display:inline-block;font-size:.5em;vertical-align:.35em;margin-left:.25em;color:var(--cn-acc);transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.case-next .cn-d{display:block;margin-top:12px;max-width:520px;color:rgba(255,255,255,.78);font-size:18px}
+.case-next .cn-go:hover .ar,.case-next .cn-go:focus-visible .ar{transform:translateX(12px)}
+.case-next .cn-go:hover img,.case-next .cn-go:focus-visible img{transform:scale(1.05);filter:brightness(.8)}
+.case-next .cn-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.case-next .cn-pill{display:inline-flex;align-items:center;min-height:44px;padding:8px 20px;border:1px solid var(--cn-acc);border-radius:999px;font:400 12px/1.6 "PT Mono",ui-monospace,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase;transition:background .2s,color .2s}
+.case-next .cn-pill:hover{background:var(--cn-acc);color:var(--cn-bg)}
+.case-next .cn-pill i{width:8px;height:8px;border-radius:50%;background:var(--cn-acc);margin-right:12px;flex:none}
+.case-next .cn-pill:hover i{background:var(--cn-bg)}
+.case-next .cn-foot{display:flex;justify-content:space-between;gap:16px;margin-top:56px;color:var(--cn-sub)}
+.case-next :focus-visible{outline:2px solid var(--cn-acc);outline-offset:4px}
+@media (max-width:700px){.case-next .cn-top span+span{display:none}.case-next .cn-go{min-height:300px}.case-next .cn-d{font-size:16px}}
+@media (prefers-reduced-motion:reduce){.case-next *{transition:none!important}}
+.case-next{--cn-bg:#0b0b0b;--cn-fg:#fff;--cn-sub:#a3a3a3;--cn-acc:#FF6600;--cn-line:rgba(255,255,255,.14);--cn-title:600 clamp(48px,8vw,120px)/1 "Oswald","Arial Narrow",sans-serif}
+.case-next .cn-t{text-transform:uppercase;letter-spacing:-.005em}
+</style>
+</head>
+<body>
+<main>
+
+<header class="hero wrap">
+  <div class="hero-top">
+    <a class="home-mark" href="./" aria-label="На главную"><span class="ar" aria-hidden="true">←</span><i aria-hidden="true"></i>Екатерина Богданова</a>
+    <span class="cap">Кейс · 2024</span>
+  </div>
+  <h1>Vidmer<span>.</span>dance</h1>
+  <p class="lead">Сайт для лаборатории современной хореографии: направления, расписание, цены и&nbsp;запись в&nbsp;одном месте вместо переписки в&nbsp;директе</p>
+  <dl class="meta">
+    <div><dt class="cap">Клиент</dt><dd>Лаборатория танца Vidmer.dance, Москва</dd></div>
+    <div><dt class="cap">Роль</dt><dd>Структура, дизайн, сборка и&nbsp;запуск — одна</dd></div>
+    <div><dt class="cap">Срок</dt><dd>Месяц, май 2024</dd></div>
+    <div><dt class="cap">Платформа</dt><dd>Tilda, Zero Block</dd></div>
+    <div><dt class="cap">Сайт</dt><dd><a href="https://vidmerdance.ru/" target="_blank" rel="noopener">vidmerdance.ru ↗</a></dd></div>
+  </dl>
+  <figure class="shot"><img src="assets/vidmer/real-hero.jpg" width="1600" height="1000" alt="Первый экран vidmerdance.ru: «Лаборатория современной хореографии» и оранжевая кнопка «Записаться» на чёрно-белом фото"></figure>
+</header>
+
+<section class="band light" style="margin-top:120px" aria-labelledby="task-h">
+  <div class="wrap">
+    <div class="kick cap"><span><b>01</b> Задача</span><span>Было до сайта</span></div>
+    <div class="task">
+      <h2 id="task-h">Расписание жило в&nbsp;<em>директе</em></h2>
+      <div>
+        <p class="lead" style="margin-top:0">Всё про занятия студия рассказывала в&nbsp;Instagram и&nbsp;Telegram. За&nbsp;каждой деталью ученицы шли в&nbsp;личные сообщения.</p>
+        <p class="sub">Нужен был сайт, где новичок сам поймёт, что здесь танцуют, когда и&nbsp;сколько это стоит, и&nbsp;только потом напишет — уже чтобы записаться.</p>
+        <div class="quotes" aria-label="Например">
+          <span>А какие у вас есть направления?</span>
+          <span>Во сколько в среду занятие?</span>
+          <span>Сколько стоит пробное?</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="str-h">
+  <div class="wrap">
+    <div class="kick cap"><span><b>02</b> Структура</span><span>Одна длинная страница</span></div>
+    <h2 id="str-h">Страница отвечает на&nbsp;вопросы <em>по порядку</em></h2>
+    <p class="lead sub">Блоки идут в&nbsp;том порядке, в&nbsp;котором человек выбирает студию: что это за&nbsp;место, что здесь танцуют, когда, сколько стоит, кто ведёт и&nbsp;как добраться.</p>
+    <ol class="flow">
+      <li><b>01</b><strong>Кто мы</strong><span>Лаборатория и&nbsp;её подход</span></li>
+      <li><b>02</b><strong>Направления</strong><span>Пять стилей с&nbsp;фото</span></li>
+      <li><b>03</b><strong>Расписание</strong><span>По дням недели</span></li>
+      <li><b>04</b><strong>Тарифы</strong><span>От пробного до&nbsp;безлимита</span></li>
+      <li><b>05</b><strong>Педагоги</strong><span>Кто ведёт занятия</span></li>
+      <li><b>06</b><strong>Контакты</strong><span>Адрес и&nbsp;телеграм</span></li>
+    </ol>
+    <div class="grid2">
+      <figure><div class="shot"><img src="assets/vidmer/real-directions.jpg" width="1600" height="1000" loading="lazy" alt="Блок «Направления»: пять карточек с фото — бродвейский джаз, джаз-модерн, растяжка, контемпорари, актёрское мастерство"></div><figcaption class="cap">Направления</figcaption></figure>
+      <figure><div class="shot"><img src="assets/vidmer/real-schedule.jpg" width="1600" height="1000" loading="lazy" alt="Блок «Расписание»: три колонки — понедельник, среда, суббота — с оранжевыми шапками и названиями занятий"></div><figcaption class="cap">Расписание</figcaption></figure>
+      <figure><div class="shot"><img src="assets/vidmer/real-prices.jpg" width="1600" height="1000" loading="lazy" alt="Блок «Тарифы» на чёрном фоне: пробное 500 ₽, разовое, два часа подряд, восемь занятий"></div><figcaption class="cap">Тарифы</figcaption></figure>
+      <figure><div class="shot"><img src="assets/vidmer/real-teachers.jpg" width="1600" height="1000" loading="lazy" alt="Блок «Преподаватели»: три педагога с фото и коротким описанием"></div><figcaption class="cap">Педагоги</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="band light" aria-labelledby="path-h">
+  <div class="wrap">
+    <div class="kick cap"><span><b>03</b> Путь записи</span><span>Три шага</span></div>
+    <h2 id="path-h">Сначала выбрать, потом <em>написать</em></h2>
+    <div class="path">
+      <div class="step"><b>1</b><h3>Направление</h3><p>Пять стилей с&nbsp;фото — видно, чем джаз-модерн отличается от&nbsp;контемпорари</p></div>
+      <div class="step"><b>2</b><h3>Расписание</h3><p>Дни недели, время, название занятия и&nbsp;педагог в&nbsp;одной карточке</p></div>
+      <div class="step"><b>3</b><h3>Запись в&nbsp;телеграм</h3><p>Кнопка «Записаться» открывает телеграм студии — там, где ученицы и&nbsp;так общаются</p></div>
+    </div>
+    <p class="note sub">Запись осталась в&nbsp;телеграме студии. Изменилось другое — человек пишет, уже зная, на&nbsp;какое занятие и&nbsp;когда хочет прийти.</p>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="look-h">
+  <div class="wrap">
+    <div class="kick cap"><span><b>04</b> Визуал</span><span>Цвет и шрифт</span></div>
+    <h2 id="look-h">Чёрный, белый и&nbsp;один <em>оранжевый</em></h2>
+    <div class="look">
+      <div>
+        <div class="swatches">
+          <div class="sw" style="background:#000;box-shadow:inset 0 0 0 1px var(--line)"><span class="cap">#000000</span></div>
+          <div class="sw" style="background:#fff;color:#0b0b0b"><span class="cap">#FFFFFF</span></div>
+          <div class="sw" style="background:var(--acc);color:#0b0b0b"><span class="cap">#FF6600</span></div>
+        </div>
+        <div class="type">
+          <div><span class="aa" style="font-family:var(--display);font-weight:600">АА</span><p>Bebas — заголовки капсом</p></div>
+          <div><span class="aa">Аа</span><p>Tilda Sans — текст и&nbsp;кнопки</p></div>
+        </div>
+      </div>
+      <div>
+        <p class="lead" style="margin-top:0">Основа страницы — чёрный и&nbsp;белый, монохромные фото на&nbsp;первом экране и&nbsp;в&nbsp;тарифах. Акцентный цвет один.</p>
+        <ul>
+          <li>Оранжевым выделено то, что ищут: дни недели, названия занятий, кнопки записи</li>
+          <li>Узкие заголовки капсом держат ритм длинной страницы</li>
+          <li>Чёрные и&nbsp;светлые блоки чередуются, чтобы разделы не&nbsp;сливались</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" style="padding-top:0" aria-labelledby="mob-h">
+  <div class="wrap">
+    <div class="kick cap"><span><b>05</b> Адаптив</span><span>Телефон</span></div>
+    <h2 id="mob-h">С&nbsp;телефона — <em>так&nbsp;же</em></h2>
+    <p class="lead sub">Каждый блок собран под&nbsp;телефон отдельно: колонки встают друг под&nbsp;друга, кнопка записи остаётся на&nbsp;первом экране.</p>
+    <div class="phones">
+      <figure><div class="phone"><img src="assets/vidmer/real-m-hero.jpg" width="780" height="1688" loading="lazy" alt="Мобильная версия: первый экран с кнопкой «Записаться»"></div><figcaption class="cap">Первый экран</figcaption></figure>
+      <figure><div class="phone"><img src="assets/vidmer/real-m-directions.jpg" width="780" height="1688" loading="lazy" alt="Мобильная версия: направления"></div><figcaption class="cap">Направления</figcaption></figure>
+      <figure><div class="phone"><img src="assets/vidmer/real-m-schedule.jpg" width="780" height="1688" loading="lazy" alt="Мобильная версия: расписание по дням"></div><figcaption class="cap">Расписание</figcaption></figure>
+      <figure><div class="phone"><img src="assets/vidmer/real-m-contacts.jpg" width="780" height="1688" loading="lazy" alt="Мобильная версия: контакты на оранжевом фоне"></div><figcaption class="cap">Контакты</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="band" style="padding-top:0" aria-labelledby="res-h">
+  <div class="wrap">
+    <div class="kick cap"><span><b>06</b> Результат</span><span>Сайт работает с 2024</span></div>
+    <h2 id="res-h">Расписание <em>переехало</em> на&nbsp;сайт</h2>
+    <div class="result">
+      <div><strong>Смотрят на&nbsp;сайте, а&nbsp;не&nbsp;спрашивают в&nbsp;директе</strong><p>Ученицы открывают расписание и&nbsp;цены сами, в&nbsp;телеграм пишут уже, чтобы записаться</p></div>
+      <div><strong>Отметили, что сайт красивый</strong><p>Несколько человек отдельно написали про&nbsp;внешний вид сайта</p></div>
+    </div>
+    <div class="btns"><a class="btn" href="https://vidmerdance.ru/" target="_blank" rel="noopener">Открыть vidmerdance.ru <span aria-hidden="true">↗</span></a></div>
+  </div>
+</section>
+
+<section class="band concept" aria-labelledby="con-h">
+  <div class="wrap">
+    <div class="kick cap"><span><b>07</b> Концепт редизайна</span><span>2026 · для портфолио</span></div>
+    <h2 id="con-h">Как бы я сделала его сейчас</h2>
+    <p class="lead note">Через два года я пересобрала тот же сайт как концепт — без заказа студии, чтобы показать, что бы поменяла сейчас. Содержание то&nbsp;же: направления, расписание, цены, педагоги.</p>
+    <div class="changes">
+      <div class="change">
+        <div class="txt"><b>01</b><h3>Постановки — на&nbsp;первом экране</h3><p>На сайте студии видео спрятаны в&nbsp;блок со&nbsp;ссылками на&nbsp;YouTube внизу. В&nbsp;концепте фоном первого экрана идут постановки студии — сразу видно, как здесь танцуют.</p></div>
+        <figure class="shot"><img src="assets/vidmer/concept-hero.jpg" width="1600" height="1000" loading="lazy" alt="Концепт: первый экран с видео постановки и надписью «Лаборатория современной хореографии»"></figure>
+      </div>
+      <div class="change">
+        <div class="txt"><b>02</b><h3>Расписание и&nbsp;цены рядом</h3><p>Занятия сгруппированы по&nbsp;дням с&nbsp;именем педагога, ближайшее отмечено. Тарифы стоят сразу под расписанием — не&nbsp;нужно листать до&nbsp;отдельного блока.</p></div>
+        <figure class="shot"><img src="assets/vidmer/concept-schedule.jpg" width="1600" height="1000" loading="lazy" alt="Концепт: расписание карточками по дням и тарифы под ним"></figure>
+      </div>
+      <div class="change">
+        <div class="txt"><b>03</b><h3>Запись прямо на&nbsp;странице</h3><p>Короткая форма: имя, телефон или ник в&nbsp;телеграме, занятие. Рядом адрес, телефон и&nbsp;ссылки — всё для первого визита в&nbsp;одном месте.</p></div>
+        <figure class="shot"><img src="assets/vidmer/concept-signup.jpg" width="1600" height="1000" loading="lazy" alt="Концепт: блок «Не думай хотя бы сейчас. Запишись» с формой записи и контактами"></figure>
+      </div>
+    </div>
+    <div class="phones">
+      <figure><div class="phone"><img src="assets/vidmer/concept-m-hero.jpg" width="780" height="1688" loading="lazy" alt="Концепт на телефоне: первый экран"></div><figcaption class="cap">Первый экран</figcaption></figure>
+      <figure><div class="phone"><img src="assets/vidmer/concept-m-schedule.jpg" width="780" height="1688" loading="lazy" alt="Концепт на телефоне: расписание"></div><figcaption class="cap">Расписание</figcaption></figure>
+      <figure><div class="phone"><img src="assets/vidmer/concept-m-signup.jpg" width="780" height="1688" loading="lazy" alt="Концепт на телефоне: форма записи"></div><figcaption class="cap">Запись</figcaption></figure>
+      <figure><div class="phone"><img src="assets/vidmer/real-m-hero.jpg" width="780" height="1688" loading="lazy" alt="Сайт студии на телефоне для сравнения: первый экран"></div><figcaption class="cap">Было: сайт студии</figcaption></figure>
+    </div>
+    <div class="btns"><a class="btn" href="vidmer/">Открыть концепт <span aria-hidden="true">→</span></a></div>
+  </div>
+</section>
+
+</main>
+<!-- case-next -->
+<section class="case-next" aria-labelledby="cn-h">
+  <div class="cn-top cn-cap"><span>Следующий проект</span><span>Екатерина Богданова · портфолио</span></div>
+  <a class="cn-go" href="frameup.html"><span><span class="cn-t" id="cn-h">Frame Up<span class="ar" aria-hidden="true">→</span></span><span class="cn-d">Серия афиш для четырёх танцевальных интенсивов</span></span><span class="cn-img"><img src="assets/frameup-cover.jpg" alt="" loading="lazy"></span></a>
+  <div class="cn-row">
+    <a class="cn-pill" href="./#looma"><i aria-hidden="true"></i>Все проекты</a>
+    <a class="cn-pill" href="resume.html">Резюме</a>
+    <a class="cn-pill" href="https://t.me/ekateribog_dana" target="_blank" rel="noopener">Написать в телеграм ↗</a>
+  </div>
+  <div class="cn-foot cn-cap"><span>Екатерина Богданова, 2026</span><a href="#">Наверх ↑</a></div>
+</section>
+<!-- /case-next -->
+</body>
+</html>
