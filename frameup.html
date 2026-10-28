@@ -273,6 +273,20 @@ p{text-wrap:pretty}
 .ic .t{position:static;display:block;margin-top:8px}
 .ic .t b{display:block;font:600 clamp(20px,1.9vw,26px)/1 var(--head);letter-spacing:-.03em;color:var(--ink)}
 .ic .t small{display:block;margin-top:4px;max-width:none;text-align:left;opacity:1;color:#777;font-size:12px}
+
+/* intensive switch: editorial tabs, no thumbnails (the carousel below shows the posters) */
+.cards{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 24px;margin-top:48px;padding:0;overflow:visible;text-align:left;border-top:1px solid var(--line)}
+.ic{all:unset;box-sizing:border-box;display:block;cursor:pointer;padding:18px 0 4px;margin-top:-1px;border-top:2px solid transparent;color:var(--ink);opacity:.4;transition:opacity .3s,border-color .3s}
+.ic .im{display:none}
+.ic:hover{opacity:.75}
+.ic[aria-pressed="true"]{opacity:1;border-top-color:var(--ink);transform:none;box-shadow:none;filter:none}
+.ic:focus{outline:none}
+.ic:focus-visible{outline:2px solid var(--ink);outline-offset:6px;border-radius:4px}
+.ic .chip{all:unset;display:block;font:500 11px/1.4 var(--body);letter-spacing:.12em;text-transform:uppercase;color:#777}
+.ic .t{display:block;margin-top:10px}
+.ic .t b{display:block;font:600 clamp(20px,2vw,28px)/1.05 var(--head);letter-spacing:-.03em}
+.ic .t small{display:block;margin-top:6px;font-size:13px;color:#777}
+@media (max-width:900px){.cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 16px;margin:32px 0 0}}
 .after-sheet{height:24px}
 /* monochrome page: colour lives only inside the posters */
 :focus-visible{outline-color:#9d9d99}
