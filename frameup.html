@@ -230,7 +230,7 @@ p{text-wrap:pretty}
 .mag-word{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:stretch;padding:0 clamp(16px,3vw,40px);
   font:800 clamp(88px,21vw,300px)/.8 var(--head);letter-spacing:-.06em;text-transform:uppercase;
   background:url(assets/frameup/gen-portrait.jpg) 50% 26%/cover no-repeat;-webkit-background-clip:text;background-clip:text;color:transparent;
-  -webkit-text-stroke:0;filter:contrast(1.12) brightness(.82)}
+  -webkit-text-stroke:0}
 .mag-word span{display:block;text-align:center}
 .mag-top,.mag-bottom{position:absolute;left:clamp(16px,3vw,40px);right:clamp(16px,3vw,40px);display:flex;justify-content:space-between;gap:16px;font-weight:600;letter-spacing:.08em}
 .mag-top{top:76px}
@@ -386,7 +386,6 @@ p{text-wrap:pretty}
   <filter id="smear-hl" x="-10%" y="0" width="120%" height="100%"><feGaussianBlur id="smear-hl-blur" stdDeviation="0 0"/></filter>
 </svg>
 <div class="frame">
-  <div class="ruler" aria-hidden="true"></div>
   <main class="sheet" id="top">
 
     <!-- hero: blurred portrait, giant letters show it sharp -->
