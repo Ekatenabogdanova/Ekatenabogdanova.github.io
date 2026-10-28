@@ -223,6 +223,21 @@ figcaption{margin-top:12px;color:var(--sub)}
   .measure{grid-template-columns:1fr;gap:16px}
   .sub-h{margin-top:80px}
 }
+
+/* concept: design system */
+.ds{display:grid;grid-template-columns:4fr 8fr;gap:48px;margin-top:56px;align-items:start}
+.ds+.ds{margin-top:72px}
+.ds b.n{font:400 13px/1 var(--mono);color:var(--concept-acc)}
+.ds h4{font:400 28px/1.15 "Tenor Sans",Georgia,serif;text-transform:none;margin-top:16px}
+.ds p{margin-top:16px;color:var(--concept-sub)}
+.ds-fig{border-radius:16px;overflow:hidden;box-shadow:0 0 0 1px rgba(20,18,17,.1);background:#f3efe8}
+.ds-fig+.ds-fig{margin-top:16px}
+.ds-nums{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.ds-nums>div{border-top:1px solid rgba(20,18,17,.14);padding-top:16px}
+.ds-nums s{color:var(--concept-sub);text-decoration-color:var(--concept-acc)}
+.ds-nums strong{display:block;font:400 clamp(28px,3vw,44px)/1.1 "Tenor Sans",Georgia,serif;margin-top:4px}
+.ds-nums span{display:block;color:var(--concept-sub);margin-top:8px;font-size:15px}
+@media (max-width:900px){.ds{grid-template-columns:1fr;gap:24px}.ds-nums{grid-template-columns:1fr}}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet">
 <style>
@@ -408,27 +423,48 @@ figcaption{margin-top:12px;color:var(--sub)}
 
     <div class="changes">
       <div class="change">
-        <div class="txt"><b>01</b><h3>Первый экран отвечает новичку</h3><p>Можно ли с нуля, сколько стоит и когда ближайшее занятие. Кнопка в карточке ближайшего класса записывает сразу на него.</p></div>
-        <figure class="shot"><img src="assets/vidmer/v2-hero.jpg" width="1600" height="1000" loading="lazy" alt="Концепт: первый экран с оффером «500 ₽ первое занятие», заголовком «Современная хореография с нуля и для профи», карточкой ближайшего класса и видео постановки"></figure>
+        <div class="txt"><b>01</b><h3>Первый экран отвечает новичку</h3><p>Видео постановки во весь экран, «Начни танцевать» и строка с ближайшим классом. Кнопка записывает сразу на это время, а оффер «500 ₽ без предоплаты» висит над всей страницей.</p></div>
+        <figure class="shot"><img src="assets/vidmer/v3-hero.jpg" width="1600" height="1000" loading="lazy" alt="Концепт: первый экран — видео постановки, заголовок «Начни танцевать» и строка с ближайшим классом и кнопкой записи"></figure>
       </div>
       <div class="change">
-        <div class="txt"><b>02</b><h3>Подбор класса за&nbsp;два вопроса</h3><p>Опыт и цель — и сайт показывает подходящий класс с ближайшим временем. Снимает главный страх новичка: попасть в слишком сложную группу.</p></div>
-        <figure class="shot"><img src="assets/vidmer/v2-finder.jpg" width="1600" height="1000" loading="lazy" alt="Концепт: подбор класса — вопросы «Танцевали раньше?» и «Чего хочется больше?» и результат с ближайшим классом"></figure>
+        <div class="txt"><b>02</b><h3>Подбор класса одной фразой</h3><p>«Мой опыт — никакого, хочу двигаться выразительно»: два слова переключаются, и под фразой сразу появляется подходящий класс с ближайшим временем. Снимает главный страх новичка — попасть в слишком сложную группу.</p></div>
+        <figure class="shot"><img src="assets/vidmer/v3-finder.jpg" width="1600" height="1000" loading="lazy" alt="Концепт: подбор класса фразой «Мой опыт — никакого, хочу двигаться выразительно» и подходящий класс под ней"></figure>
       </div>
       <div class="change">
-        <div class="txt"><b>03</b><h3>Расписание с&nbsp;уровнем и&nbsp;записью</h3><p>У каждого класса уровень, педагог и своя кнопка «Записаться». Фильтр «С нуля» оставляет только то, что подходит новичку.</p></div>
-        <figure class="shot"><img src="assets/vidmer/v2-schedule.jpg" width="1600" height="1000" loading="lazy" alt="Концепт: расписание по дням с метками уровня и кнопкой записи у каждого класса"></figure>
+        <div class="txt"><b>03</b><h3>Расписание как табло</h3><p>Каждая строка — запись на это время: уровень, педагог и длительность в одной линии. Фильтр «С нуля» оставляет только то, что подходит новичку.</p></div>
+        <figure class="shot"><img src="assets/vidmer/v3-schedule.jpg" width="1600" height="1000" loading="lazy" alt="Концепт: расписание-табло по дням, строка под курсором подсвечена оранжевым"></figure>
       </div>
       <div class="change">
         <div class="txt"><b>04</b><h3>Запись в&nbsp;три шага</h3><p>Класс, имя и контакт — без аккаунта и оплаты. После заявки: что взять, как найти студию и «Добавить в календарь» с напоминанием за три часа. Это работает на доходимость.</p></div>
-        <figure class="shot"><img src="assets/vidmer/v2-booking.jpg" width="1600" height="1000" loading="lazy" alt="Концепт: шторка записи с подтверждением «Ждём вас», подсказками к первому визиту и кнопкой «Добавить в календарь»"></figure>
+        <figure class="shot"><img src="assets/vidmer/v3-booking.jpg" width="1600" height="1000" loading="lazy" alt="Концепт: шторка записи с подтверждением «Ждём вас», подсказками к первому визиту и кнопкой «Добавить в календарь»"></figure>
       </div>
     </div>
     <div class="phones">
-      <figure><div class="phone"><img src="assets/vidmer/v2-m-hero.jpg" width="780" height="1688" loading="lazy" alt="Концепт на телефоне: первый экран с видео и оффером"></div><figcaption class="cap">Первый экран</figcaption></figure>
-      <figure><div class="phone"><img src="assets/vidmer/v2-m-finder.jpg" width="780" height="1688" loading="lazy" alt="Концепт на телефоне: результат подбора класса"></div><figcaption class="cap">Подбор</figcaption></figure>
-      <figure><div class="phone"><img src="assets/vidmer/v2-m-schedule.jpg" width="780" height="1688" loading="lazy" alt="Концепт на телефоне: расписание с фильтром и уровнями"></div><figcaption class="cap">Расписание</figcaption></figure>
-      <figure><div class="phone"><img src="assets/vidmer/v2-m-booking.jpg" width="780" height="1688" loading="lazy" alt="Концепт на телефоне: выбор класса в шторке записи"></div><figcaption class="cap">Запись</figcaption></figure>
+      <figure><div class="phone"><img src="assets/vidmer/v3-m-hero.jpg" width="780" height="1688" loading="lazy" alt="Концепт на телефоне: первый экран с видео и оффером"></div><figcaption class="cap">Первый экран</figcaption></figure>
+      <figure><div class="phone"><img src="assets/vidmer/v3-m-finder.jpg" width="780" height="1688" loading="lazy" alt="Концепт на телефоне: результат подбора класса"></div><figcaption class="cap">Подбор фразой</figcaption></figure>
+      <figure><div class="phone"><img src="assets/vidmer/v3-m-schedule.jpg" width="780" height="1688" loading="lazy" alt="Концепт на телефоне: расписание с фильтром и уровнями"></div><figcaption class="cap">Расписание</figcaption></figure>
+      <figure><div class="phone"><img src="assets/vidmer/v3-m-booking.jpg" width="780" height="1688" loading="lazy" alt="Концепт на телефоне: выбор класса в шторке записи"></div><figcaption class="cap">Запись</figcaption></figure>
+    </div>
+
+
+    <h3 class="sub-h">Дизайн-система</h3>
+    <p class="mnote">Первые версии концепта собирались «на глаз», и сайт не держался как одно целое. Я вывела токены и компоненты и пересобрала страницу на них: в CSS страницы осталась только раскладка, а размеры, цвета и отступы берутся из одного файла.</p>
+    <div class="ds-nums">
+      <div><s>27</s><strong>9 ступеней шрифта</strong><span>Пять заголовков Tenor растут от телефона к 1440 px, четыре текстовых Golos</span></div>
+      <div><s>79</s><strong>Шкала отступов на 4 px</strong><span>Десять шагов от 4 до 128 px; высота кнопок — 56 и 44 px, это и минимальная зона нажатия</span></div>
+      <div><s>26</s><strong>0 цветов мимо ролей</strong><span>Семь примитивов и роли: фон, текст, акцент, на акценте, на тёмном</span></div>
+    </div>
+    <div class="ds">
+      <div><b class="n">01</b><h4>Правило оранжевого</h4><p>Проверка контраста показала, что белый текст на фирменном оранжевом — 3,1 : 1 и не проходит AA. В системе на оранжевом всегда тёмный текст, 6,1 : 1, а для оранжевого текста на светлом фоне взят оттенок глубже. Все пары текста и фона — не ниже 4,5 : 1.</p></div>
+      <div><figure class="ds-fig"><img src="assets/vidmer/ds-pairs.jpg" width="1204" height="245" loading="lazy" alt="Три пары: белый на оранжевом 3,1:1 — отклонено; тушь на оранжевом 6,1:1 и оранжевый 700 на песке 5,0:1 — в системе"></figure><figure class="ds-fig"><img src="assets/vidmer/ds-roles.jpg" width="1204" height="554" loading="lazy" alt="Цветовые роли с контрастом: все восемь пар проходят AA"></figure></div>
+    </div>
+    <div class="ds">
+      <div><b class="n">02</b><h4>Шкала шрифтов</h4><p>Tenor Sans — для того, что должно звучать: заголовки, время, цены. Golos Text — для всего, что нужно прочитать. У каждой ступени своя роль на сайте.</p></div>
+      <div><figure class="ds-fig"><img src="assets/vidmer/ds-type.jpg" width="1204" height="1457" loading="lazy" alt="Шкала шрифтов: пять резиновых ступеней Tenor Sans и четыре ступени Golos Text с ролями"></figure></div>
+    </div>
+    <div class="ds">
+      <div><b class="n">03</b><h4>Компоненты с состояниями</h4><p>Кнопка, фильтр, строка класса, выбор словом, поле, выбор времени, шторка, плашка оффера и нижняя панель. У каждого описаны наведение, фокус, выбор, ошибка и «не подходит под фильтр». Главный — строка класса: вся строка целиком записывает на это время.</p></div>
+      <div><figure class="ds-fig"><img src="assets/vidmer/ds-row.jpg" width="1204" height="601" loading="lazy" alt="Компонент «Строка класса» в четырёх состояниях: по умолчанию, наведение, ближайший, не подходит под фильтр"></figure></div>
     </div>
 
     <h3 class="sub-h">Как проверить, что это работает</h3>
