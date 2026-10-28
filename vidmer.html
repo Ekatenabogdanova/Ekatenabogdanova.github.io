@@ -26,7 +26,7 @@
   --bg:#0b0b0b;--bg-2:#161616;--fg:#fff;--sub:#a3a3a3;--line:rgba(255,255,255,.14);
   --light:#f2f2f2;--light-ink:#0b0b0b;--light-sub:#5c5c5c;--light-line:rgba(11,11,11,.14);
   --acc:#FF6600;
-  --concept:#ece7df;--concept-ink:#141211;--concept-sub:#6d665f;--concept-acc:#d0573a;
+  --concept:#f4f1ec;--concept-ink:#141210;--concept-sub:#6b645d;--concept-acc:#c24e1d;--concept-or:#f2672a;
   --display:"Oswald","Arial Narrow",sans-serif;--sans:"Onest",system-ui,sans-serif;--mono:"PT Mono",ui-monospace,Menlo,monospace;
   --side:clamp(16px,3.4vw,48px)
 }
@@ -185,6 +185,44 @@ figcaption{margin-top:12px;color:var(--sub)}
   .quotes span:nth-child(n){margin-left:0}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* concept: metric-first */
+.metric{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:16px;margin-top:56px}
+.metric>div{background:#fffdfa;border-radius:20px;padding:28px;box-shadow:0 0 0 1px rgba(20,18,17,.08)}
+.metric>div.main{background:var(--concept-ink);color:var(--concept)}
+.metric .k{font:400 12px/1.6 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--concept-acc)}
+.metric .main .k{color:var(--concept-or)}
+.metric strong{display:block;font:400 clamp(24px,2.2vw,32px)/1.15 "Tenor Sans",Georgia,serif;margin-top:12px}
+.metric p{margin-top:12px;color:var(--concept-sub)}
+.metric .main p{color:rgba(244,241,236,.7)}
+.mnote{margin-top:24px;max-width:780px;color:var(--concept-sub)}
+.mnote b{color:var(--concept-ink);font-weight:500}
+.sub-h{font:400 clamp(28px,3.2vw,48px)/1.1 "Tenor Sans",Georgia,serif;text-transform:none;margin-top:120px;max-width:20ch}
+.funnel{margin-top:40px;border-top:1px solid rgba(20,18,17,.14)}
+.funnel .row{display:grid;grid-template-columns:48px 1fr 1.5fr 1.7fr;gap:24px;padding:24px 0;border-bottom:1px solid rgba(20,18,17,.14);align-items:start}
+.funnel .row.head{padding:12px 0;font:400 12px/1.6 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--concept-sub)}
+.funnel b{font:400 13px/1.6 var(--mono);color:var(--concept-acc)}
+.funnel h4{font:400 22px/1.2 "Tenor Sans",Georgia,serif;text-transform:none}
+.funnel .was{color:var(--concept-sub)}
+.funnel .now{color:var(--concept-ink)}
+.funnel .lbl{display:none}
+.events{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:32px}
+.events code{font:400 13px/1 var(--mono);padding:10px 14px;border-radius:999px;background:#fffdfa;box-shadow:0 0 0 1px rgba(20,18,17,.12)}
+.events code.main{background:var(--concept-or);color:#fff;box-shadow:none}
+.events code.crm{background:transparent;box-shadow:inset 0 0 0 1px rgba(20,18,17,.3);border-radius:999px}
+.events i{font-style:normal;color:var(--concept-sub)}
+.measure{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:32px}
+.measure p{color:var(--concept-sub)}
+.measure p b{color:var(--concept-ink);font-weight:500}
+@media (max-width:900px){
+  .metric{grid-template-columns:1fr}
+  .funnel .row.head{display:none}
+  .funnel .row{grid-template-columns:32px 1fr;gap:8px 16px}
+  .funnel .was,.funnel .now{grid-column:2}
+  .funnel .lbl{display:block;font:400 11px/1.6 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--concept-sub);margin-bottom:2px}
+  .measure{grid-template-columns:1fr;gap:16px}
+  .sub-h{margin-top:80px}
+}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet">
 <style>
@@ -345,30 +383,61 @@ figcaption{margin-top:12px;color:var(--sub)}
   </div>
 </section>
 
-<section class="band concept" aria-labelledby="con-h">
+<section class="band concept" id="concept" aria-labelledby="con-h">
   <div class="wrap">
     <div class="kick cap"><span><b>07</b> Концепт редизайна</span><span>2026 · для портфолио</span></div>
     <h2 id="con-h">Как бы я сделала его сейчас</h2>
-    <p class="lead note">Через два года я пересобрала тот же сайт как концепт — без заказа студии, чтобы показать, что бы поменяла сейчас. Содержание то&nbsp;же: направления, расписание, цены, педагоги.</p>
+    <p class="lead note">Через два года я пересобрала тот же сайт как концепт, без заказа студии. Начала не с визуала, а с вопроса: какой результат сайт должен давать студии? Новые ученицы на первом занятии. Под эту цель выстроены и структура, и экраны.</p>
+
+    <div class="metric">
+      <div class="main"><span class="k">Главная метрика</span><strong>Доля посетителей, которые записались на пробное</strong><p>Студии нужны люди в зале, а не просмотры. Сайт ценен тем, сколько новых учениц он приводит на первое занятие.</p></div>
+      <div><span class="k">Вспомогательная</span><strong>Сколько записавшихся пришли</strong><p>Заявка без визита ничего не стоит, поэтому подтверждение и напоминание — тоже часть сайта.</p></div>
+      <div><span class="k">Вспомогательная</span><strong>Сколько купили абонемент после пробного</strong><p>Показывает, что сайт приводит своих людей, а не случайных.</p></div>
+    </div>
+    <p class="mnote">Сейчас кнопка «Записаться» открывает телеграм студии. Сайт видит клик, но не знает, написал ли человек и записался ли. <b>Главную метрику на текущем сайте не посчитать — это первое, что меняет концепт.</b></p>
+
+    <h3 class="sub-h">Где сейчас теряется человек на пути к первому занятию</h3>
+    <div class="funnel" role="table" aria-label="Воронка до первого занятия">
+      <div class="row head" role="row"><span></span><span role="columnheader">Шаг</span><span role="columnheader">Что мешает на текущем сайте</span><span role="columnheader">Что в концепте</span></div>
+      <div class="row" role="row"><b>01</b><h4 role="cell">Понять, подходит&nbsp;ли</h4><p class="was" role="cell"><span class="lbl">Сейчас</span>На первом экране название студии и кнопка. Не видно, можно ли прийти с нуля и сколько это стоит.</p><p class="now" role="cell"><span class="lbl">В концепте</span>«Первое занятие — 500 ₽» и «с нуля и для профи» на первом экране, рядом видео постановки.</p></div>
+      <div class="row" role="row"><b>02</b><h4 role="cell">Выбрать класс</h4><p class="was" role="cell"><span class="lbl">Сейчас</span>В расписании нет уровня. Новичку непонятно, в какую группу идти.</p><p class="now" role="cell"><span class="lbl">В концепте</span>Подбор за два вопроса, метки уровня у каждого класса и ближайший класс на первом экране.</p></div>
+      <div class="row" role="row"><b>03</b><h4 role="cell">Записаться</h4><p class="was" role="cell"><span class="lbl">Сейчас</span>Нужно перейти в телеграм и самой написать сообщение.</p><p class="now" role="cell"><span class="lbl">В концепте</span>Запись на конкретное время в три шага, без регистрации и предоплаты. Кнопка записи видна на каждом экране.</p></div>
+      <div class="row" role="row"><b>04</b><h4 role="cell">Прийти</h4><p class="was" role="cell"><span class="lbl">Сейчас</span>На сайте нет подсказок для первого визита.</p><p class="now" role="cell"><span class="lbl">В концепте</span>Блок «Как пройдёт знакомство», после заявки — адрес, что взять и событие в календарь с напоминанием.</p></div>
+      <div class="row" role="row"><b>05</b><h4 role="cell">Остаться</h4><p class="was" role="cell"><span class="lbl">Сейчас</span>Тарифы идут списком, выгода абонемента не видна.</p><p class="now" role="cell"><span class="lbl">В концепте</span>«8 занятий — 1 100 ₽ за класс» отмечено как выгоднее всего, а последний шаг знакомства — «решите после класса».</p></div>
+    </div>
+
     <div class="changes">
       <div class="change">
-        <div class="txt"><b>01</b><h3>Постановки — на&nbsp;первом экране</h3><p>На сайте студии видео спрятаны в&nbsp;блок со&nbsp;ссылками на&nbsp;YouTube внизу. В&nbsp;концепте фоном первого экрана идут постановки студии — сразу видно, как здесь танцуют.</p></div>
-        <figure class="shot"><img src="assets/vidmer/concept-hero.jpg" width="1600" height="1000" loading="lazy" alt="Концепт: первый экран с видео постановки и надписью «Лаборатория современной хореографии»"></figure>
+        <div class="txt"><b>01</b><h3>Первый экран отвечает новичку</h3><p>Можно ли с нуля, сколько стоит и когда ближайшее занятие. Кнопка в карточке ближайшего класса записывает сразу на него.</p></div>
+        <figure class="shot"><img src="assets/vidmer/v2-hero.jpg" width="1600" height="1000" loading="lazy" alt="Концепт: первый экран с оффером «500 ₽ первое занятие», заголовком «Современная хореография с нуля и для профи», карточкой ближайшего класса и видео постановки"></figure>
       </div>
       <div class="change">
-        <div class="txt"><b>02</b><h3>Расписание и&nbsp;цены рядом</h3><p>Занятия сгруппированы по&nbsp;дням с&nbsp;именем педагога, ближайшее отмечено. Тарифы стоят сразу под расписанием — не&nbsp;нужно листать до&nbsp;отдельного блока.</p></div>
-        <figure class="shot"><img src="assets/vidmer/concept-schedule.jpg" width="1600" height="1000" loading="lazy" alt="Концепт: расписание карточками по дням и тарифы под ним"></figure>
+        <div class="txt"><b>02</b><h3>Подбор класса за&nbsp;два вопроса</h3><p>Опыт и цель — и сайт показывает подходящий класс с ближайшим временем. Снимает главный страх новичка: попасть в слишком сложную группу.</p></div>
+        <figure class="shot"><img src="assets/vidmer/v2-finder.jpg" width="1600" height="1000" loading="lazy" alt="Концепт: подбор класса — вопросы «Танцевали раньше?» и «Чего хочется больше?» и результат с ближайшим классом"></figure>
       </div>
       <div class="change">
-        <div class="txt"><b>03</b><h3>Запись прямо на&nbsp;странице</h3><p>Короткая форма: имя, телефон или ник в&nbsp;телеграме, занятие. Рядом адрес, телефон и&nbsp;ссылки — всё для первого визита в&nbsp;одном месте.</p></div>
-        <figure class="shot"><img src="assets/vidmer/concept-signup.jpg" width="1600" height="1000" loading="lazy" alt="Концепт: блок «Не думай хотя бы сейчас. Запишись» с формой записи и контактами"></figure>
+        <div class="txt"><b>03</b><h3>Расписание с&nbsp;уровнем и&nbsp;записью</h3><p>У каждого класса уровень, педагог и своя кнопка «Записаться». Фильтр «С нуля» оставляет только то, что подходит новичку.</p></div>
+        <figure class="shot"><img src="assets/vidmer/v2-schedule.jpg" width="1600" height="1000" loading="lazy" alt="Концепт: расписание по дням с метками уровня и кнопкой записи у каждого класса"></figure>
+      </div>
+      <div class="change">
+        <div class="txt"><b>04</b><h3>Запись в&nbsp;три шага</h3><p>Класс, имя и контакт — без аккаунта и оплаты. После заявки: что взять, как найти студию и «Добавить в календарь» с напоминанием за три часа. Это работает на доходимость.</p></div>
+        <figure class="shot"><img src="assets/vidmer/v2-booking.jpg" width="1600" height="1000" loading="lazy" alt="Концепт: шторка записи с подтверждением «Ждём вас», подсказками к первому визиту и кнопкой «Добавить в календарь»"></figure>
       </div>
     </div>
     <div class="phones">
-      <figure><div class="phone"><img src="assets/vidmer/concept-m-hero.jpg" width="780" height="1688" loading="lazy" alt="Концепт на телефоне: первый экран с видео постановки «Шёлк»"></div><figcaption class="cap">Первый экран</figcaption></figure>
-      <figure><div class="phone"><img src="assets/vidmer/concept-m-menu.jpg" width="780" height="1688" loading="lazy" alt="Концепт на телефоне: меню на весь экран"></div><figcaption class="cap">Меню</figcaption></figure>
-      <figure><div class="phone"><img src="assets/vidmer/concept-m-schedule.jpg" width="780" height="1688" loading="lazy" alt="Концепт на телефоне: расписание карточками по дням"></div><figcaption class="cap">Расписание</figcaption></figure>
-      <figure><div class="phone"><img src="assets/vidmer/concept-m-signup.jpg" width="780" height="1688" loading="lazy" alt="Концепт на телефоне: форма записи и контакты"></div><figcaption class="cap">Запись</figcaption></figure>
+      <figure><div class="phone"><img src="assets/vidmer/v2-m-hero.jpg" width="780" height="1688" loading="lazy" alt="Концепт на телефоне: первый экран с видео и оффером"></div><figcaption class="cap">Первый экран</figcaption></figure>
+      <figure><div class="phone"><img src="assets/vidmer/v2-m-finder.jpg" width="780" height="1688" loading="lazy" alt="Концепт на телефоне: результат подбора класса"></div><figcaption class="cap">Подбор</figcaption></figure>
+      <figure><div class="phone"><img src="assets/vidmer/v2-m-schedule.jpg" width="780" height="1688" loading="lazy" alt="Концепт на телефоне: расписание с фильтром и уровнями"></div><figcaption class="cap">Расписание</figcaption></figure>
+      <figure><div class="phone"><img src="assets/vidmer/v2-m-booking.jpg" width="780" height="1688" loading="lazy" alt="Концепт на телефоне: выбор класса в шторке записи"></div><figcaption class="cap">Запись</figcaption></figure>
+    </div>
+
+    <h3 class="sub-h">Как проверить, что это работает</h3>
+    <div class="events" aria-label="События воронки">
+      <code>visit</code><i>→</i><code>view_schedule</code><i>→</i><code>finder_result</code><i>→</i><code>booking_open</code><i>→</i><code class="main">booking_submit</code><i>→</i><code>add_to_calendar</code><i>→</i><code class="crm">пришла на занятие</code><i>→</i><code class="crm">купила абонемент</code>
+    </div>
+    <div class="measure">
+      <p><b>Главная метрика — booking_submit, делённое на visit.</b> Промежуточные события показывают, где уходят: если подбор проходят, но не записываются, проблема в расписании, а не в первом экране.</p>
+      <p><b>Последние два шага студия отмечает у себя в таблице.</b> Сайт передаёт заявку с выбранным классом, поэтому визит и абонемент можно связать. Цифр здесь нет: концепт не запускали. Базой для сравнения станут клики на «Записаться» на текущем сайте за пару недель до запуска.</p>
     </div>
   </div>
 </section>
