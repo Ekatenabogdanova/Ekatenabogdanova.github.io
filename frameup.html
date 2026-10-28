@@ -110,7 +110,6 @@ p{text-wrap:pretty}
 .ic{position:relative;flex:0 0 clamp(180px,22vw,300px);aspect-ratio:3/3.6;margin:0 -10px;border-radius:16px;overflow:hidden;border:0;padding:0;cursor:pointer;color:#fff;text-align:left;
   background-size:300% 100%;background-position:0 0;box-shadow:0 20px 40px rgba(0,0,0,.25);transform:scale(.9);filter:saturate(.85);transition:transform .6s cubic-bezier(.2,.8,.2,1),filter .6s,box-shadow .6s;z-index:1}
 .ic::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 40%,rgba(0,0,0,.75))}
-.ic[aria-pressed="true"]{transform:scale(1.04) translateY(-14px);z-index:3;filter:none;box-shadow:0 36px 70px rgba(0,0,0,.4),0 0 0 2px var(--c)}
 .ic:hover{filter:none}
 .ic .chip{position:absolute;top:12px;left:12px;z-index:1;color:#fff;border-color:rgba(255,255,255,.55);background:rgba(0,0,0,.25);backdrop-filter:blur(6px)}
 .ic .chip i{width:6px;height:6px;border-radius:50%;background:var(--c)}
@@ -126,7 +125,7 @@ p{text-wrap:pretty}
 .vhead p{color:#666;max-width:520px;font-size:13px}
 .viewer{position:relative;margin-top:72px}
 .strip{display:flex;gap:4px;cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none}
-.strip .s{flex:1 1 0;min-width:0;aspect-ratio:1012/1350;background-size:300% 100%;border-radius:4px;opacity:.45;filter:grayscale(.6) blur(5px);transition:opacity .6s,filter .6s}
+.strip .s{flex:1 1 0;min-width:0;aspect-ratio:1012/1350;background-size:300% 100%;border-radius:4px;opacity:.4;transition:opacity .6s}
 .strip .s:nth-child(1){background-position:0 0}.strip .s:nth-child(2){background-position:50% 0}.strip .s:nth-child(3){background-position:100% 0}
 .strip .s.on{opacity:1;filter:none}
 .window{position:absolute;top:-48px;bottom:-48px;left:calc(var(--i,0)*(100% + 4px)/3);width:calc((100% - 8px)/3);border:1.5px solid var(--ink);border-radius:20px;pointer-events:none;transition:left .7s cubic-bezier(.2,.8,.2,1)}
@@ -293,8 +292,7 @@ p{text-wrap:pretty}
 .ast{color:var(--ink)}
 .hero::after{background:radial-gradient(ellipse 50% 60% at 55% 50%,rgba(255,255,255,.08),transparent 70%),linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,0) 30%,rgba(0,0,0,.45))}
 .hero h1 .deep{color:var(--pale)}
-.ic[aria-pressed="true"]{box-shadow:0 36px 70px rgba(0,0,0,.4),0 0 0 2px var(--ink)}
-.ic .chip i,.switch button::before{display:none}
+.switch button::before{display:none}
 .vhead h3 i{color:var(--mute)}
 .ig-head .av{box-shadow:0 0 0 2px var(--sheet),0 0 0 3.5px var(--ink)}
 .ig-dots i.on{background:var(--ink)}
