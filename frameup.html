@@ -226,12 +226,6 @@ p{text-wrap:pretty}
 
 /* magazine hero: blurred portrait, letters reveal it sharp */
 .mag{position:relative;height:min(920px,96vh);min-height:600px;overflow:hidden;isolation:isolate;color:#fff;background:#111}
-.mag-bg{position:absolute;inset:0;z-index:-1;background:url(assets/frameup/gen-portrait.jpg) 50% 26%/cover no-repeat;filter:blur(22px) brightness(.9)}
-.mag-word{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:stretch;padding:0 clamp(16px,3vw,40px);
-  font:800 clamp(88px,21vw,300px)/.8 var(--head);letter-spacing:-.06em;text-transform:uppercase;
-  background:url(assets/frameup/gen-portrait.jpg) 50% 26%/cover no-repeat;-webkit-background-clip:text;background-clip:text;color:transparent;
-  -webkit-text-stroke:0}
-.mag-word span{display:block;text-align:center}
 .mag-top,.mag-bottom{position:absolute;left:clamp(16px,3vw,40px);right:clamp(16px,3vw,40px);display:flex;justify-content:space-between;gap:16px;font-weight:600;letter-spacing:.08em}
 .mag-top{top:76px}
 .mag-bottom{bottom:28px}
@@ -244,7 +238,7 @@ p{text-wrap:pretty}
 .deck-col .deck .card{box-shadow:0 30px 60px rgba(0,0,0,.28)}
 .deck-meta{display:flex;align-items:center;gap:16px;color:#777}
 .deck-meta .sc{box-shadow:0 0 0 1px var(--line)}
-@media (max-width:900px){.intro2{grid-template-columns:1fr}.mag{height:auto;aspect-ratio:3/4}.mag-word{font-size:30vw}}
+@media (max-width:900px){.intro2{grid-template-columns:1fr}.mag{height:auto;aspect-ratio:3/4}}
 
   background:linear-gradient(90deg,rgba(0,0,0,0) 40%,rgba(0,0,0,.72) 66%,rgba(0,0,0,.88)),url(assets/frameup/gen-floor.jpg) 30% 50%/cover no-repeat;display:flex;justify-content:flex-end;align-items:flex-end}
 .feed{background:linear-gradient(180deg,rgba(20,20,20,.86),rgba(20,20,20,.95)),url(assets/frameup/gen-floor.jpg) 35% 40%/cover no-repeat}
@@ -282,7 +276,6 @@ p{text-wrap:pretty}
 .how-card.c{background-image:url(assets/frameup/frame-pro.jpg)!important}
 
 /* smear: horizontal motion blur, not round blur */
-.mag-bg{filter:url(#smear-bg) brightness(.92)!important;transform:none}
 
 /* carousel: no outline window — a post header row above a clean panorama */
 .viewer{margin-top:64px}
