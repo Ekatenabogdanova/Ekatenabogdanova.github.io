@@ -312,6 +312,15 @@ p{text-wrap:pretty}
 
 .intro2 .lead.role{margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
 .intro2 .lead.role b{color:var(--ink);font-weight:600}
+
+.proc{padding-top:120px}
+.tl{list-style:none;margin-top:48px;border-top:1px solid var(--line)}
+.tl li{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);gap:8px 24px;padding:24px 0;border-bottom:1px solid var(--line)}
+.tl .cap{color:#777;padding-top:6px}
+.tl b{display:block;font:600 clamp(20px,1.8vw,26px)/1.15 var(--head);letter-spacing:-.02em}
+.tl p{margin-top:8px;color:#555;max-width:62ch}
+.tl li.key b::after{content:" ✱";color:var(--ink)}
+@media (max-width:700px){.tl li{grid-template-columns:1fr}}
 .after-sheet{height:24px}
 /* monochrome page: colour lives only inside the posters */
 :focus-visible{outline-color:#9d9d99}
@@ -400,7 +409,7 @@ p{text-wrap:pretty}
     <header class="mag" aria-labelledby="mag-h">
       <div class="hero-nav">
         <a class="home-mark" href="./" aria-label="На главную" style="color:#fff"><span class="ar" aria-hidden="true">←</span><i aria-hidden="true"></i>Екатерина Богданова</a>
-        <nav class="cap" aria-label="Разделы кейса"><a href="#series">Интенсивы</a><a href="#how">Система</a><a href="#feed">В ленте</a></nav>
+        <nav class="cap" aria-label="Разделы кейса"><a href="#process">Процесс</a><a href="#series">Интенсивы</a><a href="#how">Система</a><a href="#feed">В ленте</a></nav>
       </div>
       <div class="mag-top cap"><span>Frame Up Official — серия афиш</span><span>Осень 2025</span></div>
       <svg class="mag-svg" viewBox="0 0 1400 920" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
@@ -427,7 +436,7 @@ p{text-wrap:pretty}
         <span class="ast" aria-hidden="true"><svg viewBox="0 0 40 40"><g stroke="currentColor" stroke-width="4" stroke-linecap="round"><path d="M20 3v34M3 20h34M8 8l24 24M32 8 8 32"/></g></svg></span>
         <h2 class="hl" id="intro-h">Frame Up Official — <span class="m">танцы, где</span> пластика встречает <span class="m">чёткий ритм</span> и акробатику</h2>
         <p class="lead">Осенью 2025 года прошли четыре интенсива DEEP. Для каждого я сделала карусель в Instagram: на интенсиве пять-шесть педагогов, у каждого своё время и темы, и всё это читают с телефона</p>
-        <p class="lead role"><b>Моя роль</b> — дизайн серии: сетка, типографика, цвет и вёрстка. Фото педагогов я брала из их соцсетей, тексты прислали организаторы</p>
+        <p class="lead role"><b>Моя роль</b> — дизайн серии: сетка, типографика, цвет и вёрстка. Фото педагогов я брала из их соцсетей по ссылкам организаторов, программы и тексты прислали они же</p>
       </div>
       <div class="deck-col">
         <button class="deck" type="button" aria-label="Показать следующую обложку">
@@ -467,6 +476,20 @@ p{text-wrap:pretty}
         </div>
         <div class="vctrl"><span class="cs cap"></span><span class="vbtns"><button class="rb" type="button" aria-label="Предыдущий слайд">←</button><button class="rb" type="button" aria-label="Следующий слайд">→</button></span></div>
       </div>
+    </section>
+
+    <!-- process -->
+    <section class="proc pad" id="process" aria-labelledby="proc-h">
+      <h2 class="hl" id="proc-h">Семь недель, <span class="m">четыре афиши,</span> один каркас</h2>
+      <ol class="tl">
+        <li><span class="cap">27 июля · Бриф</span><div><b>Единая серия, но каждая афиша своя</b><p>Четыре интенсива, два направления. Формат 1012 × 1350, два-три экрана, элементы перетекают со слайда на слайд. Начали с одной афиши на пробу</p></div></li>
+        <li><span class="cap">29 июля · Первый вариант</span><div><b>Цвета оставили, остальное пересобрала</b><p>Заказчица попросила забыть прежние афиши проекта, растянуть DEEP и добавить размытые элементы на фон</p></div></li>
+        <li><span class="cap">3–4 августа · Шрифт</span><div><b>Отказалась от декоративного шрифта</b><p>Poiret One в подзаголовке выбивался из общей картины, заменила его на простой гротеск. Выровняла отступы: разница в пару пикселей делала макет грязным</p></div></li>
+        <li class="key"><span class="cap">8 августа · Цвет</span><div><b>Предложила свой акцент для каждого интенсива</b><p>В первой афише был красный. Я предложила дать остальным свои цвета: серия осталась единой, а события перестали путаться</p></div></li>
+        <li><span class="cap">14 августа</span><div><b>Согласованы первые две афиши</b><p>Frame Up Beginners и High Heels Pro</p></div></li>
+        <li><span class="cap">28 августа · Третья</span><div><b>Канон не сработал</b><p>Сначала собрала её по шаблону первых двух — смотрелось плоско. Переделала расположение: повёрнутые плашки, педагоги вразброс</p></div></li>
+        <li><span class="cap">Сентябрь · Финал</span><div><b>Четвёртая афиша и замены педагогов</b><p>Последнюю согласовали в начале сентября. Педагогов меняли до самого запуска продаж</p></div></li>
+      </ol>
     </section>
 
     <!-- how -->
