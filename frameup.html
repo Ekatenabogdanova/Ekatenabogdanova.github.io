@@ -286,6 +286,11 @@ p{text-wrap:pretty}
 .ic .t b{display:block;font:600 clamp(20px,2vw,28px)/1.05 var(--head);letter-spacing:-.03em}
 .ic .t small{display:block;margin-top:6px;font-size:13px;color:#777}
 @media (max-width:900px){.cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 16px;margin:32px 0 0}}
+
+/* how cards: whole covers at native scale instead of stretched details */
+.how-card.a,.how-card.c{aspect-ratio:1012/1350;background-size:300% 100%!important;background-position:0 0!important}
+.how-card.a{background-image:url(assets/frameup/heels-pro.jpg)!important}
+.how-card.c{background-image:url(assets/frameup/frame-pro.jpg)!important}
 .after-sheet{height:24px}
 /* monochrome page: colour lives only inside the posters */
 :focus-visible{outline-color:#9d9d99}
@@ -385,7 +390,6 @@ p{text-wrap:pretty}
         <span class="ast" aria-hidden="true"><svg viewBox="0 0 40 40"><g stroke="currentColor" stroke-width="4" stroke-linecap="round"><path d="M20 3v34M3 20h34M8 8l24 24M32 8 8 32"/></g></svg></span>
         <h2 class="hl" id="intro-h">Frame Up Official — <span class="m">танцы, где</span> пластика встречает <span class="m">чёткий ритм</span> и акробатику</h2>
         <p class="lead">Осенью 2025 года прошли четыре интенсива DEEP. Для каждого я сделала карусель в Instagram: на интенсиве пять-шесть педагогов, у каждого своё время и темы, и всё это читают с телефона</p>
-        <div class="thumbs"><div class="t1" role="img" aria-label="Вертикальное название на обложке"></div><div class="t2" role="img" aria-label="Карточки педагогов"></div><div class="t3" role="img" aria-label="Золотой акцент на обложке"></div></div>
       </div>
       <div class="deck-col">
         <button class="deck" type="button" aria-label="Показать следующую обложку">
