@@ -224,6 +224,28 @@ p{text-wrap:pretty}
 .sw{display:flex;gap:8px;margin-top:8px}
 .sw i{flex:1;height:56px;border-radius:12px;box-shadow:inset 0 0 0 1px var(--line)}
 
+
+/* magazine hero: blurred portrait, letters reveal it sharp */
+.mag{position:relative;height:min(920px,96vh);min-height:600px;overflow:hidden;isolation:isolate;color:#fff;background:#111}
+.mag-bg{position:absolute;inset:0;z-index:-1;background:url(assets/frameup/portrait.jpg) 50% 32%/cover no-repeat;filter:blur(22px) brightness(.9)}
+.mag-word{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:stretch;padding:0 clamp(16px,3vw,40px);
+  font:800 clamp(88px,21vw,300px)/.8 var(--head);letter-spacing:-.06em;text-transform:uppercase;
+  background:url(assets/frameup/portrait.jpg) 50% 32%/cover no-repeat;-webkit-background-clip:text;background-clip:text;color:transparent;
+  -webkit-text-stroke:0;filter:contrast(1.12) brightness(.82)}
+.mag-word span{display:block;text-align:center}
+.mag-top,.mag-bottom{position:absolute;left:clamp(16px,3vw,40px);right:clamp(16px,3vw,40px);display:flex;justify-content:space-between;gap:16px;font-weight:600;letter-spacing:.08em}
+.mag-top{top:76px}
+.mag-bottom{bottom:28px}
+.intro2{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(24px,4vw,64px);padding-top:88px;align-items:start}
+.intro2 .hl{margin-top:20px}
+.intro2 .lead{margin-top:20px;max-width:440px;font-size:13px;color:#555}
+.intro2 .thumbs{margin-left:0}
+.deck-col{display:flex;flex-direction:column;align-items:center;gap:24px;padding-top:24px}
+.deck-col .deck{width:min(330px,100%)}
+.deck-col .deck .card{box-shadow:0 30px 60px rgba(0,0,0,.28)}
+.deck-meta{display:flex;align-items:center;gap:16px;color:#777}
+.deck-meta .sc{box-shadow:0 0 0 1px var(--line)}
+@media (max-width:900px){.intro2{grid-template-columns:1fr}.mag{height:auto;aspect-ratio:3/4}.mag-word{font-size:30vw}}
 .after-sheet{height:24px}
 /* monochrome page: colour lives only inside the posters */
 :focus-visible{outline-color:#9d9d99}
@@ -306,46 +328,35 @@ p{text-wrap:pretty}
   <div class="ruler" aria-hidden="true"></div>
   <main class="sheet" id="top">
 
-    <!-- hero -->
-    <header class="hero">
+    <!-- hero: blurred portrait, giant letters show it sharp -->
+    <header class="mag" aria-labelledby="mag-h">
+      <div class="mag-bg" aria-hidden="true"></div>
       <div class="hero-nav">
         <a class="home-mark" href="./" aria-label="На главную" style="color:#fff"><span class="ar" aria-hidden="true">←</span><i aria-hidden="true"></i>Екатерина Богданова</a>
         <nav class="cap" aria-label="Разделы кейса"><a href="#series">Интенсивы</a><a href="#how">Система</a><a href="#feed">В ленте</a></nav>
       </div>
-      <div class="hero-left">
-        <p class="k">Серия<br>афиш для<br>Instagram/</p>
-        <p>Коммерческий проект для Frame Up Official — танцевального проекта Анастасии Юрасовой</p>
+      <div class="mag-top cap"><span>Frame Up Official — серия афиш</span><span>Осень 2025</span></div>
+      <h1 class="mag-word" id="mag-h" aria-label="Frame Up Deep"><span>FRAME</span><span>UP</span><span>DEEP</span></h1>
+      <div class="mag-bottom cap"><span>Лера Soul, педагог интенсива High Heels Deep</span><span>Instagram · 4 карусели · 12 слайдов</span></div>
+    </header>
+
+    <!-- intro -->
+    <section class="intro2 pad" aria-labelledby="intro-h">
+      <div>
+        <span class="ast" aria-hidden="true"><svg viewBox="0 0 40 40"><g stroke="currentColor" stroke-width="4" stroke-linecap="round"><path d="M20 3v34M3 20h34M8 8l24 24M32 8 8 32"/></g></svg></span>
+        <h2 class="hl" id="intro-h">Frame Up Official — <span class="m">танцы, где</span> пластика <span class="pill-img" style="background-image:url(assets/frameup/frame-beg.jpg);background-size:300% 100%;background-position:0 0" aria-hidden="true"></span> встречает <span class="m">чёткий ритм</span> и акробатику</h2>
+        <p class="lead">Осенью 2025 года прошли четыре интенсива DEEP. Для каждого я сделала карусель в Instagram: на интенсиве пять-шесть педагогов, у каждого своё время и темы, и всё это читают с телефона</p>
+        <div class="thumbs"><div class="t1" role="img" aria-label="Вертикальное название на обложке"></div><div class="t2" role="img" aria-label="Карточки педагогов"></div><div class="t3" role="img" aria-label="Золотой акцент на обложке"></div></div>
       </div>
-      <div class="hero-mid">
+      <div class="deck-col">
         <button class="deck" type="button" aria-label="Показать следующую обложку">
           <span class="card" data-pos="0" data-acc="#4a40e0" style="background-image:url(assets/frameup/heels-pro.jpg)"></span>
           <span class="card" data-pos="1" data-acc="#c21a1a" style="background-image:url(assets/frameup/frame-beg.jpg)"></span>
           <span class="card" data-pos="2" data-acc="#a9b400" style="background-image:url(assets/frameup/heels-beg.jpg)"></span>
           <span class="card" data-pos="3" data-acc="#d4af37" style="background-image:url(assets/frameup/frame-pro.jpg)"></span>
         </button>
+        <div class="deck-meta"><div class="sc w"><span class="cap">Лучший пост</span><div><b>517</b><small>лайков и 197 отправок</small></div></div><p class="cap">Смахните афишу или нажмите на неё</p></div>
       </div>
-      <div class="hero-right">
-        <h1 aria-label="Frame Up Deep">Frame Up<span class="deep">Deep</span></h1>
-        <p>Четыре карусели для танцевальных интенсивов. Один каркас, монохромные фото и свой цвет у каждого события</p>
-      </div>
-      <div class="hero-bottom">
-        <div class="stat-cards">
-          <div class="sc w"><span class="cap">Лучший пост</span><div><b>517</b><small>лайков и 197 отправок</small></div></div>
-          <div class="sc g"><span class="cap">Колода</span><small>Смахните афишу или нажмите на неё</small></div>
-        </div>
-        <div class="chips"><span class="chip">Instagram</span><span class="chip">Серия</span><span class="chip">Типографика</span><span class="chip">4 × 3 слайда</span><span class="chip">2025</span></div>
-      </div>
-    </header>
-
-    <!-- intro -->
-    <section class="intro pad" aria-labelledby="intro-h">
-      <div class="side"><span class="ast" aria-hidden="true"><svg viewBox="0 0 40 40"><g stroke="currentColor" stroke-width="4" stroke-linecap="round"><path d="M20 3v34M3 20h34M8 8l24 24M32 8 8 32"/></g></svg></span><a class="latest" href="#series">Четыре<br>интенсива<br>↓</a></div>
-      <div>
-        <h2 class="hl" id="intro-h">Frame Up Official — <span class="m">танцы, где</span> пластика <span class="pill-img" style="background-image:url(assets/frameup/frame-beg.jpg);background-size:300% 100%;background-position:0 0" aria-hidden="true"></span> встречает <span class="m">чёткий ритм</span> и акробатику</h2>
-        <p class="lead">Осенью 2025 года прошли четыре интенсива DEEP. Для каждого я сделала карусель в Instagram: на интенсиве пять-шесть педагогов, у каждого своё время и темы, и всё это читают с телефона</p>
-        <div class="thumbs"><div class="t1" role="img" aria-label="Вертикальное название на обложке"></div><div class="t2" role="img" aria-label="Карточки педагогов"></div><div class="t3" role="img" aria-label="Золотой акцент на обложке"></div></div>
-      </div>
-      <div class="side r cap"><span>Афиши<br>для Instagram</span><span>Москва · 2025</span></div>
     </section>
 
     <!-- series -->
