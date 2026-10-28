@@ -72,11 +72,11 @@ p{text-wrap:pretty}
 .deck .card[data-pos="0"].live{transition:transform .12s linear}
 .deck .card[data-pos="0"].grab{transition:none}
 .deck:hover .card[data-pos="0"]::after{opacity:1}
-.deck .card[data-pos="1"]{transform:translate(9%,3%) rotate(5deg) scale(.95);z-index:3;opacity:.85;filter:blur(1.5px)}
-.deck .card[data-pos="2"]{transform:translate(17%,6%) rotate(10deg) scale(.9);z-index:2;opacity:.6;filter:blur(4px)}
+.deck .card[data-pos="1"]{transform:translate(9%,3%) rotate(5deg) scale(.95);z-index:3;opacity:.85}
+.deck .card[data-pos="2"]{transform:translate(17%,6%) rotate(10deg) scale(.9);z-index:2;opacity:.6}
 .deck .card[data-pos="3"]{transform:translate(17%,6%) rotate(10deg) scale(.9);z-index:1;opacity:0}
-.deck .card[data-pos="out"]{transform:translate(-125%,6%) rotate(-18deg);z-index:5;opacity:0;filter:blur(12px)}
-.deck .card[data-pos="out-r"]{transform:translate(125%,6%) rotate(18deg);z-index:5;opacity:0;filter:blur(12px)}
+.deck .card[data-pos="out"]{transform:translate(-125%,6%) rotate(-18deg);z-index:5;opacity:0}
+.deck .card[data-pos="out-r"]{transform:translate(125%,6%) rotate(18deg);z-index:5;opacity:0}
 .hero-right{align-self:center;text-align:right;padding-right:clamp(16px,3vw,40px)}
 .hero h1{font:700 clamp(44px,6.6vw,104px)/.88 var(--head);letter-spacing:-.05em;text-transform:uppercase}
 .hero h1 .deep{display:block;color:var(--acc);transition:color .8s}
@@ -294,7 +294,6 @@ p{text-wrap:pretty}
 
 /* smear: horizontal motion blur, not round blur */
 .mag-bg{filter:url(#smear-bg) brightness(.92)!important;transform:none}
-.smear-img{filter:url(#smear-hl)}
 
 /* carousel: no outline window — a post header row above a clean panorama */
 .viewer{margin-top:64px}
@@ -654,35 +653,13 @@ p{text-wrap:pretty}
 </script>
 <script>
 (function(){
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var NS='http://www.w3.org/2000/svg', defs=document.querySelector('#smear-hl').parentNode;
-  // 1) images smear horizontally while scrolling, sharp at rest
-  var blur=document.getElementById('smear-hl-blur');
-  document.querySelectorAll('.f-photo,.f-heels,.how-card,.how-mid').forEach(function(el){el.classList.add('smear-img');});
-  var lastY=scrollY,lastT=performance.now(),v=0,raf=null;
-  function frame(){
-    var t=performance.now(),y=scrollY,dt=Math.max(16,t-lastT);
-    var target=Math.min(18,Math.abs(y-lastY)/dt*11);
-    v+=(target-v)*0.25; lastY=y; lastT=t;
-    blur.setAttribute('stdDeviation',v.toFixed(2)+' 0');
-    if(v>0.05||target>0.05){raf=requestAnimationFrame(frame);} else {blur.setAttribute('stdDeviation','0 0');raf=null;}
-  }
-  addEventListener('scroll',function(){if(!raf){lastT=performance.now();raf=requestAnimationFrame(frame);}},{passive:true});
-  // 2) headlines resolve once from a horizontal smear when they first scroll in
-  if(!('IntersectionObserver' in window)) return;
+  // headlines fade in once when they first scroll into view; nothing else moves
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
   var vh=innerHeight;
-  [].forEach.call(document.querySelectorAll('.hl'),function(h,i){
+  document.querySelectorAll('.hl').forEach(function(h){
     if(h.getBoundingClientRect().top<vh) return;
-    var f=document.createElementNS(NS,'filter'); f.setAttribute('id','rv'+i); f.setAttribute('x','-20%'); f.setAttribute('width','140%');
-    var g=document.createElementNS(NS,'feGaussianBlur'); g.setAttribute('stdDeviation','28 0'); f.appendChild(g); defs.appendChild(f);
-    h.style.filter='url(#rv'+i+')'; h.style.opacity='0'; h.style.transform='translateX(-32px)';
-    var io=new IntersectionObserver(function(es){ if(!es[0].isIntersecting) return; io.disconnect();
-      var t0=performance.now();
-      (function step(t){ var k=Math.min(1,(t-t0)/900), e=1-Math.pow(1-k,3);
-        g.setAttribute('stdDeviation',(28*(1-e)).toFixed(2)+' 0'); h.style.opacity=String(e); h.style.transform='translateX('+(-32*(1-e)).toFixed(1)+'px)';
-        if(k<1) requestAnimationFrame(step); else { h.style.filter=''; h.style.transform=''; h.style.opacity=''; }
-      })(t0);
-    },{threshold:.25});
+    h.style.opacity='0'; h.style.transform='translateY(12px)'; h.style.transition='opacity .7s ease, transform .7s ease';
+    var io=new IntersectionObserver(function(es){ if(!es[0].isIntersecting) return; io.disconnect(); h.style.opacity=''; h.style.transform=''; },{threshold:.25});
     io.observe(h);
   });
 })();
