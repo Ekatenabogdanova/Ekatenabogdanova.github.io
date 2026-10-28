@@ -261,6 +261,18 @@ p{text-wrap:pretty}
 .fl-note{opacity:.55}
 @media (max-width:900px){.floor2{grid-template-columns:1fr}.f-photo{min-height:340px}.f-side{grid-template-columns:1fr 1fr;grid-template-rows:auto}}
 @media (max-width:560px){.f-side{grid-template-columns:1fr}}
+
+/* intensive cards: no frame, captions under the poster */
+.ic{aspect-ratio:auto;background:none;box-shadow:none;overflow:visible;border-radius:0;color:var(--ink);opacity:.5;filter:grayscale(.5);transform:scale(.9);transition:transform .6s cubic-bezier(.2,.8,.2,1),opacity .6s,filter .6s}
+.ic::after{display:none}
+.ic .im{display:block;aspect-ratio:1012/1350;border-radius:16px;background-size:300% 100%;background-position:0 0;box-shadow:0 20px 40px rgba(0,0,0,.18);transition:box-shadow .6s}
+.ic:hover{opacity:.8;filter:none}
+.ic[aria-pressed="true"]{opacity:1;filter:none;transform:scale(1.04) translateY(-14px);box-shadow:none}
+.ic[aria-pressed="true"] .im{box-shadow:0 36px 70px rgba(0,0,0,.32)}
+.ic .chip{position:static;display:inline-flex;margin-top:16px;color:#777;border-color:var(--line);background:none;backdrop-filter:none}
+.ic .t{position:static;display:block;margin-top:8px}
+.ic .t b{display:block;font:600 clamp(20px,1.9vw,26px)/1 var(--head);letter-spacing:-.03em;color:var(--ink)}
+.ic .t small{display:block;margin-top:4px;max-width:none;text-align:left;opacity:1;color:#777;font-size:12px}
 .after-sheet{height:24px}
 /* monochrome page: colour lives only inside the posters */
 :focus-visible{outline-color:#9d9d99}
@@ -388,10 +400,10 @@ p{text-wrap:pretty}
       <h2 class="hl" id="series-h">Один каркас <span class="m">на четыре</span><br><span class="m">события</span> — свой цвет у каждого</h2>
       <p class="lead">Направления и уровни разные, но с первого слайда понятно, что это Frame Up. Выберите интенсив</p>
       <div class="cards" role="tablist" aria-label="Интенсивы серии">
-        <button class="ic" role="tab" aria-pressed="false" data-k="heels-pro" style="--c:#4a40e0;background-image:url(assets/frameup/heels-pro.jpg)"><span class="chip"><i></i>01 · Pro</span><span class="t"><b>High Heels</b><small>11–12 октября · ZAL Gallery</small></span></button>
-        <button class="ic" role="tab" aria-pressed="false" data-k="frame-beg" style="--c:#c21a1a;background-image:url(assets/frameup/frame-beg.jpg)"><span class="chip"><i></i>02 · Beginners</span><span class="t"><b>Frame Up</b><small>18–19 октября · ZAL Gallery</small></span></button>
-        <button class="ic" role="tab" aria-pressed="false" data-k="heels-beg" style="--c:#a9b400;background-image:url(assets/frameup/heels-beg.jpg)"><span class="chip"><i></i>03 · Beginners</span><span class="t"><b>High Heels</b><small>8–9 ноября · Grand Zal</small></span></button>
-        <button class="ic" role="tab" aria-pressed="false" data-k="frame-pro" style="--c:#d4af37;background-image:url(assets/frameup/frame-pro.jpg)"><span class="chip"><i></i>04 · Pro</span><span class="t"><b>Frame Up</b><small>15–16 ноября · ZAL Gallery</small></span></button>
+        <button class="ic" role="tab" aria-pressed="false" data-k="heels-pro" style="--c:#4a40e0"><span class="im" style="background-image:url(assets/frameup/heels-pro.jpg)"></span><span class="chip"><i></i>01 · Pro</span><span class="t"><b>High Heels</b><small>11–12 октября · ZAL Gallery</small></span></button>
+        <button class="ic" role="tab" aria-pressed="false" data-k="frame-beg" style="--c:#c21a1a"><span class="im" style="background-image:url(assets/frameup/frame-beg.jpg)"></span><span class="chip"><i></i>02 · Beginners</span><span class="t"><b>Frame Up</b><small>18–19 октября · ZAL Gallery</small></span></button>
+        <button class="ic" role="tab" aria-pressed="false" data-k="heels-beg" style="--c:#a9b400"><span class="im" style="background-image:url(assets/frameup/heels-beg.jpg)"></span><span class="chip"><i></i>03 · Beginners</span><span class="t"><b>High Heels</b><small>8–9 ноября · Grand Zal</small></span></button>
+        <button class="ic" role="tab" aria-pressed="false" data-k="frame-pro" style="--c:#d4af37"><span class="im" style="background-image:url(assets/frameup/frame-pro.jpg)"></span><span class="chip"><i></i>04 · Pro</span><span class="t"><b>Frame Up</b><small>15–16 ноября · ZAL Gallery</small></span></button>
       </div>
       <div class="view" aria-live="polite">
         <div class="vhead"><h3 id="v-title">HIGH HEELS <i>DEEP</i></h3><p id="v-note"></p></div>
