@@ -238,6 +238,61 @@ figcaption{margin-top:12px;color:var(--sub)}
 .ds-nums strong{display:block;font:400 clamp(28px,3vw,44px)/1.1 "Tenor Sans",Georgia,serif;margin-top:4px}
 .ds-nums span{display:block;color:var(--concept-sub);margin-top:8px;font-size:15px}
 @media (max-width:900px){.ds{grid-template-columns:1fr;gap:24px}.ds-nums{grid-template-columns:1fr}}
+
+/* ---------- HR layer: summary, chapters, before/after, flow video ---------- */
+.tldr{margin-top:64px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--line)}
+.tldr>div{padding:24px 24px 0 0}
+.tldr>div+div{padding-left:24px;border-left:1px solid var(--line)}
+.tldr .cap{color:var(--acc)}
+.tldr strong{display:block;margin-top:12px;font:600 clamp(24px,2.2vw,32px)/1.05 var(--display);text-transform:uppercase}
+.tldr p{margin-top:12px;color:var(--sub);font-size:16px;line-height:1.5}
+.skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px;align-items:center}
+.skills .cap{color:var(--sub);margin-right:8px}
+.skills span:not(.cap){font-size:14px;padding:6px 12px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line)}
+.status{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:24px;color:var(--sub);font-size:15px}
+.status a{color:var(--fg);border-bottom:1px solid var(--acc);text-decoration:none}
+.status i{display:inline-block;width:8px;height:8px;border-radius:50%;background:#3fbf6a;margin-right:8px;vertical-align:1px}
+
+.chap{position:sticky;top:0;z-index:20;background:rgba(10,10,10,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);margin-top:96px}
+.chap .wrap{display:flex;align-items:center;gap:24px;height:56px;overflow-x:auto;scrollbar-width:none;white-space:nowrap;font-size:14px}
+.chap .wrap::-webkit-scrollbar{display:none}
+.chap .yr{font:500 12px/1 var(--mono);letter-spacing:.12em;color:var(--acc)}
+.chap a{color:var(--sub);text-decoration:none;padding:16px 0;border-bottom:2px solid transparent}
+.chap a:hover{color:var(--fg)}
+.chap a.on{color:var(--fg);border-color:var(--acc)}
+.chap .sep{width:1px;height:20px;background:var(--line);flex:none}
+.chap .bar{position:absolute;left:0;bottom:-1px;height:2px;background:var(--acc);width:0}
+
+.ba{position:relative;margin-top:72px;border-radius:12px;overflow:hidden;box-shadow:0 0 0 1px var(--line),0 40px 80px -40px rgba(0,0,0,.8);aspect-ratio:16/10;--p:50%;user-select:none;touch-action:pan-y}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ba .after{clip-path:inset(0 0 0 var(--p))}
+.ba .line{position:absolute;top:0;bottom:0;left:var(--p);width:2px;margin-left:-1px;background:#fff;pointer-events:none}
+.ba .knob{position:absolute;top:50%;left:var(--p);width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:50%;background:#fff;color:#0b0b0b;display:grid;place-items:center;font-size:18px;box-shadow:0 8px 24px rgba(0,0,0,.4);pointer-events:none}
+.ba .tag{position:absolute;top:16px;padding:6px 12px;border-radius:999px;background:rgba(10,10,10,.72);color:#fff;font:500 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;pointer-events:none}
+.ba .tag.l{left:16px}.ba .tag.r{right:16px;background:var(--acc);color:#0b0b0b}
+.ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.ba input:focus-visible~.knob{outline:3px solid var(--acc);outline-offset:3px}
+.ba-cap{margin-top:12px;color:var(--sub);text-align:center}
+
+.flowvid{display:grid;grid-template-columns:4fr 8fr;gap:48px;align-items:center;margin-top:96px}
+.flowvid video{display:block;width:100%;height:auto;background:#f3efe8}
+.flowvid .steps-mini{list-style:none;margin-top:24px;display:grid;gap:10px;counter-reset:s}
+.flowvid .steps-mini li{counter-increment:s;display:grid;grid-template-columns:28px 1fr;color:var(--concept-sub)}
+.flowvid .steps-mini li::before{content:counter(s,decimal-leading-zero);font:400 13px/1.6 var(--mono);color:var(--concept-acc)}
+details.more{margin-top:48px;border-top:1px solid var(--line)}
+details.more summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;padding:24px 0;font:600 24px/1 var(--display);text-transform:uppercase}
+details.more summary::-webkit-details-marker{display:none}
+details.more summary::after{content:"+";font:400 32px/1 var(--sans);color:var(--acc);transition:transform .3s}
+details.more[open] summary::after{transform:rotate(45deg)}
+details.more summary:focus-visible{outline:2px solid var(--acc);outline-offset:4px}
+@media (max-width:900px){
+  .tldr{grid-template-columns:1fr}
+  .tldr>div,.tldr>div+div{padding:20px 0;border-left:0;border-top:1px solid var(--line)}
+  .tldr>div:first-child{border-top:0}
+  .flowvid{grid-template-columns:1fr;gap:24px}
+  .ba{aspect-ratio:4/3}
+  .ba .knob{width:44px;height:44px;margin:-22px 0 0 -22px}
+}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet">
 <style>
@@ -277,10 +332,10 @@ figcaption{margin-top:12px;color:var(--sub)}
 <header class="hero wrap">
   <div class="hero-top">
     <a class="home-mark" href="./" aria-label="На главную"><span class="ar" aria-hidden="true">←</span><i aria-hidden="true"></i>Екатерина Богданова</a>
-    <span class="cap">Кейс · 2024</span>
+    <span class="cap">Кейс · 2024 → 2026</span>
   </div>
   <h1>Vidmer<span>.</span>dance</h1>
-  <p class="lead">Сайт для лаборатории современной хореографии: направления, расписание, цены и&nbsp;запись в&nbsp;одном месте вместо переписки в&nbsp;директе</p>
+  <p class="lead">Сайт для лаборатории современной хореографии: запустила его на&nbsp;Tilda в&nbsp;2024, а&nbsp;в&nbsp;2026 пересобрала как продукт — вокруг одной метрики, записи на&nbsp;пробное занятие</p>
   <dl class="meta">
     <div><dt class="cap">Клиент</dt><dd>Лаборатория танца Vidmer.dance, Москва</dd></div>
     <div><dt class="cap">Роль</dt><dd>Структура, дизайн, сборка и&nbsp;запуск — одна</dd></div>
@@ -288,10 +343,27 @@ figcaption{margin-top:12px;color:var(--sub)}
     <div><dt class="cap">Платформа</dt><dd>Tilda, Zero Block</dd></div>
     <div><dt class="cap">Сайт</dt><dd><a href="https://vidmerdance.ru/" target="_blank" rel="noopener">vidmerdance.ru ↗</a></dd></div>
   </dl>
-  <figure class="shot"><img src="assets/vidmer/real-hero.jpg" width="1600" height="1000" alt="Первый экран vidmerdance.ru: «Лаборатория современной хореографии» и оранжевая кнопка «Записаться» на чёрно-белом фото"></figure>
-</header>
 
-<section class="band light" style="margin-top:120px" aria-labelledby="task-h">
+  <div class="tldr" aria-label="Кейс за 30 секунд">
+    <div><span class="cap">Задача</span><strong>Расписание жило в&nbsp;директе</strong><p>Про направления, время и&nbsp;цены студия отвечала в&nbsp;личных сообщениях — каждой ученице отдельно</p></div>
+    <div><span class="cap">2024 · Сайт</span><strong>Запуск за&nbsp;месяц на&nbsp;Tilda</strong><p>Направления, расписание, цены и&nbsp;кнопка записи. Ученицы смотрят расписание на&nbsp;сайте, а&nbsp;в&nbsp;телеграм пишут уже, чтобы записаться</p></div>
+    <div><span class="cap">2026 · Концепт</span><strong>Сайт под одну метрику</strong><p>Доля посетителей, записавшихся на&nbsp;пробное: воронка из&nbsp;пяти шагов, запись в&nbsp;три шага и&nbsp;дизайн-система с&nbsp;контрастом AA</p></div>
+  </div>
+  <div class="skills"><span class="cap">В кейсе</span><span>Продуктовая метрика</span><span>Воронка</span><span>Анализ конкурентов</span><span>Дизайн-система</span><span>Доступность WCAG AA</span><span>Адаптив</span><span>Tilda</span><span>Запуск под ключ</span></div>
+  <p class="status"><span><i aria-hidden="true"></i>Открыта к&nbsp;предложениям · Москва</span><a href="resume.html">Резюме</a><a href="https://t.me/ekateribog_dana" target="_blank" rel="noopener">Написать в&nbsp;телеграм ↗</a></p>
+  <div class="ba" id="ba">
+    <img src="assets/vidmer/real-hero.jpg" width="1600" height="1000" alt="2024: первый экран сайта студии на Tilda">
+    <img class="after" src="assets/vidmer/v3-hero.jpg" width="1600" height="1000" alt="2026: первый экран концепта — видео, «Начни танцевать» и запись на ближайший класс">
+    <span class="tag l">2024 · сайт студии</span><span class="tag r">2026 · концепт</span>
+    <span class="line" aria-hidden="true"></span>
+    <input type="range" min="0" max="100" value="50" aria-label="Сравнить сайт 2024 года и концепт 2026 года">
+    <span class="knob" aria-hidden="true">↔</span>
+  </div>
+  <p class="cap ba-cap">Потяните, чтобы сравнить первый экран</p>
+</header>
+<nav class="chap" id="chap" aria-label="Главы кейса"><div class="wrap"><span class="yr">2024</span><a href="#task">Задача</a><a href="#build">Сайт</a><a href="#res">Результат</a><span class="sep" aria-hidden="true"></span><span class="yr">2026</span><a href="#concept">Метрика</a><a href="#solutions">Решения</a><a href="#ds">Дизайн-система</a><a href="#measure">Проверка</a></div><span class="bar" id="chapBar"></span></nav>
+
+<section class="band light" id="task" aria-labelledby="task-h">
   <div class="wrap">
     <div class="kick cap"><span><b>01</b> Задача</span><span>Было до сайта</span></div>
     <div class="task">
@@ -309,11 +381,19 @@ figcaption{margin-top:12px;color:var(--sub)}
   </div>
 </section>
 
-<section class="band" aria-labelledby="str-h">
+
+
+
+
+
+
+
+
+<section class="band" id="build" aria-labelledby="str-h">
   <div class="wrap">
-    <div class="kick cap"><span><b>02</b> Структура</span><span>Одна длинная страница</span></div>
+    <div class="kick cap"><span><b>02</b> Сайт</span><span>Структура, путь записи, визуал, адаптив</span></div>
     <h2 id="str-h">Страница отвечает на&nbsp;вопросы <em>по порядку</em></h2>
-    <p class="lead sub">Блоки идут в&nbsp;том порядке, в&nbsp;котором человек выбирает студию: что это за&nbsp;место, что здесь танцуют, когда, сколько стоит, кто ведёт и&nbsp;как добраться.</p>
+    <p class="lead sub">Блоки идут в&nbsp;том порядке, в&nbsp;котором человек выбирает студию. Запись осталась в&nbsp;телеграме студии, но&nbsp;человек пишет, уже зная, на&nbsp;какое занятие и&nbsp;когда хочет прийти.</p>
     <ol class="flow">
       <li><b>01</b><strong>Кто мы</strong><span>Лаборатория и&nbsp;её подход</span></li>
       <li><b>02</b><strong>Направления</strong><span>Пять стилей с&nbsp;фото</span></li>
@@ -325,30 +405,19 @@ figcaption{margin-top:12px;color:var(--sub)}
     <div class="grid2">
       <figure><div class="shot"><img src="assets/vidmer/real-directions.jpg" width="1600" height="1000" loading="lazy" alt="Блок «Направления»: пять карточек с фото — бродвейский джаз, джаз-модерн, растяжка, контемпорари, актёрское мастерство"></div><figcaption class="cap">Направления</figcaption></figure>
       <figure><div class="shot"><img src="assets/vidmer/real-schedule.jpg" width="1600" height="1000" loading="lazy" alt="Блок «Расписание»: три колонки — понедельник, среда, суббота — с оранжевыми шапками и названиями занятий"></div><figcaption class="cap">Расписание</figcaption></figure>
-      <figure><div class="shot"><img src="assets/vidmer/real-prices.jpg" width="1600" height="1000" loading="lazy" alt="Блок «Тарифы» на чёрном фоне: пробное 500 ₽, разовое, два часа подряд, восемь занятий"></div><figcaption class="cap">Тарифы</figcaption></figure>
-      <figure><div class="shot"><img src="assets/vidmer/real-teachers.jpg" width="1600" height="1000" loading="lazy" alt="Блок «Преподаватели»: три педагога с фото и коротким описанием"></div><figcaption class="cap">Педагоги</figcaption></figure>
     </div>
-  </div>
-</section>
-
-<section class="band light" aria-labelledby="path-h">
-  <div class="wrap">
-    <div class="kick cap"><span><b>03</b> Путь записи</span><span>Три шага</span></div>
-    <h2 id="path-h">Сначала выбрать, потом <em>написать</em></h2>
-    <div class="path">
+    <details class="more">
+      <summary>Путь записи, визуал и&nbsp;мобильная версия</summary>
+      <div class="path">
       <div class="step"><b>1</b><h3>Направление</h3><p>Пять стилей с&nbsp;фото — видно, чем джаз-модерн отличается от&nbsp;контемпорари</p></div>
       <div class="step"><b>2</b><h3>Расписание</h3><p>Дни недели, время, название занятия и&nbsp;педагог в&nbsp;одной карточке</p></div>
       <div class="step"><b>3</b><h3>Запись в&nbsp;телеграм</h3><p>Кнопка «Записаться» открывает телеграм студии — там, где ученицы и&nbsp;так общаются</p></div>
     </div>
-    <p class="note sub">Запись осталась в&nbsp;телеграме студии. Изменилось другое — человек пишет, уже зная, на&nbsp;какое занятие и&nbsp;когда хочет прийти.</p>
-  </div>
-</section>
-
-<section class="band" aria-labelledby="look-h">
-  <div class="wrap">
-    <div class="kick cap"><span><b>04</b> Визуал</span><span>Цвет и шрифт</span></div>
-    <h2 id="look-h">Чёрный, белый и&nbsp;один <em>оранжевый</em></h2>
-    <div class="look">
+      <div class="grid2">
+        <figure><div class="shot"><img src="assets/vidmer/real-prices.jpg" width="1600" height="1000" loading="lazy" alt="Блок «Тарифы» на чёрном фоне: пробное 500 ₽, разовое, два часа подряд, восемь занятий"></div><figcaption class="cap">Тарифы</figcaption></figure>
+        <figure><div class="shot"><img src="assets/vidmer/real-teachers.jpg" width="1600" height="1000" loading="lazy" alt="Блок «Преподаватели»: три педагога с фото и коротким описанием"></div><figcaption class="cap">Педагоги</figcaption></figure>
+      </div>
+      <div class="look">
       <div>
         <div class="swatches">
           <div class="sw" style="background:#000;box-shadow:inset 0 0 0 1px var(--line)"><span class="cap">#000000</span></div>
@@ -369,26 +438,19 @@ figcaption{margin-top:12px;color:var(--sub)}
         </ul>
       </div>
     </div>
-  </div>
-</section>
-
-<section class="band" style="padding-top:0" aria-labelledby="mob-h">
-  <div class="wrap">
-    <div class="kick cap"><span><b>05</b> Адаптив</span><span>Телефон</span></div>
-    <h2 id="mob-h">С&nbsp;телефона — <em>так&nbsp;же</em></h2>
-    <p class="lead sub">Каждый блок собран под&nbsp;телефон отдельно: колонки встают друг под&nbsp;друга, кнопка записи остаётся на&nbsp;первом экране.</p>
-    <div class="phones">
+      <div class="phones">
       <figure><div class="phone"><img src="assets/vidmer/real-m-hero.jpg" width="780" height="1688" loading="lazy" alt="Мобильная версия: первый экран с кнопкой «Записаться»"></div><figcaption class="cap">Первый экран</figcaption></figure>
       <figure><div class="phone"><img src="assets/vidmer/real-m-directions.jpg" width="780" height="1688" loading="lazy" alt="Мобильная версия: направления"></div><figcaption class="cap">Направления</figcaption></figure>
       <figure><div class="phone"><img src="assets/vidmer/real-m-schedule.jpg" width="780" height="1688" loading="lazy" alt="Мобильная версия: расписание по дням"></div><figcaption class="cap">Расписание</figcaption></figure>
       <figure><div class="phone"><img src="assets/vidmer/real-m-contacts.jpg" width="780" height="1688" loading="lazy" alt="Мобильная версия: контакты на оранжевом фоне"></div><figcaption class="cap">Контакты</figcaption></figure>
     </div>
+    </details>
   </div>
 </section>
 
-<section class="band" style="padding-top:0" aria-labelledby="res-h">
+<section class="band" style="padding-top:0" id="res" aria-labelledby="res-h">
   <div class="wrap">
-    <div class="kick cap"><span><b>06</b> Результат</span><span>Сайт работает с 2024</span></div>
+    <div class="kick cap"><span><b>03</b> Результат</span><span>Сайт работает с 2024</span></div>
     <h2 id="res-h">Расписание <em>переехало</em> на&nbsp;сайт</h2>
     <div class="result">
       <div><strong>Смотрят на&nbsp;сайте, а&nbsp;не&nbsp;спрашивают в&nbsp;директе</strong><p>Ученицы открывают расписание и&nbsp;цены сами, в&nbsp;телеграм пишут уже, чтобы записаться</p></div>
@@ -400,7 +462,7 @@ figcaption{margin-top:12px;color:var(--sub)}
 
 <section class="band concept" id="concept" aria-labelledby="con-h">
   <div class="wrap">
-    <div class="kick cap"><span><b>07</b> Концепт редизайна</span><span>2026 · для портфолио</span></div>
+    <div class="kick cap"><span><b>04</b> Концепт редизайна</span><span>2026 · для портфолио</span></div>
     <h2 id="con-h">Как бы я сделала его сейчас</h2>
     <p class="lead note">Через два года я пересобрала тот же сайт как концепт, без заказа студии. Начала не с визуала, а с вопроса: какой результат сайт должен давать студии? Новые ученицы на первом занятии. Под эту цель выстроены и структура, и экраны.</p>
 
@@ -421,6 +483,11 @@ figcaption{margin-top:12px;color:var(--sub)}
       <div class="row" role="row"><b>05</b><h4 role="cell">Остаться</h4><p class="was" role="cell"><span class="lbl">Сейчас</span>Тарифы идут списком, выгода абонемента не видна.</p><p class="now" role="cell"><span class="lbl">В концепте</span>«8 занятий — 1 100 ₽ за класс» отмечено как выгоднее всего, а последний шаг знакомства — «решите после класса».</p></div>
     </div>
 
+    <div class="flowvid" id="solutions">
+      <div><b class="n" style="font:400 13px/1 var(--mono);color:var(--concept-acc)">Запись в&nbsp;действии</b><h3 style="font:400 32px/1.15 'Tenor Sans',Georgia,serif;text-transform:none;margin-top:16px">Весь путь от&nbsp;«не&nbsp;знаю, с&nbsp;чего начать» до&nbsp;записи — в&nbsp;одном ролике</h3>
+        <ol class="steps-mini"><li>Подбор класса одной фразой</li><li>Строка расписания — запись на&nbsp;это время</li><li>Имя и&nbsp;контакт, без регистрации</li><li>«Ждём вас» и&nbsp;событие в&nbsp;календарь</li></ol></div>
+      <figure class="shot"><video src="assets/vidmer/flow.mp4" poster="assets/vidmer/flow-poster.jpg" width="1280" height="800" autoplay muted loop playsinline preload="metadata" aria-label="Запись видео: подбор класса, выбор времени в расписании, заполнение имени и контакта, подтверждение «Ждём вас»"></video></figure>
+    </div>
     <div class="changes">
       <div class="change">
         <div class="txt"><b>01</b><h3>Первый экран отвечает новичку</h3><p>Видео постановки во весь экран, «Начни танцевать» и строка с ближайшим классом. Кнопка записывает сразу на это время, а оффер «500 ₽ без предоплаты» висит над всей страницей.</p></div>
@@ -447,7 +514,7 @@ figcaption{margin-top:12px;color:var(--sub)}
     </div>
 
 
-    <h3 class="sub-h">Дизайн-система</h3>
+    <h3 class="sub-h" id="ds">Дизайн-система</h3>
     <p class="mnote">Первые версии концепта собирались «на глаз», и сайт не держался как одно целое. Я вывела токены и компоненты и пересобрала страницу на них: в CSS страницы осталась только раскладка, а размеры, цвета и отступы берутся из одного файла.</p>
     <div class="ds-nums">
       <div><s>27</s><strong>9 ступеней шрифта</strong><span>Пять заголовков Tenor растут от телефона к 1440 px, четыре текстовых Golos</span></div>
@@ -467,7 +534,7 @@ figcaption{margin-top:12px;color:var(--sub)}
       <div><figure class="ds-fig"><img src="assets/vidmer/ds-row.jpg" width="1204" height="601" loading="lazy" alt="Компонент «Строка класса» в четырёх состояниях: по умолчанию, наведение, ближайший, не подходит под фильтр"></figure></div>
     </div>
 
-    <h3 class="sub-h">Как проверить, что это работает</h3>
+    <h3 class="sub-h" id="measure">Как проверить, что это работает</h3>
     <div class="events" aria-label="События воронки">
       <code>visit</code><i>→</i><code>view_schedule</code><i>→</i><code>finder_result</code><i>→</i><code>booking_open</code><i>→</i><code class="main">booking_submit</code><i>→</i><code>add_to_calendar</code><i>→</i><code class="crm">пришла на занятие</code><i>→</i><code class="crm">купила абонемент</code>
     </div>
@@ -479,6 +546,37 @@ figcaption{margin-top:12px;color:var(--sub)}
 </section>
 
 </main>
+
+<script>
+/* before/after slider */
+(() => {
+  const ba = document.getElementById('ba'), r = ba.querySelector('input');
+  const set = v => ba.style.setProperty('--p', v + '%');
+  r.addEventListener('input', () => set(r.value));
+  // a single gentle hint so it reads as interactive
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce) new IntersectionObserver(([e], o) => {
+    if (!e.isIntersecting) return; o.disconnect();
+    let t0; const f = t => { t0 ??= t; const k = (t - t0) / 1600; if (k >= 1 || r.matches(':active')) return set(r.value);
+      const v = 50 - 18 * Math.sin(k * Math.PI); set(v); requestAnimationFrame(f); };
+    setTimeout(() => requestAnimationFrame(f), 600);
+  }, {threshold: .6}).observe(ba);
+})();
+/* chapter nav: active chapter and reading progress */
+(() => {
+  const links = [...document.querySelectorAll('#chap a')], bar = document.getElementById('chapBar');
+  const targets = links.map(a => document.querySelector(a.getAttribute('href')));
+  const main = document.querySelector('main');
+  const on = () => {
+    const y = innerHeight * .3; let cur = -1;
+    targets.forEach((t, i) => { if (t && t.getBoundingClientRect().top < y) cur = i; });
+    links.forEach((a, i) => a.classList.toggle('on', i === cur));
+    if (cur >= 0) { const w = links[cur].parentElement, l = links[cur]; if (l.offsetLeft < w.scrollLeft || l.offsetLeft + l.offsetWidth > w.scrollLeft + w.clientWidth) w.scrollLeft = l.offsetLeft - 16; }
+    const r = main.getBoundingClientRect(); bar.style.width = Math.min(100, Math.max(0, -r.top / (r.height - innerHeight) * 100)) + '%';
+  };
+  addEventListener('scroll', on, {passive: true}); on();
+})();
+</script>
 <!-- case-next -->
 <section class="case-next" aria-labelledby="cn-h">
   <div class="cn-top cn-cap"><span>Следующий проект</span><span>Екатерина Богданова · портфолио</span></div>
