@@ -291,6 +291,10 @@ p{text-wrap:pretty}
 .how-card.a,.how-card.c{aspect-ratio:1012/1350;background-size:300% 100%!important;background-position:0 0!important}
 .how-card.a{background-image:url(assets/frameup/heels-pro.jpg)!important}
 .how-card.c{background-image:url(assets/frameup/frame-pro.jpg)!important}
+
+/* smear: horizontal motion blur, not round blur */
+.mag-bg{filter:url(#smear-bg) brightness(.92)!important;transform:none}
+.hl.smear{filter:url(#smear-hl)}
 .after-sheet{height:24px}
 /* monochrome page: colour lives only inside the posters */
 :focus-visible{outline-color:#9d9d99}
@@ -368,6 +372,10 @@ p{text-wrap:pretty}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <filter id="smear-bg" x="-20%" y="0" width="140%" height="100%"><feGaussianBlur stdDeviation="46 2"/></filter>
+  <filter id="smear-hl" x="-10%" y="0" width="120%" height="100%"><feGaussianBlur id="smear-hl-blur" stdDeviation="0 0"/></filter>
+</svg>
 <div class="frame">
   <div class="ruler" aria-hidden="true"></div>
   <main class="sheet" id="top">
@@ -615,6 +623,22 @@ p{text-wrap:pretty}
     addEventListener('pointermove', function (e) { if (tx !== null) track.scrollLeft = s0 - (e.clientX - tx); });
     addEventListener('pointerup', function () { if (tx === null) return; tx = null; var n = Math.round(track.scrollLeft / track.clientWidth); track.style.scrollSnapType = ''; track.scrollTo({ left: n * track.clientWidth, behavior: reduce ? 'auto' : 'smooth' }); });
   });
+})();
+</script>
+<script>
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var blur=document.getElementById('smear-hl-blur'); if(!blur) return;
+  document.querySelectorAll('.hl').forEach(function(h){h.classList.add('smear');});
+  var lastY=scrollY,lastT=performance.now(),v=0,raf=null;
+  function frame(){
+    var t=performance.now(),y=scrollY,dt=Math.max(16,t-lastT);
+    var target=Math.min(14,Math.abs(y-lastY)/dt*9);
+    v+= (target-v)*0.25; lastY=y; lastT=t;
+    blur.setAttribute('stdDeviation',v.toFixed(2)+' 0');
+    if(v>0.05||target>0.05){raf=requestAnimationFrame(frame);} else {blur.setAttribute('stdDeviation','0 0');raf=null;}
+  }
+  addEventListener('scroll',function(){if(!raf){lastT=performance.now();raf=requestAnimationFrame(frame);}},{passive:true});
 })();
 </script>
 </body>
