@@ -225,6 +225,17 @@ p{text-wrap:pretty}
 .sw i{flex:1;height:56px;border-radius:12px;box-shadow:inset 0 0 0 1px var(--line)}
 
 .after-sheet{height:24px}
+/* monochrome page: colour lives only inside the posters */
+:focus-visible{outline-color:#9d9d99}
+.ast{color:var(--ink)}
+.hero::after{background:radial-gradient(ellipse 50% 60% at 55% 50%,rgba(255,255,255,.08),transparent 70%),linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,0) 30%,rgba(0,0,0,.45))}
+.hero h1 .deep{color:var(--pale)}
+.ic[aria-pressed="true"]{box-shadow:0 36px 70px rgba(0,0,0,.4),0 0 0 2px var(--ink)}
+.ic .chip i,.switch button::before{display:none}
+.vhead h3 i{color:var(--mute)}
+.ig-head .av{box-shadow:0 0 0 2px var(--sheet),0 0 0 3.5px var(--ink)}
+.ig-dots i.on{background:var(--ink)}
+.how-mid{background:radial-gradient(ellipse 70% 60% at 35% 25%,#6e6e6b,transparent 70%),radial-gradient(ellipse 80% 70% at 85% 90%,#3a3a3a,transparent 70%),#191919}
 /* case-next: closing band on every project page; takes the colours of the page it sits on */
 .case-next{--cn-bg:#2A1610;--cn-fg:#F3E6D3;--cn-sub:#C2AE9A;--cn-acc:#C89B72;--cn-line:rgba(243,230,211,.2);--cn-title:400 clamp(48px,8vw,120px)/1 "Playfair Display",Georgia,serif;
   background:var(--cn-bg);color:var(--cn-fg);padding:72px clamp(16px,3.4vw,48px) 32px;font:400 16px/1.5 "Onest",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
