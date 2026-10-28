@@ -185,6 +185,7 @@ footer .wrap { padding-block: 24px 40px; border-top: 1px solid var(--line); colo
       <li><a href="#meeting">Встреча</a></li>
       <li><a href="#money">Оплата</a></li>
       <li><a href="#roles">Кто что делает</a></li>
+      <li><a href="#hosting">Хостинг</a></li>
       <li><a href="#build">Сборка</a></li>
       <li><a href="#prompts">Промпты</a></li>
       <li><a href="#help">Если сломалось</a></li>
@@ -316,8 +317,37 @@ footer .wrap { padding-block: 24px 40px; border-top: 1px solid var(--line); colo
   </div>
 </section>
 
+<section id="hosting">
+  <h2><span class="frame">КАДР 5</span>Где будет жить сайт</h2>
+  <p>Андрей и его клиенты в России, поэтому главное — чтобы сайт открывался там без VPN. Решение за Андреем, а настройку делает Анастасия</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Где</th><th>Цена</th><th>В России</th><th>Кто обновляет</th></tr></thead>
+      <tbody>
+        <tr><td><strong>GitHub Pages</strong> (наш план)</td><td>бесплатно, только домен</td><td>блокировок не нашли, проверяем</td><td>ты, через ИИ</td></tr>
+        <tr><td>Российский хостинг</td><td>от ~100–300 ₽/мес</td><td>да</td><td>ты, через ИИ</td></tr>
+        <tr><td>Tilda</td><td>подписка</td><td>да</td><td>Андрей сам</td></tr>
+        <tr><td>wfolio (сейчас)</td><td>подписка</td><td>да</td><td>Андрей сам</td></tr>
+        <tr><td>Vercel, Netlify, Cloudflare</td><td>бесплатно</td><td>ненадёжно, не берём</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h3>Проверка, которую делаешь ты</h3>
+  <ul class="check">
+    <li><label><input type="checkbox" id="h1"><span>Выключи VPN и открой эту шпаргалку с телефона через мобильный интернет</span></label></li>
+    <li><label><input type="checkbox" id="h2"><span>То же самое через домашний Wi-Fi</span></label></li>
+    <li><label><input type="checkbox" id="h3"><span>Напиши Анастасии, открылось или нет. Шпаргалка лежит на том же GitHub Pages, так что это и есть проверка</span></label></li>
+  </ul>
+  <h3>Что сказать Андрею</h3>
+  <ul class="plain">
+    <li><strong>Почему не Tilda:</strong> там сайт обновляет он сам, но он забросил даже wfolio. Свой сайт бесплатный, а дизайн не ограничен блоками</li>
+    <li><strong>Сайт можно забрать с собой:</strong> это просто папка с файлами. Если GitHub начнёт тормозить в России, за час переносим на российский хостинг, домен rockeroleg.ru остаётся</li>
+    <li><strong>Формы не будет:</strong> заявки идут в Telegram и WhatsApp, сайт не хранит данные клиентов</li>
+  </ul>
+</section>
+
 <section id="build">
-  <h2><span class="frame">КАДР 5</span>Сборка по шагам</h2>
+  <h2><span class="frame">КАДР 6</span>Сборка по шагам</h2>
   <p class="note">Claude официально недоступен в России. Возьми ИИ-ассистента, который легально работает у тебя. Промпты ниже подойдут к любому</p>
   <ol class="steps">
     <li><div class="body"><h3>Получи фото</h3><p>Андрей присылает папку с отобранными сериями. Анастасия подключает их к проекту, и дальше ты работаешь уже с готовыми фото</p></div></li>
@@ -329,7 +359,7 @@ footer .wrap { padding-block: 24px 40px; border-top: 1px solid var(--line); colo
 </section>
 
 <section id="prompts">
-  <h2><span class="frame">КАДР 6</span>Промпты</h2>
+  <h2><span class="frame">КАДР 7</span>Промпты</h2>
   <p>Копируй целиком. В квадратных скобках то, что нужно заменить</p>
 
   <div class="copy">
@@ -388,7 +418,7 @@ footer .wrap { padding-block: 24px 40px; border-top: 1px solid var(--line); colo
 </section>
 
 <section id="help">
-  <h2><span class="frame">КАДР 7</span>Если что-то сломалось</h2>
+  <h2><span class="frame">КАДР 8</span>Если что-то сломалось</h2>
   <p>Ломается всё у всех, это нормально. Главное — не чинить вслепую</p>
   <div class="copy">
     <div class="copy-head"><span>Напиши ИИ</span><button type="button" data-copy="p-fix">Скопировать</button></div>
@@ -402,7 +432,7 @@ footer .wrap { padding-block: 24px 40px; border-top: 1px solid var(--line); colo
 </section>
 
 <section id="updates">
-  <h2><span class="frame">КАДР 8</span>Обновления после запуска</h2>
+  <h2><span class="frame">КАДР 9</span>Обновления после запуска</h2>
   <p>Админки нет, новые серии добавляешь ты. Примерно 30 минут на серию</p>
   <ul class="plain">
     <li>Андрей присылает фото и пару строк о съёмке</li>
@@ -428,9 +458,10 @@ footer .wrap { padding-block: 24px 40px; border-top: 1px solid var(--line); colo
 
   function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
   function render() {
-    var done = boxes.filter(function (b) { return b.checked; }).length;
+    var mb = boxes.filter(function (b) { return /^m\d/.test(b.id); });
+    var done = mb.filter(function (b) { return b.checked; }).length;
     document.querySelectorAll('[data-progress]').forEach(function (el) {
-      el.textContent = done + ' из ' + boxes.length;
+      el.textContent = done + ' из ' + mb.length;
     });
   }
   boxes.forEach(function (b) {
