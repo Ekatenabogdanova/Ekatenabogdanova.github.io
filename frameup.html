@@ -287,22 +287,32 @@ body { margin: 0 }
 .case-next{--cn-bg:#0d0d0e;--cn-fg:#ebebe8;--cn-sub:#9a9a96;--cn-acc:#ebebe8;--cn-line:rgba(235,235,232,.14);--cn-title:300 clamp(44px,7vw,112px)/1 "Lexend Zetta","Helvetica Neue",Arial,sans-serif}
 </style>
 <style>
-/* kinetic layer, as in the Figma "Kinetic" board: blurred dance photo, motion trails, outline titles, blurred out-of-focus slides */
+/* kinetic layer, as in the Figma "Kinetic" board: blurred dance photo, motion trails, outline titles, tilted carousels */
 header.hero{position:relative;isolation:isolate;overflow:hidden}
-header.hero::before,section.band.dark::before{content:"";position:absolute;inset:-80px;z-index:-2;background:url(assets/frameup/bg.jpg) center/cover;filter:blur(32px) grayscale(1) brightness(.4);transform:scale(1.1);pointer-events:none}
+header.hero::before,section.band.dark::before{content:"";position:absolute;inset:-80px;z-index:-2;background:url(assets/frameup/bg.jpg) center/cover;filter:blur(18px) grayscale(1) brightness(.62) contrast(1.15);transform:scale(1.08);pointer-events:none}
+header.hero::after{content:"DEEP";position:absolute;z-index:-1;left:50%;bottom:-.18em;transform:translateX(-50%);font:600 clamp(160px,34vw,640px)/1 var(--display);letter-spacing:-.04em;color:var(--deep,#ebebe8);opacity:.22;white-space:nowrap;pointer-events:none;
+  text-shadow:-.06em 0 .04em rgba(235,235,232,.35),-.14em 0 .1em rgba(235,235,232,.18),-.24em 0 .18em rgba(235,235,232,.08);transition:color .8s}
 section.band.dark{position:relative;isolation:isolate;overflow:hidden}
-section.band.dark::before{opacity:.6}
+section.band.dark::before{opacity:.75}
 .hero h1 .deep{position:relative}
-.hero h1 .deep::before,.hero h1 .deep::after{content:"DEEP";position:absolute;left:0;top:0;color:inherit;pointer-events:none;filter:blur(10px);opacity:.35;transform:translateX(-6%)}
-.hero h1 .deep::after{filter:blur(22px);opacity:.18;transform:translateX(-13%)}
-.deck .card[data-pos="out"],.deck .card[data-pos="out-r"]{filter:blur(10px)}
+.hero h1 .deep::before,.hero h1 .deep::after{content:"DEEP";position:absolute;left:0;top:0;color:inherit;pointer-events:none;filter:blur(8px);opacity:.55;transform:translateX(-9%)}
+.hero h1 .deep::after{filter:blur(20px);opacity:.3;transform:translateX(-20%)}
+.deck .card[data-pos="1"]{filter:blur(2px)}
+.deck .card[data-pos="2"],.deck .card[data-pos="3"]{filter:blur(5px)}
+.deck .card[data-pos="out"],.deck .card[data-pos="out-r"]{filter:blur(14px)}
 .int{position:relative;isolation:isolate;overflow:hidden}
-.int::after{position:absolute;top:clamp(24px,4vw,64px);left:0;z-index:-1;font:300 clamp(80px,17vw,320px)/1 var(--display);letter-spacing:-.02em;white-space:nowrap;color:transparent;-webkit-text-stroke:1.5px currentColor;opacity:.16;pointer-events:none;transform:translateX(calc(var(--kx,0) * 1px))}
-.int.dark::after{opacity:.2}
+.int::after{position:absolute;top:clamp(16px,3vw,48px);left:-2vw;z-index:-1;font:300 clamp(96px,22vw,420px)/1 var(--display);letter-spacing:-.03em;white-space:nowrap;color:transparent;-webkit-text-stroke:2px currentColor;opacity:.32;pointer-events:none;transform:translateX(calc(var(--kx,0) * 1px))}
+.int.dark::after{opacity:.38}
 #heels-pro::after,#heels-beg::after{content:"HIGH HEELS"}
 #frame-beg::after,#frame-pro::after{content:"FRAME UP"}
-@media (min-width:601px){.strip .s{filter:grayscale(.6) blur(4px)}.strip .s.on{filter:none}}
-@media (prefers-reduced-motion:reduce){.hero h1 .deep::before,.hero h1 .deep::after{display:none}.int::after{transform:none}}
+@media (min-width:601px){
+  .strip .s{filter:grayscale(.7) blur(7px);opacity:.5}
+  .strip .s.on{filter:none;opacity:1}
+  .int .viewer{transform:rotate(-2.5deg);transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+  .int:nth-of-type(even) .viewer{transform:rotate(2.5deg)}
+  .int .viewer:hover{transform:none}
+}
+@media (prefers-reduced-motion:reduce){.hero h1 .deep::before,.hero h1 .deep::after{display:none}.int::after,.int .viewer{transform:none!important}}
 </style>
 </head>
 <body>
@@ -476,7 +486,7 @@ section.band.dark::before{opacity:.6}
   const cards = [...deck.querySelectorAll('.card')];
   const h1 = document.querySelector('.hero h1');
   let order = cards.slice(), paused = false, touched = false;
-  const paint = () => h1.style.setProperty('--deep', order[0].dataset.acc);
+  const paint = () => document.querySelector('header.hero').style.setProperty('--deep', order[0].dataset.acc);
   const clearVars = c => ['--dx', '--dy', '--dr', '--tx', '--ty'].forEach(v => c.style.removeProperty(v));
   function next(dir = -1) {
     const front = order.shift(); order.push(front);
