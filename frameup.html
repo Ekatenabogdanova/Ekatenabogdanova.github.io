@@ -307,7 +307,7 @@ p{text-wrap:pretty}
 
 /* hero as one SVG: smeared portrait + the same portrait clipped to the letters (works in every browser) */
 .mag-svg{position:absolute;inset:0;width:100%;height:100%;z-index:-1;display:block}
-.mag-svg .mt{font:800 300px/1 "Inter Tight","Helvetica Neue",Arial,sans-serif;letter-spacing:-18px;text-transform:uppercase}
+.mag-svg .mt{font:800 270px/1 "Inter Tight","Helvetica Neue",Arial,sans-serif;letter-spacing:-6px;text-transform:uppercase}
 .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 @media (max-width:900px){.mag{height:auto!important;min-height:0!important;aspect-ratio:1400/920}.mag-top{top:64px}.mag-bottom{bottom:12px}.mag-top span+span,.mag-bottom span:first-child{display:none}}
 .after-sheet{height:24px}
@@ -402,10 +402,16 @@ p{text-wrap:pretty}
       </div>
       <div class="mag-top cap"><span>Frame Up Official — серия афиш</span><span>Осень 2025</span></div>
       <svg class="mag-svg" viewBox="0 0 1400 920" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
-        <defs><clipPath id="mag-clip"><text text-anchor="middle" x="700" y="300" class="mt">FRAME</text><text text-anchor="middle" x="700" y="560" class="mt">UP</text><text text-anchor="middle" x="700" y="820" class="mt">DEEP</text></clipPath></defs>
-        <image href="assets/frameup/gen-portrait.jpg" x="0" y="0" width="1400" height="920" preserveAspectRatio="xMidYMid slice" filter="url(#smear-bg)"/>
-        <rect width="1400" height="920" fill="#0b0b0c" opacity=".25"/>
-        <image href="assets/frameup/gen-portrait.jpg" x="0" y="0" width="1400" height="920" preserveAspectRatio="xMidYMid slice" clip-path="url(#mag-clip)"/>
+        <defs>
+          <clipPath id="mag-clip"><text text-anchor="middle" x="700" y="320" class="mt">FRAME</text><text text-anchor="middle" x="700" y="565" class="mt">UP</text><text text-anchor="middle" x="700" y="810" class="mt">DEEP</text></clipPath>
+          <filter id="mag-smear" filterUnits="userSpaceOnUse" x="-300" y="-100" width="2000" height="1120"><feGaussianBlur stdDeviation="40 1"/></filter>
+        </defs>
+        <image href="assets/frameup/gen-portrait.jpg" x="0" y="0" width="1400" height="920" preserveAspectRatio="xMidYMid slice" filter="url(#mag-smear)"/>
+        <rect width="1400" height="920" fill="#0b0b0c" opacity=".55"/>
+        <g clip-path="url(#mag-clip)">
+          <image href="assets/frameup/gen-portrait.jpg" x="0" y="0" width="1400" height="920" preserveAspectRatio="xMidYMid slice"/>
+          <rect width="1400" height="920" fill="#ffffff" opacity=".2"/>
+        </g>
       </svg>
       <h1 class="sr-only" id="mag-h">Frame Up Deep</h1>
       <div class="mag-bottom cap"><span>Иллюстрация к кейсу · сгенерировано</span><span>Instagram · 4 карусели · 12 слайдов</span></div>
