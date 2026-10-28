@@ -286,6 +286,24 @@ body { margin: 0 }
 @media (prefers-reduced-motion:reduce){.case-next *{transition:none!important}}
 .case-next{--cn-bg:#0d0d0e;--cn-fg:#ebebe8;--cn-sub:#9a9a96;--cn-acc:#ebebe8;--cn-line:rgba(235,235,232,.14);--cn-title:300 clamp(44px,7vw,112px)/1 "Lexend Zetta","Helvetica Neue",Arial,sans-serif}
 </style>
+<style>
+/* kinetic layer, as in the Figma "Kinetic" board: blurred dance photo, motion trails, outline titles, blurred out-of-focus slides */
+header.hero{position:relative;isolation:isolate;overflow:hidden}
+header.hero::before,section.band.dark::before{content:"";position:absolute;inset:-80px;z-index:-2;background:url(assets/frameup/bg.jpg) center/cover;filter:blur(32px) grayscale(1) brightness(.4);transform:scale(1.1);pointer-events:none}
+section.band.dark{position:relative;isolation:isolate;overflow:hidden}
+section.band.dark::before{opacity:.6}
+.hero h1 .deep{position:relative}
+.hero h1 .deep::before,.hero h1 .deep::after{content:"DEEP";position:absolute;left:0;top:0;color:inherit;pointer-events:none;filter:blur(10px);opacity:.35;transform:translateX(-6%)}
+.hero h1 .deep::after{filter:blur(22px);opacity:.18;transform:translateX(-13%)}
+.deck .card[data-pos="out"],.deck .card[data-pos="out-r"]{filter:blur(10px)}
+.int{position:relative;isolation:isolate;overflow:hidden}
+.int::after{position:absolute;top:clamp(24px,4vw,64px);left:0;z-index:-1;font:300 clamp(80px,17vw,320px)/1 var(--display);letter-spacing:-.02em;white-space:nowrap;color:transparent;-webkit-text-stroke:1.5px currentColor;opacity:.16;pointer-events:none;transform:translateX(calc(var(--kx,0) * 1px))}
+.int.dark::after{opacity:.2}
+#heels-pro::after,#heels-beg::after{content:"HIGH HEELS"}
+#frame-beg::after,#frame-pro::after{content:"FRAME UP"}
+@media (min-width:601px){.strip .s{filter:grayscale(.6) blur(4px)}.strip .s.on{filter:none}}
+@media (prefers-reduced-motion:reduce){.hero h1 .deep::before,.hero h1 .deep::after{display:none}.int::after{transform:none}}
+</style>
 </head>
 <body>
 <header class="hero dark" style="background:var(--bg)">
@@ -617,5 +635,13 @@ body { margin: 0 }
   <div class="cn-foot cn-cap"><span>Екатерина Богданова, 2026</span><a href="#">Наверх ↑</a></div>
 </section>
 <!-- /case-next -->
+<script>
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var secs=[].slice.call(document.querySelectorAll('.int')), tick=false;
+  function upd(){tick=false;var vh=innerHeight;secs.forEach(function(el,i){var r=el.getBoundingClientRect();if(r.bottom<0||r.top>vh)return;var p=(r.top+r.height/2-vh/2)/vh;el.style.setProperty('--kx',((i%2?-1:1)*p*220).toFixed(1));});}
+  addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(upd);}},{passive:true});upd();
+})();
+</script>
 </body>
 </html>
