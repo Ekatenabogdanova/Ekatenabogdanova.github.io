@@ -26,7 +26,7 @@
   --dark:#141414; --dark-ink:#f2f2ef; --dark-mute:#8f8f8b; --dark-line:rgba(255,255,255,.12);
   --head:"Montserrat","Helvetica Neue",Arial,sans-serif; --body:"Montserrat","Helvetica Neue",Arial,sans-serif; --zetta:"Lexend Zetta","Helvetica Neue",Arial,sans-serif;
   /* typography tokens — every text on the page uses one role: font + tracking (+ case for caps) */
-  --t-hero:800 196px/1 var(--head);            --ls-hero:-3px;      /* SVG letters on the cover (viewBox units) */
+  --t-hero:800 172px/1 var(--head);            --ls-hero:-3px;      /* SVG letters on the cover (viewBox units) */
   --t-h:600 clamp(32px,4.6vw,68px)/1.1 var(--head);  --ls-h:-.03em;  /* section headline, caps */
   --t-hs:600 clamp(26px,3vw,42px)/1.12 var(--head); --ls-hs:-.025em;  /* small headline, caps */
   --t-num:700 clamp(40px,4.4vw,64px)/1 var(--head);   --ls-num:-.035em; /* figures */
@@ -79,10 +79,10 @@ button{font:inherit;color:inherit}
 .hero-nav nav{display:flex;gap:var(--s3)}
 .hero-nav nav a{text-decoration:none;opacity:.8}
 .hero-nav nav a:hover{opacity:1}
-.mag-top,.mag-bottom{position:absolute;left:var(--edge);right:var(--edge);display:flex;justify-content:space-between;gap:var(--s2);font-weight:var(--w-strong)}
-.mag-top{top:calc(var(--s8) + var(--s2))}
+.mag-bottom{position:absolute;left:var(--edge);right:var(--edge);display:flex;justify-content:space-between;gap:var(--s2);font-weight:var(--w-strong)}
 .mag-bottom{bottom:var(--s4)}
 
+.mag-note{position:absolute;left:0;right:0;bottom:var(--s4);text-align:center;opacity:.55}
 /* intro */
 .intro2{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--s8);align-items:start;padding-top:var(--sec)}
 .intro2 .lead{margin-top:var(--gap-lead)}
@@ -253,8 +253,8 @@ button{font:inherit;color:inherit}
   .mag{height:auto;min-height:0;aspect-ratio:3/4;max-height:calc(100svh - var(--s4))}
   .mag-svg.desk{display:none}.mag-svg.mob{display:block}
   .hero-nav{padding:var(--s2) var(--gut)}
-  .mag-top{top:calc(var(--s6) + var(--s1))}.mag-bottom{bottom:var(--s2)}
-  .mag-top span+span{display:none}
+  .mag-bottom{bottom:var(--s2)}
+  .mag-note{top:calc(var(--s2) + var(--s1));bottom:auto;left:auto;right:var(--edge);text-align:right}
   .mag-bottom{flex-direction:column;gap:var(--s0)}
   .intro2,.type{grid-template-columns:1fr}
   .intro2{gap:var(--s6)}
@@ -340,37 +340,38 @@ button{font:inherit;color:inherit}
         <a class="home-mark" href="./" aria-label="На главную"><span class="ar" aria-hidden="true">←</span><i aria-hidden="true"></i>Екатерина Богданова</a>
         <nav class="cap" aria-label="Разделы кейса"><a href="#process">Процесс</a><a href="#how">Система</a><a href="#series">Интенсивы</a><a href="#feed">В ленте</a></nav>
       </div>
-      <div class="mag-top cap"><span>Frame Up Official — серия афиш</span><span>Осень 2025</span></div>
       <svg class="mag-svg desk" viewBox="0 0 1400 920" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
         <defs>
-          <clipPath id="mag-clip"><text text-anchor="middle" x="700" y="366" class="mt">FRAME</text><text text-anchor="middle" x="700" y="566" class="mt">UP</text><text text-anchor="middle" x="700" y="766" class="mt">DEEP</text></clipPath>
+          <clipPath id="mag-clip"><text text-anchor="middle" x="700" y="382" class="mt">FRAME</text><text text-anchor="middle" x="700" y="556" class="mt">UP</text><text text-anchor="middle" x="700" y="730" class="mt">DEEP</text></clipPath>
+          <filter id="mag-bright"><feComponentTransfer><feFuncR type="linear" slope="1.3" intercept=".03"/><feFuncG type="linear" slope="1.3" intercept=".03"/><feFuncB type="linear" slope="1.3" intercept=".03"/></feComponentTransfer></filter>
           <filter id="mag-smear" filterUnits="userSpaceOnUse" x="-300" y="-100" width="2000" height="1120"><feGaussianBlur stdDeviation="36 1"/></filter>
           <linearGradient id="mag-fade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".55"/><stop offset=".2" stop-color="#000" stop-opacity="0"/><stop offset=".8" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".55"/></linearGradient>
         </defs>
         <image href="assets/frameup/gen-face.jpg" x="0" y="0" width="1400" height="920" preserveAspectRatio="xMidYMid slice" filter="url(#mag-smear)"/>
-        <rect width="1400" height="920" fill="#ffffff" opacity=".12"/>
+        <rect width="1400" height="920" fill="#000000" opacity=".34"/>
         <g class="sharp" clip-path="url(#mag-clip)">
-          <image href="assets/frameup/gen-face.jpg" x="0" y="0" width="1400" height="920" preserveAspectRatio="xMidYMid slice"/>
-          <rect width="1400" height="920" fill="#000000" opacity=".22"/>
+          <image href="assets/frameup/gen-face.jpg" x="0" y="0" width="1400" height="920" preserveAspectRatio="xMidYMid slice" filter="url(#mag-bright)"/>
+          
         </g>
         <rect width="1400" height="920" fill="url(#mag-fade)"/>
       </svg>
       <svg class="mag-svg mob" viewBox="0 0 900 1200" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
         <defs>
           <clipPath id="mag-clip-m"><text text-anchor="middle" x="450" y="470" class="mt m">FRAME</text><text text-anchor="middle" x="450" y="700" class="mt m">UP</text><text text-anchor="middle" x="450" y="930" class="mt m">DEEP</text></clipPath>
+          <filter id="mag-bright-m"><feComponentTransfer><feFuncR type="linear" slope="1.3" intercept=".03"/><feFuncG type="linear" slope="1.3" intercept=".03"/><feFuncB type="linear" slope="1.3" intercept=".03"/></feComponentTransfer></filter>
           <filter id="mag-smear-m" filterUnits="userSpaceOnUse" x="-300" y="-100" width="1500" height="1400"><feGaussianBlur stdDeviation="30 1"/></filter>
           <linearGradient id="mag-fade-m" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".6"/><stop offset=".22" stop-color="#000" stop-opacity="0"/><stop offset=".8" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".6"/></linearGradient>
         </defs>
         <image href="assets/frameup/gen-face.jpg" x="0" y="0" width="900" height="1200" preserveAspectRatio="xMidYMid slice" filter="url(#mag-smear-m)"/>
-        <rect width="900" height="1200" fill="#ffffff" opacity=".12"/>
+        <rect width="900" height="1200" fill="#000000" opacity=".34"/>
         <g class="sharp" clip-path="url(#mag-clip-m)">
-          <image href="assets/frameup/gen-face.jpg" x="0" y="0" width="900" height="1200" preserveAspectRatio="xMidYMid slice"/>
-          <rect width="900" height="1200" fill="#000000" opacity=".22"/>
+          <image href="assets/frameup/gen-face.jpg" x="0" y="0" width="900" height="1200" preserveAspectRatio="xMidYMid slice" filter="url(#mag-bright-m)"/>
+          
         </g>
         <rect width="900" height="1200" fill="url(#mag-fade-m)"/>
       </svg>
       <h1 class="sr-only" id="mag-h">Frame Up Deep</h1>
-      <div class="mag-bottom cap"><span>Иллюстрация к кейсу · сгенерировано</span><span>Instagram · 4 карусели · 12 слайдов</span></div>
+      <div class="mag-bottom cap"><span>Frame Up Official · осень 2025</span><span>Instagram · 4 карусели · 12 слайдов</span></div><p class="mag-note cap">Иллюстрация сгенерирована</p>
     </header>
 
     <!-- intro -->
