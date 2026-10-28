@@ -404,14 +404,16 @@ p{text-wrap:pretty}
       <svg class="mag-svg" viewBox="0 0 1400 920" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
         <defs>
           <clipPath id="mag-clip"><text text-anchor="middle" x="700" y="320" class="mt">FRAME</text><text text-anchor="middle" x="700" y="565" class="mt">UP</text><text text-anchor="middle" x="700" y="810" class="mt">DEEP</text></clipPath>
-          <filter id="mag-smear" filterUnits="userSpaceOnUse" x="-300" y="-100" width="2000" height="1120"><feGaussianBlur stdDeviation="40 1"/></filter>
+          <filter id="mag-smear" filterUnits="userSpaceOnUse" x="-300" y="-100" width="2000" height="1120"><feGaussianBlur stdDeviation="36 1"/></filter>
+          <linearGradient id="mag-fade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".55"/><stop offset=".2" stop-color="#000" stop-opacity="0"/><stop offset=".8" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".55"/></linearGradient>
         </defs>
-        <image href="assets/frameup/gen-portrait.jpg" x="0" y="0" width="1400" height="920" preserveAspectRatio="xMidYMid slice" filter="url(#mag-smear)"/>
-        <rect width="1400" height="920" fill="#0b0b0c" opacity=".55"/>
+        <image href="assets/frameup/gen-face.jpg" x="0" y="0" width="1400" height="920" preserveAspectRatio="xMidYMid slice" filter="url(#mag-smear)"/>
+        <rect width="1400" height="920" fill="#ffffff" opacity=".12"/>
         <g clip-path="url(#mag-clip)">
-          <image href="assets/frameup/gen-portrait.jpg" x="0" y="0" width="1400" height="920" preserveAspectRatio="xMidYMid slice"/>
-          <rect width="1400" height="920" fill="#ffffff" opacity=".2"/>
+          <image href="assets/frameup/gen-face.jpg" x="0" y="0" width="1400" height="920" preserveAspectRatio="xMidYMid slice"/>
+          <rect width="1400" height="920" fill="#000000" opacity=".22"/>
         </g>
+        <rect width="1400" height="920" fill="url(#mag-fade)"/>
       </svg>
       <h1 class="sr-only" id="mag-h">Frame Up Deep</h1>
       <div class="mag-bottom cap"><span>Иллюстрация к кейсу · сгенерировано</span><span>Instagram · 4 карусели · 12 слайдов</span></div>
