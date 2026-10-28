@@ -83,11 +83,22 @@ button{font:inherit;color:inherit}
 .deck .card[data-pos="0"]{z-index:4;transform:translate3d(var(--dx,0px),var(--dy,0px),0) rotate(var(--dr,0deg)) rotateX(var(--tx,0deg)) rotateY(var(--ty,0deg))}
 .deck .card[data-pos="0"].live{transition:transform .12s linear}
 .deck .card[data-pos="0"].grab{transition:none}
-.deck .card[data-pos="1"]{transform:translate(9%,3%) rotate(5deg) scale(.95);z-index:3;opacity:.85}
-.deck .card[data-pos="2"]{transform:translate(17%,6%) rotate(10deg) scale(.9);z-index:2;opacity:.6}
-.deck .card[data-pos="3"]{transform:translate(17%,6%) rotate(10deg) scale(.9);z-index:1;opacity:0}
-.deck .card[data-pos="out"]{transform:translate(-125%,6%) rotate(-18deg);z-index:5;opacity:0}
-.deck .card[data-pos="out-r"]{transform:translate(125%,6%) rotate(18deg);z-index:5;opacity:0}
+.deck .card{transform-origin:50% 135%}
+.deck .card[data-pos="1"]{transform:rotate(9deg);z-index:3;opacity:1}
+.deck .card[data-pos="2"]{transform:rotate(18deg);z-index:2;opacity:1}
+.deck .card[data-pos="3"]{transform:rotate(-9deg);z-index:1;opacity:1}
+.deck:hover .card[data-pos="1"]{transform:rotate(13deg)}
+.deck:hover .card[data-pos="2"]{transform:rotate(26deg)}
+.deck:hover .card[data-pos="3"]{transform:rotate(-13deg)}
+.deck .card[data-pos="out"]{transform:translate(-40%,-6%) rotate(-28deg);z-index:5;opacity:0}
+.deck .card[data-pos="out-r"]{transform:translate(40%,-6%) rotate(28deg);z-index:5;opacity:0}
+.deck .card:not([data-pos="0"])::before{content:"";position:absolute;inset:0;background:rgba(236,236,236,.18);pointer-events:none}
+.deck-col{padding:var(--s4) 0 var(--s2)}
+.deck{width:min(260px,70%);margin-bottom:var(--s6)}
+.deck-meta{display:grid;justify-items:center;gap:4px;text-align:center}
+.deck-meta .now{font:var(--t-sub);letter-spacing:-.02em;color:var(--ink)}
+.deck-meta .now span{font:var(--t-cap);letter-spacing:.12em;color:var(--mute);margin-right:8px;vertical-align:.25em}
+.deck-meta .cap{color:var(--mute)}
 
 /* process */
 .tl{list-style:none;margin-top:var(--s6);border-top:1px solid var(--line)}
@@ -309,12 +320,12 @@ button{font:inherit;color:inherit}
       </div>
       <div class="deck-col">
         <button class="deck" type="button" aria-label="Показать следующую обложку">
-          <span class="card" data-pos="0" data-acc="#4a40e0" style="background-image:url(assets/frameup/heels-pro.jpg)"></span>
-          <span class="card" data-pos="1" data-acc="#c21a1a" style="background-image:url(assets/frameup/frame-beg.jpg)"></span>
-          <span class="card" data-pos="2" data-acc="#a9b400" style="background-image:url(assets/frameup/heels-beg.jpg)"></span>
-          <span class="card" data-pos="3" data-acc="#d4af37" style="background-image:url(assets/frameup/frame-pro.jpg)"></span>
+          <span class="card" data-pos="0" data-acc="#4a40e0" data-n="01" data-name="High Heels Pro" data-date="11–12 октября" style="background-image:url(assets/frameup/heels-pro.jpg)"></span>
+          <span class="card" data-pos="1" data-acc="#c21a1a" data-n="02" data-name="Frame Up Beginners" data-date="18–19 октября" style="background-image:url(assets/frameup/frame-beg.jpg)"></span>
+          <span class="card" data-pos="2" data-acc="#a9b400" data-n="03" data-name="High Heels Beginners" data-date="8–9 ноября" style="background-image:url(assets/frameup/heels-beg.jpg)"></span>
+          <span class="card" data-pos="3" data-acc="#d4af37" data-n="04" data-name="Frame Up Pro" data-date="15–16 ноября" style="background-image:url(assets/frameup/frame-pro.jpg)"></span>
         </button>
-        <div class="deck-meta"><p class="cap">Смахните афишу или нажмите на неё</p></div>
+        <div class="deck-meta" aria-live="polite"><p class="now"></p><p class="cap">Смахните или нажмите</p></div>
       </div>
     </section>
 
@@ -429,7 +440,8 @@ button{font:inherit;color:inherit}
   var deck = document.querySelector('.deck');
   var order = [].slice.call(deck.querySelectorAll('.card'));
   var paused = false, touched = false, drag = null, moved = false;
-  function paint() { setAcc(order[0].dataset.acc); }
+  var now = document.querySelector('.deck-meta .now');
+  function paint() { var c = order[0]; setAcc(c.dataset.acc); now.innerHTML = '<span>' + c.dataset.n + ' / 04</span>' + c.dataset.name + ' · ' + c.dataset.date; }
   function clearVars(c) { ['--dx', '--dy', '--dr', '--tx', '--ty'].forEach(function (v) { c.style.removeProperty(v); }); }
   function next(dir) {
     var f = order.shift(); order.push(f);
