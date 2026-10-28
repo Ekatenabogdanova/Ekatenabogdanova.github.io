@@ -24,19 +24,9 @@
   --f-display: "Unbounded", "Arial Black", system-ui, sans-serif;
   --f-body: "Golos Text", "Helvetica Neue", Arial, system-ui, sans-serif;
   --f-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #111214; --surface: #1a1c1f; --fg: #e8e9ea; --muted: #9ba2a7;
-    --line: #2c3034; --accent: #e2594d; --accent-soft: #2e1a18; --ok: #7cc28d;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #111214; --surface: #1a1c1f; --fg: #e8e9ea; --muted: #9ba2a7;
-  --line: #2c3034; --accent: #e2594d; --accent-soft: #2e1a18; --ok: #7cc28d;
-  color-scheme: dark;
-}
+/* light-only by choice: easier to read than light text on dark */
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 64px); }
@@ -57,12 +47,12 @@ body::before {
 
 /* film edge */
 .edge {
-  height: 16px;
+  height: 12px;
   background:
-    radial-gradient(circle at 50% 50%, var(--bg) 0 3px, transparent 3.5px) 0 0 / 20px 16px repeat-x,
-    var(--fg);
+    radial-gradient(circle at 50% 50%, var(--surface) 0 2.5px, transparent 3px) 0 0 / 16px 12px repeat-x,
+    var(--line);
 }
-header.top { background: var(--fg); color: var(--bg); }
+header.top { background: var(--surface); color: var(--fg); }
 header.top .wrap { padding-block: 32px 28px; display: grid; gap: 12px; }
 .eyebrow {
   font-family: var(--f-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase;
