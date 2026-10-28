@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}[hidden]{display:none!important}</style>
+<title>Шпаргалка rockeroleg</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Unbounded:wght@500;700&display=swap">
+<style>
+/* Layout: one reading column like a contact sheet — film-edge header, sticky section chips, numbered steps only where order matters */
+:root {
+  --bg: #eceeef;
+  --surface: #ffffff;
+  --fg: #16181a;
+  --muted: #5a6166;
+  --line: #d2d7da;
+  --accent: #8e1c16;
+  --accent-soft: #f3e3e1;
+  --ok: #2f6b3f;
+  --f-display: "Unbounded", "Arial Black", system-ui, sans-serif;
+  --f-body: "Golos Text", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111214; --surface: #1a1c1f; --fg: #e8e9ea; --muted: #9ba2a7;
+    --line: #2c3034; --accent: #e2594d; --accent-soft: #2e1a18; --ok: #7cc28d;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111214; --surface: #1a1c1f; --fg: #e8e9ea; --muted: #9ba2a7;
+  --line: #2c3034; --accent: #e2594d; --accent-soft: #2e1a18; --ok: #7cc28d;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 64px); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--f-body); font-size: 16px; line-height: 1.55;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+  z-index: 10; background: var(--bg);
+}
+.wrap {
+  max-width: 760px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* film edge */
+.edge {
+  height: 16px;
+  background:
+    radial-gradient(circle at 50% 50%, var(--bg) 0 3px, transparent 3.5px) 0 0 / 20px 16px repeat-x,
+    var(--fg);
+}
+header.top { background: var(--fg); color: var(--bg); }
+header.top .wrap { padding-block: 32px 28px; display: grid; gap: 12px; }
+.eyebrow {
+  font-family: var(--f-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase;
+  color: inherit; opacity: .7;
+}
+h1 {
+  font-family: var(--f-display); font-weight: 700; font-size: clamp(28px, 6vw, 44px);
+  line-height: 1.1; margin: 0; text-wrap: balance;
+}
+.lede { margin: 0; max-width: 60ch; opacity: .85; }
+
+nav.chips {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: var(--bg); border-bottom: 1px solid var(--line);
+}
+nav.chips .wrap { padding-block: 12px; }
+nav.chips ul {
+  list-style: none; margin: 0; padding: 0; display: flex; gap: 8px;
+  overflow-x: auto; scrollbar-width: none;
+}
+nav.chips ul::-webkit-scrollbar { display: none; }
+nav.chips a {
+  display: inline-block; white-space: nowrap; text-decoration: none;
+  font-size: 14px; color: var(--fg); padding: 6px 12px;
+  border: 1px solid var(--line); border-radius: 999px; background: var(--surface);
+}
+nav.chips a:hover { border-color: var(--accent); color: var(--accent); }
+a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+main .wrap { padding-block: 32px 64px; display: grid; gap: 56px; }
+section { display: grid; gap: 16px; min-width: 0; }
+h2 {
+  font-family: var(--f-display); font-weight: 500; font-size: 22px; line-height: 1.2;
+  margin: 0; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+}
+h2 .frame { font-family: var(--f-mono); font-size: 12px; color: var(--accent); letter-spacing: .06em; }
+h3 { font-size: 16px; font-weight: 600; margin: 0; }
+p { margin: 0; max-width: 65ch; }
+.muted { color: var(--muted); }
+ul.plain { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.facts div { background: var(--surface); padding: 12px 16px; display: grid; gap: 2px; }
+.facts dt { font-family: var(--f-mono); font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.facts dd { margin: 0; font-weight: 500; }
+
+.note {
+  border-left: 3px solid var(--accent); background: var(--accent-soft);
+  padding: 12px 16px; max-width: 65ch;
+}
+
+/* checklist */
+.check { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.check-group { display: grid; gap: 8px; }
+.check-group h3 { font-family: var(--f-mono); font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.check label {
+  display: grid; grid-template-columns: 20px 1fr; gap: 12px; align-items: start;
+  padding: 8px 12px; border-radius: 8px; cursor: pointer;
+}
+.check label:hover { background: var(--surface); }
+.check input { width: 18px; height: 18px; margin: 3px 0 0; accent-color: var(--accent); }
+.check input:checked + span { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--line); }
+.progress { font-family: var(--f-mono); font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+/* copy blocks */
+.copy { border: 1px solid var(--line); background: var(--surface); border-radius: 8px; min-width: 0; }
+.copy-head {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  padding: 8px 8px 8px 16px; border-bottom: 1px solid var(--line);
+}
+.copy-head span { font-family: var(--f-mono); font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.copy button {
+  font: 500 13px var(--f-body); color: var(--fg); background: transparent;
+  border: 1px solid var(--line); border-radius: 6px; padding: 4px 12px; cursor: pointer;
+}
+.copy button:hover { border-color: var(--accent); color: var(--accent); }
+.copy button.done { color: var(--ok); border-color: var(--ok); }
+.copy pre {
+  margin: 0; padding: 16px; overflow-x: auto; white-space: pre-wrap; word-break: break-word;
+  font: 13px/1.6 var(--f-mono); color: var(--fg);
+}
+
+/* steps */
+ol.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; counter-reset: s; }
+ol.steps > li {
+  counter-increment: s; display: grid; grid-template-columns: 40px 1fr; gap: 12px;
+  padding-block: 16px; border-top: 1px solid var(--line); min-width: 0;
+}
+ol.steps > li::before {
+  content: counter(s, decimal-leading-zero); font-family: var(--f-mono); font-size: 13px;
+  color: var(--accent); padding-top: 2px;
+}
+ol.steps .body { display: grid; gap: 8px; min-width: 0; }
+
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-family: var(--f-mono); font-size: 12px; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+tr:last-child td { border-bottom: 0; }
+td code, p code, li code { font-family: var(--f-mono); font-size: 13px; background: var(--bg); padding: 1px 4px; border-radius: 4px; }
+
+footer .wrap { padding-block: 24px 40px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+.reset { font: inherit; color: var(--muted); background: none; border: 0; text-decoration: underline; cursor: pointer; padding: 0; }
+</style>
+
+</head>
+<body>
+<header class="top">
+  <div class="edge" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="eyebrow">rockeroleg.ru · новый сайт</div>
+    <h1>Шпаргалка по сайту Андрея</h1>
+    <p class="lede">Всё по проекту на одной странице: бриф, вопросы на встречу, оплата, сборка с ИИ, домен и обновления. Галочки сохраняются в твоём браузере</p>
+  </div>
+  <div class="edge" aria-hidden="true"></div>
+</header>
+
+<nav class="chips" aria-label="Разделы">
+  <div class="wrap">
+    <ul>
+      <li><a href="#brief">Бриф</a></li>
+      <li><a href="#meeting">Встреча</a></li>
+      <li><a href="#money">Оплата</a></li>
+      <li><a href="#build">Сборка</a></li>
+      <li><a href="#prompts">Промпты</a></li>
+      <li><a href="#domain">Домен</a></li>
+      <li><a href="#updates">Обновления</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+<div class="wrap">
+
+<section id="brief">
+  <h2><span class="frame">КАДР 1</span>Бриф коротко</h2>
+  <p>Андрей хочет переделать сайт «грамотно» и «сильно в минимализм». Сейчас сайт на wfolio заброшен, а инста живая. Новый сайт должен превращать подписчиков в заявки и не требовать постоянных обновлений</p>
+  <dl class="facts">
+    <div><dt>Сейчас</dt><dd>wfolio, ~11 страниц</dd></div>
+    <div><dt>Станет</dt><dd>4 страницы, 6–8 серий</dd></div>
+    <div><dt>Где живёт</dt><dd>GitHub Pages</dd></div>
+    <div><dt>Его съёмка</dt><dd>22 тыс. ₽</dd></div>
+  </dl>
+  <h3>Что он снимает сейчас</h3>
+  <ul class="plain">
+    <li>Постановочные портреты в студии: жёсткий свет, тёмный фон, кино-настроение</li>
+    <li>Танцы и события: клуб Bounce, Skills &amp; Drills, «Север Dance Forever», KBGURU Fest</li>
+    <li>Театр: серия «Моя школа», учебный театр Школы-студии МХАТ</li>
+    <li>Ч/б с зерном и эксперименты: искажения, коллажи, красный силуэт в лесу</li>
+    <li>Личное на плёнке: дети, лес, семья</li>
+  </ul>
+  <h3>Структура сайта</h3>
+  <ul class="plain">
+    <li><strong>Главная:</strong> имя, одна строка о том, что он снимает, кнопка «Записаться», обложки серий, блок «С кем работал»</li>
+    <li><strong>Страница серии:</strong> один шаблон на все, фото во всю ширину, в конце следующая серия и «Хочу так же»</li>
+    <li><strong>Услуги:</strong> 2–3 формата, что входит, цена «от», если Андрей согласен</li>
+    <li><strong>Обо мне и контакты:</strong> короткий текст, фото, Telegram, WhatsApp, Instagram</li>
+  </ul>
+  <h3>Два направления минимализма</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th></th><th>А. Тёмный киношный</th><th>Б. Цветное поле</th></tr></thead>
+      <tbody>
+        <tr><td>Фон</td><td>почти чёрный</td><td>светлый или цвет серии</td></tr>
+        <tr><td>Фото</td><td>одно на экран, во всю ширину</td><td>небольшие, с большими полями, как в его инсте</td></tr>
+        <tr><td>Акцент</td><td>красный только на кнопках</td><td>у каждой серии свой цвет поля</td></tr>
+        <tr><td>Сила</td><td>ничего не отвлекает от фото</td><td>сразу узнаётся как его сайт</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="meeting">
+  <h2><span class="frame">КАДР 2</span>Встреча с Андреем</h2>
+  <p>Первый вопрос самый важный: от ответа зависит главная страница. Ответы записывай прямо в полный бриф</p>
+  <div class="check-group">
+    <h3>Цель</h3>
+    <ul class="check">
+      <li><label><input type="checkbox" id="m1"><span>Что продаём через сайт: индивидуальные съёмки, мероприятия и фестивали, авторские проекты? Что главное?</span></label></li>
+      <li><label><input type="checkbox" id="m2"><span>Откуда сейчас приходят клиенты и кому он даёт ссылку на сайт?</span></label></li>
+      <li><label><input type="checkbox" id="m3"><span>Какой клиент для него идеальный, а какие съёмки брать больше не хочет?</span></label></li>
+    </ul>
+  </div>
+  <div class="check-group">
+    <h3>Визуал</h3>
+    <ul class="check">
+      <li><label><input type="checkbox" id="m4"><span>2–3 сайта фотографов, которые ему нравятся. Что для него «минимализм»?</span></label></li>
+      <li><label><input type="checkbox" id="m5"><span>Показать направления А и Б, выбрать одно</span></label></li>
+      <li><label><input type="checkbox" id="m6"><span>«Фото на цветном поле» из инсты — его стиль? Берём на сайт?</span></label></li>
+    </ul>
+  </div>
+  <div class="check-group">
+    <h3>Контент</h3>
+    <ul class="check">
+      <li><label><input type="checkbox" id="m7"><span>Какие 6–8 серий лучшие? Финальный отбор делает он</span></label></li>
+      <li><label><input type="checkbox" id="m8"><span>Ню: на GitHub такое нельзя, оставляем вне сайта?</span></label></li>
+      <li><label><input type="checkbox" id="m9"><span>Дети и личное на плёнке: нужно ли это на сайте?</span></label></li>
+      <li><label><input type="checkbox" id="m10"><span>Хайлайт «AI»: инструмент, проект или услуга?</span></label></li>
+      <li><label><input type="checkbox" id="m11"><span>С кем работал: можно ли ставить названия фестивалей и афиши?</span></label></li>
+      <li><label><input type="checkbox" id="m12"><span>Кто пишет «Обо мне» и услуги? Показываем ли цены?</span></label></li>
+    </ul>
+  </div>
+  <div class="check-group">
+    <h3>Техническое</h3>
+    <ul class="check">
+      <li><label><input type="checkbox" id="m13"><span>Есть ли у него аккаунт на GitHub? Если нет, заводим вместе</span></label></li>
+      <li><label><input type="checkbox" id="m14"><span>У какого регистратора домен rockeroleg.ru, есть ли доступ? До какого числа оплачен wfolio?</span></label></li>
+      <li><label><input type="checkbox" id="m15"><span>Достаточно ли кнопок Telegram и WhatsApp вместо формы?</span></label></li>
+      <li><label><input type="checkbox" id="m16"><span>Как передаст фото в исходном качестве (папка на диске)?</span></label></li>
+    </ul>
+  </div>
+  <p class="progress" data-progress="m">0 из 16</p>
+</section>
+
+<section id="money">
+  <h2><span class="frame">КАДР 3</span>Оплата</h2>
+  <p>Договор не нужен: все условия одним сообщением в Telegram сразу после встречи. Выбери один вариант оплаты и удали второй</p>
+  <ul class="plain">
+    <li><strong>Деньгами:</strong> 15–25 тыс. ₽, половина предоплатой после того, как Андрей пришлёт фото, половина при запуске. Перевод по СБП</li>
+    <li><strong>Бартером:</strong> фотосессия для тебя, дату назначаем сразу, снимаем после запуска</li>
+    <li><strong>Налоги:</strong> по желанию — самозанятость и чек в «Моём налоге», 4% с физлиц</li>
+  </ul>
+  <div class="copy">
+    <div class="copy-head"><span>Сообщение Андрею</span><button type="button" data-copy="msg-deal">Скопировать</button></div>
+    <pre id="msg-deal">Андрей, привет! Фиксирую, о чём договорились:
+
+— делаю новый сайт на rockeroleg.ru: главная с сериями, страница серии, услуги, обо мне и контакты
+— ты отбираешь [6–8] серий и присылаешь фото до [дата]
+— первая версия через 2–3 недели после фото, дальше 2 круга правок
+— оплата: [сумма] ₽, половина сейчас, половина при запуске
+  ИЛИ бартер: фотосессия [дата]
+— первые 3 месяца новые серии добавляю бесплатно, дальше договоримся
+— если правки зависнут больше чем на 3 недели, запускаем текущую версию
+
+Всё верно?</pre>
+  </div>
+</section>
+
+<section id="build">
+  <h2><span class="frame">КАДР 4</span>Сборка по шагам</h2>
+  <p class="note">Claude официально недоступен в России. Выбери ИИ-ассистента для кода, который легально работает у тебя. Промпты ниже подойдут к любому</p>
+  <ol class="steps">
+    <li><div class="body"><h3>Аккаунт и репозиторий</h3><p>Репозиторий <code>rockeroleg-site</code> на аккаунте Андрея, тебя он добавляет соавтором: Settings → Collaborators. Сайт и домен остаются его</p></div></li>
+    <li><div class="body"><h3>Фото</h3><p>Исходники от Андрея кладёшь в папку <code>originals/&lt;серия&gt;/</code>. В git она не попадает, только сжатые копии</p></div></li>
+    <li><div class="body"><h3>Каркас сайта</h3><p>Промпт «Каркас». Серии описаны в одном файле <code>data/series.json</code>, чтобы новая серия добавлялась одной записью</p></div></li>
+    <li><div class="body"><h3>Два прототипа главной</h3><p>Собери А и Б на его настоящих фото и покажи Андрею. Выбирать по живым прототипам проще, чем по словам</p></div></li>
+    <li><div class="body"><h3>Сжатие и серии</h3><p>Промпт «Сжатие фото», потом наполни все серии. Цель — 300–500 КБ на кадр</p></div></li>
+    <li><div class="body"><h3>Тексты</h3><p>Черновики «Обо мне» и услуг с ИИ, на основе его инсты. Финальную версию правит Андрей</p></div></li>
+    <li><div class="body"><h3>Правки</h3><p>Два круга. Всё, что сверх, обсуждается отдельно</p></div></li>
+    <li><div class="body"><h3>Проверка перед запуском</h3><p>Промпт «Проверка», плюс открой сайт сама на телефоне</p></div></li>
+    <li><div class="body"><h3>Публикация</h3><p>Settings → Pages → Deploy from a branch → <code>main</code>. Сайт появится на <code>&lt;логин&gt;.github.io/rockeroleg-site</code></p></div></li>
+    <li><div class="body"><h3>Домен</h3><p>Переключи rockeroleg.ru по инструкции в разделе «Домен»</p></div></li>
+    <li><div class="body"><h3>Отключить wfolio</h3><p>Только после того, как новый сайт открывается по домену с HTTPS</p></div></li>
+  </ol>
+</section>
+
+<section id="prompts">
+  <h2><span class="frame">КАДР 5</span>Промпты</h2>
+  <p>В квадратных скобках то, что нужно заменить</p>
+
+  <div class="copy">
+    <div class="copy-head"><span>Каркас</span><button type="button" data-copy="p-base">Скопировать</button></div>
+    <pre id="p-base">Сделай статичный сайт-портфолио фотографа на чистом HTML, CSS и немного JS, без фреймворков и сборщиков, для GitHub Pages.
+
+Страницы:
+— главная: имя, одна строка о том, что он снимает, кнопка «Записаться», обложки серий, блок «С кем работал»
+— шаблон страницы серии: название, 1–2 строки описания, фото во всю ширину, в конце ссылка на следующую серию и кнопка «Хочу так же»
+— «Услуги»: 2–3 формата съёмки
+— «Обо мне и контакты»: текст, фото, кнопки Telegram, WhatsApp, Instagram. Без формы
+
+Все серии описаны в одном файле data/series.json: название, slug, год, описание, список фото. Страницы серий собираются из этого файла.
+
+Стиль: минимализм, [А: почти чёрный фон, одно фото на экран, мелкий светло-серый текст, красный только на кнопках / Б: светлый фон, небольшие фото на сплошном цветном поле, у каждой серии свой цвет].
+
+Фото в WebP, lazy loading, у каждого alt. Мобильная версия обязательна. На каждой странице title, description и og:image для превью в Telegram.</pre>
+  </div>
+
+  <div class="copy">
+    <div class="copy-head"><span>Сжатие фото</span><button type="button" data-copy="p-img">Скопировать</button></div>
+    <pre id="p-img">Напиши скрипт: берёт фото из originals/&lt;серия&gt;/, уменьшает до 2400 px по длинной стороне, сохраняет в WebP с качеством 80 в img/&lt;серия&gt;/. Для обложек делает ещё версию 1200 px. Добавь папку originals в .gitignore.</pre>
+  </div>
+
+  <div class="copy">
+    <div class="copy-head"><span>Новая серия</span><button type="button" data-copy="p-series">Скопировать</button></div>
+    <pre id="p-series">Добавь новую серию «[название]». Фото лежат в originals/[slug]/. Описание: [1–2 строки]. Сожми фото скриптом, добавь запись в data/series.json и поставь серию [первой / после «...»] на главной. Проверь, что страница серии открывается на телефоне.</pre>
+  </div>
+
+  <div class="copy">
+    <div class="copy-head"><span>Проверка</span><button type="button" data-copy="p-check">Скопировать</button></div>
+    <pre id="p-check">Проверь сайт перед запуском: все ли фото грузятся, есть ли alt, как выглядит на ширине 375 px, сколько весит главная, есть ли title, description и og:image на каждой странице, работают ли ссылки на Telegram и WhatsApp.</pre>
+  </div>
+</section>
+
+<section id="domain">
+  <h2><span class="frame">КАДР 6</span>Домен rockeroleg.ru</h2>
+  <p>Делается в личном кабинете регистратора, где куплен домен. Сначала удали старые записи wfolio для <code>@</code> и <code>www</code>, потом добавь эти</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Тип</th><th>Имя</th><th>Значение</th></tr></thead>
+      <tbody>
+        <tr><td>A</td><td>@</td><td><code>185.199.108.153</code></td></tr>
+        <tr><td>A</td><td>@</td><td><code>185.199.109.153</code></td></tr>
+        <tr><td>A</td><td>@</td><td><code>185.199.110.153</code></td></tr>
+        <tr><td>A</td><td>@</td><td><code>185.199.111.153</code></td></tr>
+        <tr><td>CNAME</td><td>www</td><td><code>[логин Андрея].github.io</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ul class="plain">
+    <li>В GitHub: Settings → Pages → Custom domain → <code>rockeroleg.ru</code> → Save</li>
+    <li>Записи обновляются до 24 часов. Когда проверка пройдёт, включи Enforce HTTPS</li>
+    <li>IP-адреса GitHub сверь с <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site">документацией GitHub Pages</a> перед настройкой</li>
+  </ul>
+</section>
+
+<section id="updates">
+  <h2><span class="frame">КАДР 7</span>Обновления после запуска</h2>
+  <p>Админки нет, новые серии добавляешь ты. Это примерно 30 минут на серию</p>
+  <ul class="plain">
+    <li>Андрей присылает фото и пару строк о съёмке</li>
+    <li>Кладёшь фото в <code>originals/[slug]/</code> и запускаешь промпт «Новая серия»</li>
+    <li>Проверяешь на телефоне, отправляешь изменения в GitHub, через пару минут серия на сайте</li>
+    <li>Первые 3 месяца бесплатно, потом бартером или за небольшие деньги</li>
+  </ul>
+</section>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">Отмечено пунктов на встрече: <span class="progress" data-progress="m">0 из 16</span> · <button type="button" class="reset" id="reset">Снять все галочки</button></div>
+</footer>
+
+<script>
+(function () {
+  var KEY = 'rockeroleg-cheatsheet-checks';
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('.check input[type=checkbox]'));
+  var state = {};
+  try { state = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { state = {}; }
+
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+  function render() {
+    var done = boxes.filter(function (b) { return b.checked; }).length;
+    document.querySelectorAll('[data-progress]').forEach(function (el) {
+      el.textContent = done + ' из ' + boxes.length;
+    });
+  }
+  boxes.forEach(function (b) {
+    b.checked = !!state[b.id];
+    b.addEventListener('change', function () { state[b.id] = b.checked; save(); render(); });
+  });
+  document.getElementById('reset').addEventListener('click', function () {
+    boxes.forEach(function (b) { b.checked = false; });
+    state = {}; save(); render();
+  });
+  render();
+
+  document.querySelectorAll('[data-copy]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var pre = document.getElementById(btn.getAttribute('data-copy'));
+      var text = pre.textContent;
+      function ok() {
+        btn.textContent = 'Скопировано'; btn.classList.add('done');
+        setTimeout(function () { btn.textContent = 'Скопировать'; btn.classList.remove('done'); }, 1600);
+      }
+      function fallback() {
+        var r = document.createRange(); r.selectNodeContents(pre);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        btn.textContent = 'Выделено, нажми ⌘C';
+        setTimeout(function () { btn.textContent = 'Скопировать'; }, 2400);
+      }
+      try {
+        navigator.clipboard.writeText(text).then(ok, fallback);
+      } catch (e) { fallback(); }
+    });
+  });
+})();
+</script>
+</body>
+</html>
