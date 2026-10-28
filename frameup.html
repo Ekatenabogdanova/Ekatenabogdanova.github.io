@@ -15,28 +15,29 @@
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600&family=Lexend+Zetta:wght@300;400&family=Playfair+Display&family=Onest:wght@400&family=PT+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Lexend+Zetta:wght@300;400&family=Playfair+Display&family=Onest:wght@400&family=PT+Mono&display=swap" rel="stylesheet">
 <style>
 /* Frame Up case — page system
    Surfaces: graphite page · light sheet (radius 28) · one dark card «В ленте» (radius 24). Photos radius 16. Nothing else has borders, boxes or shadows.
-   Type: tokens --t-* (font) + --ls-* (tracking): hero · h · hs · num · sub · body · small · cap · poster · specimen; weights --w-strong/--w-medium. No raw font sizes in rules; phones mock-up excepted.  Space: --s0..--s16 = 4 8 16 24 32 48 64 96 128; rhythm: headline→text 24, →content 48, sub-blocks 64, sections --sec. Tap targets ≥ --tap 44.
+   Type: Montserrat (the posters' Gotham voice) + Lexend Zetta for Latin event names. Tokens --t-* + --ls-*: hero · h · hs · num · sub · body · small · cap · name · poster · specimen; emphasis by weight (600 vs 300), never by pale grey; weights --w-strong/--w-medium. No raw font sizes in rules; phones mock-up excepted.  Space: --s0..--s16 = 4 8 16 24 32 48 64 96 128; rhythm: headline→text 24, →content 48, sub-blocks 64, sections --sec. Tap targets ≥ --tap 44.
    Colour: greys only; accent colour lives inside the posters. */
 :root{
   --page:#0b0b0c; --sheet:#ECECEC; --ink:#191919; --ink-2:#555552; --mute:#8a8a86; --pale:#B8B8B8; --line:rgba(25,25,25,.14);
   --dark:#141414; --dark-ink:#f2f2ef; --dark-mute:#8f8f8b; --dark-line:rgba(255,255,255,.12);
-  --head:"Inter Tight","Helvetica Neue",Arial,sans-serif; --body:"Inter",system-ui,-apple-system,sans-serif; --zetta:"Lexend Zetta","Helvetica Neue",Arial,sans-serif;
+  --head:"Montserrat","Helvetica Neue",Arial,sans-serif; --body:"Montserrat","Helvetica Neue",Arial,sans-serif; --zetta:"Lexend Zetta","Helvetica Neue",Arial,sans-serif;
   /* typography tokens — every text on the page uses one role: font + tracking (+ case for caps) */
-  --t-hero:800 200px/1 var(--head);            --ls-hero:-4px;      /* SVG letters on the cover (viewBox units) */
-  --t-h:700 clamp(34px,5.4vw,84px)/1.02 var(--head);  --ls-h:-.045em;  /* section headline, caps */
-  --t-hs:700 clamp(28px,3.4vw,48px)/1.04 var(--head); --ls-hs:-.04em;  /* small headline, caps */
-  --t-num:700 clamp(40px,4.4vw,64px)/1 var(--head);   --ls-num:-.04em; /* figures */
-  --t-sub:600 clamp(20px,1.8vw,26px)/1.15 var(--head); --ls-sub:-.02em; /* item titles */
-  --t-body:400 16px/1.55 var(--body);                                   /* paragraphs */
-  --t-small:400 13px/1.5 var(--body);                                   /* notes, meta */
-  --t-cap:500 11px/1.4 var(--body);            --ls-cap:.12em;       /* labels, caps */
+  --t-hero:800 196px/1 var(--head);            --ls-hero:-3px;      /* SVG letters on the cover (viewBox units) */
+  --t-h:600 clamp(32px,4.6vw,68px)/1.1 var(--head);  --ls-h:-.03em;  /* section headline, caps */
+  --t-hs:600 clamp(26px,3vw,42px)/1.12 var(--head); --ls-hs:-.025em;  /* small headline, caps */
+  --t-num:700 clamp(40px,4.4vw,64px)/1 var(--head);   --ls-num:-.035em; /* figures */
+  --t-sub:600 clamp(18px,1.5vw,21px)/1.3 var(--head); --ls-sub:-.01em; /* item titles */
+  --t-body:400 16px/1.65 var(--body);                                   /* paragraphs */
+  --t-small:400 13px/1.6 var(--body);                                   /* notes, meta */
+  --t-cap:600 11px/1.4 var(--body);            --ls-cap:.14em;       /* labels, caps */
   --t-poster:300 clamp(24px,2.8vw,40px)/1 var(--zetta); --ls-poster:-.02em; /* poster names, as on the posters */
   --t-specimen:300 clamp(120px,15vw,240px)/.8 var(--zetta); --ls-specimen:-.05em;
-  --w-strong:600; --w-medium:500;
+  --w-strong:600; --w-medium:500; --w-light:300;
+  --t-name:400 clamp(14px,1.2vw,17px)/1.3 var(--zetta); --ls-name:.06em; /* Latin event names, like on the posters */
   --s0:4px; --s1:8px; --s2:16px; --s3:24px; --s4:32px; --s6:48px; --s8:64px; --s12:96px; --s16:128px;
   --sec:clamp(96px,10vw,128px); --gut:clamp(16px,3vw,40px);
   --tap:44px; --r-img:16px; --r-card:24px; --r-sheet:28px;
@@ -54,9 +55,9 @@ button{font:inherit;color:inherit}
 
 /* primitives */
 .cap{font:var(--t-cap);letter-spacing:var(--ls-cap);text-transform:uppercase}
-.hl{font:var(--t-h);letter-spacing:var(--ls-h);text-transform:uppercase;text-wrap:balance}
+.hl{font:var(--t-h);letter-spacing:var(--ls-h);text-wrap:balance}
 .hl.s{font:var(--t-hs);letter-spacing:var(--ls-hs)}
-.hl .m{color:var(--pale)}
+.hl .m{font-weight:var(--w-light)}
 .lead{font:var(--t-body);color:var(--ink-2);max-width:56ch}
 .pad{padding-left:var(--gut);padding-right:var(--gut)}
 .sec{padding-top:var(--sec)}
@@ -130,7 +131,7 @@ button{font:inherit;color:inherit}
 .ic:focus-visible{outline:2px solid var(--ink);outline-offset:6px}
 .ic .chip{display:block;font:var(--t-cap);letter-spacing:var(--ls-cap);text-transform:uppercase;color:var(--mute)}
 .ic .t{display:block;margin-top:var(--s1)}
-.ic .t b{display:block;font:var(--t-sub);letter-spacing:var(--ls-sub)}
+.ic .t b{display:block;font:var(--t-name);letter-spacing:var(--ls-name);text-transform:uppercase}
 .ic .t small{display:block;margin-top:var(--s0);font:var(--t-small);color:var(--mute)}
 .view{margin-top:var(--s8)}
 .vhead{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s2);flex-wrap:wrap}
@@ -172,7 +173,7 @@ button{font:inherit;color:inherit}
 /* feed — the one dark card */
 .feed{margin:var(--sec) var(--s3) 0;border-radius:var(--r-card);color:var(--dark-ink);padding:var(--s12) var(--gut) var(--s8);
   background:linear-gradient(180deg,rgba(20,20,20,.88),rgba(20,20,20,.96)),url(assets/frameup/gen-floor.jpg) 35% 40%/cover no-repeat,var(--dark)}
-.feed .hl .m{color:#5d5d5a}
+.feed .hl .m{color:inherit}
 .phones{display:flex;justify-content:center;align-items:flex-start;gap:clamp(32px,6vw,96px);margin-top:var(--s6);perspective:2000px}
 .pcol{display:flex;flex-direction:column;align-items:center}
 .phone{--w:clamp(300px,23vw,330px);position:relative;width:var(--w);aspect-ratio:9/19.5;padding:10px;border-radius:52px;background:linear-gradient(145deg,#9a9a94,#4a4a47 30%,#2a2a28 60%,#8a8a84);box-shadow:0 60px 120px rgba(0,0,0,.6),inset 0 0 0 1px rgba(255,255,255,.25);transition:transform 1s cubic-bezier(.2,.8,.2,1)}
@@ -232,7 +233,7 @@ button{font:inherit;color:inherit}
 .sw i{flex:1;height:56px;border-radius:8px;box-shadow:inset 0 0 0 1px var(--line)}
 
 .mag-svg.mob{display:none}
-.mag-svg .mt.m{--t-hero:800 215px/1 var(--head);--ls-hero:-5px}
+.mag-svg .mt.m{--t-hero:800 200px/1 var(--head);--ls-hero:-3px}
 
 /* ---------- responsive ---------- */
 @media (max-width:900px){
@@ -258,7 +259,7 @@ button{font:inherit;color:inherit}
   .type-r .row span{text-align:left}
 }
 @media (max-width:600px){
-  :root{--gut:20px;--sec:72px;--t-h:700 clamp(30px,9vw,40px)/1.04 var(--head);--t-hs:700 clamp(26px,7.4vw,32px)/1.06 var(--head);--t-num:700 40px/1 var(--head);--t-specimen:300 120px/.8 var(--zetta)}
+  :root{--gut:20px;--sec:72px;--t-h:600 clamp(28px,8vw,34px)/1.14 var(--head);--t-hs:600 clamp(24px,6.6vw,28px)/1.16 var(--head);--t-num:700 40px/1 var(--head);--t-specimen:300 120px/.8 var(--zetta)}
   .frame{padding:var(--s1) max(var(--s1),env(safe-area-inset-right,0px)) var(--s2) max(var(--s1),env(safe-area-inset-left,0px))}
   .sheet{border-radius:20px}
   .mag{height:auto;min-height:0;aspect-ratio:3/4}
@@ -322,8 +323,8 @@ button{font:inherit;color:inherit}
 @media (prefers-reduced-motion:reduce){.case-next *{transition:none!important}}
 .case-next{--cn-bg:#0d0d0e;--cn-fg:#ebebe8;--cn-sub:#9a9a96;--cn-acc:#ebebe8;--cn-line:rgba(235,235,232,.14);--cn-title:300 clamp(44px,7vw,112px)/1 "Lexend Zetta","Helvetica Neue",Arial,sans-serif}
 
-.case-next{--cn-bg:#0b0b0c;--cn-fg:#ECECEC;--cn-sub:#9d9d99;--cn-acc:#ECECEC;--cn-line:rgba(236,236,236,.14);--cn-title:700 clamp(48px,8vw,128px)/.92 "Inter Tight","Helvetica Neue",Arial,sans-serif}
-.case-next .cn-t{text-transform:uppercase;letter-spacing:-.05em}
+.case-next{--cn-bg:#0b0b0c;--cn-fg:#ECECEC;--cn-sub:#9d9d99;--cn-acc:#ECECEC;--cn-line:rgba(236,236,236,.14);--cn-title:600 clamp(44px,7vw,104px)/1 "Montserrat","Helvetica Neue",Arial,sans-serif}
+.case-next .cn-t{letter-spacing:-.03em}
 </style>
 </head>
 <body>
