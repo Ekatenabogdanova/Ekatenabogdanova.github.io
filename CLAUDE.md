@@ -1,6 +1,6 @@
 # Сайт-портфолио Екатерины Богдановой
 
-Статический сайт на GitHub Pages: https://ekatenabogdanova.github.io
+Статический сайт на GitHub Pages: https://ekateribogdana.github.io
 Сборки нет — правишь HTML, коммитишь в `main`, через 1–2 минуты изменения на сайте.
 
 ## Страницы

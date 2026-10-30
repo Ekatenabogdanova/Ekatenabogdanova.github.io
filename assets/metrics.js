@@ -4,7 +4,7 @@
 (function () {
   var YM_ID = 0; // номер счётчика из metrika.yandex.ru, например 98765432
 
-  if (!YM_ID || location.hostname !== 'ekatenabogdanova.github.io') return;
+  if (!YM_ID || location.hostname !== 'ekateribogdana.github.io') return;
 
   (function (m, e, t, r, i, k, a) {
     m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments); };
